@@ -1,10 +1,39 @@
-import hashlib, os, json
+import hashlib, os, json, glob
+from typing import Dict
+
 import folder_paths as comfy_paths
 
 NODE_FILE = os.path.abspath(__file__)
 AKP_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
 TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "AKP_Anim")
 ALWAYS_CHANGED_FLAG = float("NaN")
+
+
+def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, str]:
+    if not os.path.isdir(directory_path):
+        return []
+    files = []
+    for file_name in glob.glob(os.path.join(directory_path, pattern), recursive=True):
+        if file_name.lower().endswith(('.jpeg', '.jpg', '.png', '.tiff', '.gif', '.bmp', '.webp')):
+            files.append(os.path.abspath(file_name))
+    result = dict()
+
+    def _num_from_filename(fn):
+        (text, _) = os.path.splitext(fn)
+        token: str = text.split("_")[-1]
+        if token.isdigit():
+            return int(token)
+        else:
+            return -1
+
+    if alphabetic_index:
+        files.sort()
+        for idx, item in enumerate(files):
+            result[idx] = item
+    else:
+        for filepath in files:
+            result[_num_from_filename(os.path.basename(filepath))] = filepath
+    return result
 
 
 class AKPStateStore:

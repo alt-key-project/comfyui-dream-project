@@ -8,7 +8,7 @@ class AKPSineWave:
     @classmethod
     def INPUT_TYPES(cls):
         return {
-            "required": SharedTypes.current_frame | {
+            "required": SharedTypes.frame_counter | {
                 "max_value": ("FLOAT", {"default": 1.0, "multiline": False}),
                 "min_value": ("FLOAT", {"default": 0.0, "multiline": False}),
                 "periodicity": ("INT", {"default": 10, "multiline": False, "min": 1}),
@@ -25,10 +25,10 @@ class AKPSineWave:
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(*values)
 
-    def result(self, current_frame, max_value, min_value, period, phase):
+    def result(self, frame_counter, max_value, min_value, period, phase):
         a = (max_value - min_value) * 0.5
         v = min_value + 0.5 * a + \
-            a * math.sin(phase * 2.0 * math.pi + float(current_frame) / max(1, period) * 2.0 * math.pi)
+            a * math.sin(phase * 2.0 * math.pi + float(frame_counter) / max(1, period) * 2.0 * math.pi)
         return (v, int(round(v)))
 
 

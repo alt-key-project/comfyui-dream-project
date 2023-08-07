@@ -1,6 +1,7 @@
 from .base import *
 from .curves import *
 from .loaders import *
+from .output import *
 
 MANIFEST = {
     "name": "AKP Animation",
@@ -11,8 +12,11 @@ MANIFEST = {
 }
 
 NODE_CLASS_MAPPINGS = {
-    "SineWave": AKPSineWave,
+    "Sine Wave": AKPSineWave,
     "Linear": AKPLinear,
-    "FrameCounter": AKPFrameCount,
-    "InputImageLoader": AKPInputImageLoader
+    "Frame Counter (Directory)": AKPDirectoryBackedFrameCounter,
+    "Frame Counter (Simple)": AKPSimpleFrameCounter,
+    "Image Sequence Loader": AKPImageSequenceInput,
+    "Image Sequence Loader With Fallback": AKPImageSequenceInputWithDefaultFallback,
+    "Image Sequence Saver": AKPImageSequenceOutput,
 }
