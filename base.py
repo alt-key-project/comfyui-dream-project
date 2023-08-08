@@ -1,8 +1,30 @@
-import random
+from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, hashed_as_strings
+import math
 
-from .util import ALWAYS_CHANGED_FLAG, list_images_in_directory
 
-_FRAME_COUNTER_TYPE = "SEQUENCE_CONTEXT"
+
+
+class AKPFrameCounterOffset:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "frame_counter": ("FRAME_COUNTER", {"forceInput": True}),
+                "offset": ("INT", {"default": 0}),
+            },
+        }
+
+    CATEGORY = "AKP Animation"
+    RETURN_TYPES = ("FRAME_COUNTER",)
+    RETURN_NAMES = ("frame_counter",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, frame_counter, offset):
+        return hashed_as_strings(frame_counter, offset)
+
+    def result(self, frame_counter, offset):
+        return (frame_counter + offset,)
 
 
 class AKPSimpleFrameCounter:

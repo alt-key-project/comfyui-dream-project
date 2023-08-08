@@ -4,7 +4,7 @@ import numpy
 from PIL.PngImagePlugin import PngInfo
 
 from .types import SharedTypes
-from .util import hashed_as_strings
+from .shared import hashed_as_strings, convertToPIL
 import os
 
 
@@ -59,7 +59,9 @@ class AKPImageSequenceOutput:
         filepath = os.path.join(directory_path, filename)
         if len(image) != 1:
             print("Warning - batch output not supported for animation nodes. Only saving first result!")
-        pil_image = Image.fromarray(numpy.clip(255. * image[0].cpu().numpy(), 0, 255).astype(numpy.uint8))
+        pil_image = convertToPIL(image[0])
+        if not os.path.isdir(directory_path):
+            os.makedirs(directory_path)
         if filetype.startswith("png"):
             self.save_png(pil_image, filepath, filetype == 'png with embedded workflow', prompt, extra_pnginfo)
         elif filetype == "jpg small size":

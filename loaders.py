@@ -1,14 +1,7 @@
 from PIL import Image
-import torch
-import numpy
 from .types import SharedTypes
-from .util import ALWAYS_CHANGED_FLAG, list_images_in_directory
+from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPIL
 import os
-
-
-def _load_file(path):
-    pil_image = Image.open(path)
-    return torch.from_numpy(numpy.array(pil_image).astype(numpy.float32) / 255.0).unsqueeze(0)
 
 
 class AKPImageSequenceInput:
@@ -37,7 +30,7 @@ class AKPImageSequenceInput:
         if not entry:
             return (None, None)
         else:
-            return (_load_file(entry), os.path.basename(entry))
+            return (convertFromPIL(Image.open(entry)), os.path.basename(entry))
 
 
 class AKPImageSequenceInputWithDefaultFallback:
@@ -67,4 +60,4 @@ class AKPImageSequenceInputWithDefaultFallback:
         if not entry:
             return (default_image, "")
         else:
-            return (_load_file(entry), os.path.basename(entry))
+            return (convertFromPIL(Image.open(entry)), os.path.basename(entry))

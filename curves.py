@@ -1,7 +1,7 @@
 import math
 
 from .types import SharedTypes
-from .util import hashed_as_strings
+from .shared import hashed_as_strings
 
 
 class AKPSineWave:
@@ -25,10 +25,10 @@ class AKPSineWave:
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(*values)
 
-    def result(self, frame_counter, max_value, min_value, period, phase):
+    def result(self, frame_counter, max_value, min_value, periodicity, phase):
         a = (max_value - min_value) * 0.5
         v = min_value + 0.5 * a + \
-            a * math.sin(phase * 2.0 * math.pi + float(frame_counter) / max(1, period) * 2.0 * math.pi)
+            a * math.sin(phase * 2.0 * math.pi + float(frame_counter) / max(1, periodicity) * 2.0 * math.pi)
         return (v, int(round(v)))
 
 

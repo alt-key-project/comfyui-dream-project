@@ -1,4 +1,8 @@
 import hashlib, os, json, glob
+
+import numpy
+import torch
+from PIL import Image
 from typing import Dict
 
 import folder_paths as comfy_paths
@@ -9,9 +13,17 @@ TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "AKP_Anim"
 ALWAYS_CHANGED_FLAG = float("NaN")
 
 
+def convertToPIL(image) -> Image:
+    return Image.fromarray(numpy.clip(255. * image.cpu().numpy().squeeze(), 0, 255).astype(numpy.uint8))
+
+
+def convertFromPIL(image):
+    return torch.from_numpy(numpy.array(image).astype(numpy.float32) / 255.0).unsqueeze(0)
+
+
 def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, str]:
     if not os.path.isdir(directory_path):
-        return []
+        return {}
     files = []
     for file_name in glob.glob(os.path.join(directory_path, pattern), recursive=True):
         if file_name.lower().endswith(('.jpeg', '.jpg', '.png', '.tiff', '.gif', '.bmp', '.webp')):
