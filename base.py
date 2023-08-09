@@ -10,7 +10,7 @@ class AKPFrameCounterOffset:
         return {
             "required": {
                 "frame_counter": ("FRAME_COUNTER", {"forceInput": True}),
-                "offset": ("INT", {"default": 0}),
+                "offset": ("INT", {"default": -1}),
             },
         }
 

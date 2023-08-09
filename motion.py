@@ -15,19 +15,25 @@ class AKPImageMotion:
             "required": {
                 "image": ("IMAGE",),
                 "zoom": ("FLOAT", {"default": 0.0, "min": -1, "max": 1, "step": 0.01}),
-                "mask_feather": ("INT", {"default": 10, "min": 0}),
-                "mask_overlap": ("INT", {"default": 10, "min": 0}),
+                "mask_1_feather": ("INT", {"default": 0, "min": 0}),
+                "mask_1_overlap": ("INT", {"default": 0, "min": 0}),
+                "mask_2_feather": ("INT", {"default": 10, "min": 0}),
+                "mask_2_overlap": ("INT", {"default": 5, "min": 0}),
+                "mask_3_feather": ("INT", {"default": 15, "min": 0}),
+                "mask_3_overlap": ("INT", {"default": 5, "min": 0}),
                 "x_translation": ("FLOAT", {"default": 0.0, "min": -1, "max": 1, "step": 0.01}),
                 "y_translation": ("FLOAT", {"default": 0.0, "min": -1, "max": 1, "step": 0.01}),
             },
             "optional": {
                 "noise": ("IMAGE",),
+                "output_resize_width": ("INT", {"default": 0, "min": 0}),
+                "output_resize_height": ("INT", {"default": 0, "min": 0})
             }
         }
 
-    CATEGORY = "AKP Animation/image"
-    RETURN_TYPES = ("IMAGE", "MASK", "MASK")
-    RETURN_NAMES = ("image", "overlapping_mask", "mask")
+    CATEGORY = "AKP Animation/Transforms"
+    RETURN_TYPES = ("IMAGE", "MASK", "MASK", "MASK")
+    RETURN_NAMES = ("image", "mask1", "mask2", "mask3")
     FUNCTION = "result"
 
     @classmethod
@@ -39,20 +45,6 @@ class AKPImageMotion:
         if color:
             im.paste(color, (0, 0, size[0], size[1]))
         return im
-
-    def _paste_into(self, pasted_image, background, x_translation, y_translation):
-        dx = int(round(background.width * x_translation))
-        dy = int(round(background.height * y_translation))
-        print("Paste of {} into {}".format(pasted_image.size, background.size))
-        print("dx,dy = {} {}".format(dx, dy))
-        center = (background.width // 2, background.height // 2)
-        centered_paste = ((background.width - pasted_image.width) // 2, (background.height - pasted_image.height) // 2)
-        print("center is {}".format(center))
-        print("centered paste is {}".format(centered_paste))
-        offset = (centered_paste[0] + dx, centered_paste[1] + dy)
-        print("Paste offset = {}".format(offset))
-        background.paste(pasted_image, offset)
-        return (background, (offset[0], offset[1], offset[0] + pasted_image.width, offset[1] + pasted_image.height))
 
     def _convertPILToMask(self, image):
         return torch.from_numpy(numpy.array(image.convert("L")).astype(numpy.float32) / 255.0)
@@ -74,30 +66,42 @@ class AKPImageMotion:
         draw.rectangle(area, fill="black", width=0)
         return self._apply_feather(complete_area, area, feather)
 
-    def result(self, image, zoom, x_translation, y_translation, mask_feather, mask_overlap, **other):
+    def _make_resizer(self, output_resize_width, output_resize_height):
+        def bound(i):
+            return min(max(i, 1), 32767)
+
+        if output_resize_height and output_resize_width:
+            return lambda img: img.resize((bound(output_resize_width), bound(output_resize_height)), Resampling.NEAREST)
+        else:
+            return lambda img: img
+
+    def result(self, image, zoom, x_translation, y_translation, mask_1_feather, mask_1_overlap,
+               mask_2_feather, mask_2_overlap, mask_3_feather, mask_3_overlap,
+               **other):
         pil_image = convertToPIL(image)
+        sz = self._make_resizer(other.get("output_resize_width", None), other.get("output_resize_height", None))
         noise = other.get("noise", None)
         multiplier = math.pow(2, zoom)
         resized_image = pil_image.resize((round(pil_image.width * multiplier),
                                           round(pil_image.height * multiplier)), Resampling.BILINEAR)
 
-        print("resized zoom " + str(resized_image.size))
         if noise is None:
             base_image = self._mk_PIL_image(pil_image.size, "black")
         else:
             base_image = convertToPIL(noise).resize(pil_image.size, Resampling.BILINEAR)
-
-        mask_overlap = min(pil_image.width // 3, min(mask_overlap, pil_image.height // 3))
-        print("mask_overlap = {}, feather = {}".format(mask_overlap, mask_feather))
 
         selection_offset = (round(x_translation * pil_image.width), round(y_translation * pil_image.height))
         selection = ((pil_image.width - resized_image.width) // 2 + selection_offset[0],
                      (pil_image.height - resized_image.height) // 2 + selection_offset[1],
                      (pil_image.width - resized_image.width) // 2 + selection_offset[0] + resized_image.width,
                      (pil_image.height - resized_image.height) // 2 + selection_offset[1] + resized_image.height)
-
         base_image.paste(resized_image, selection)
 
-        mask1 = self._make_mask(pil_image.width, pil_image.height, selection, mask_feather, mask_overlap)
-        mask2 = self._make_mask(pil_image.width, pil_image.height, selection, 0, 0)
-        return (convertFromPIL(base_image), self._convertPILToMask(mask1), self._convertPILToMask(mask2))
+        mask_1_overlap = min(pil_image.width // 3, min(mask_1_overlap, pil_image.height // 3))
+        mask_2_overlap = min(pil_image.width // 3, min(mask_2_overlap, pil_image.height // 3))
+        mask_3_overlap = min(pil_image.width // 3, min(mask_3_overlap, pil_image.height // 3))
+        mask1 = self._make_mask(pil_image.width, pil_image.height, selection, mask_1_feather, mask_1_overlap)
+        mask2 = self._make_mask(pil_image.width, pil_image.height, selection, mask_2_feather, mask_2_overlap)
+        mask3 = self._make_mask(pil_image.width, pil_image.height, selection, mask_3_feather, mask_3_overlap)
+        return (convertFromPIL(sz(base_image)), self._convertPILToMask(sz(mask1)),
+                self._convertPILToMask(sz(mask2)), self._convertPILToMask(sz(mask3)))

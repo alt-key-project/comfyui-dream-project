@@ -1,7 +1,7 @@
 from PIL import Image
 from .types import SharedTypes
 from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPIL
-import os
+import os, json
 
 
 class AKPImageSequenceInput:
@@ -56,6 +56,7 @@ class AKPImageSequenceInputWithDefaultFallback:
 
     def result(self, frame_counter, directory_path, pattern, default_image, indexing):
         entries = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
+        print(json.dumps(entries, indent=2))
         entry = entries.get(frame_counter, None)
         if not entry:
             return (default_image, "")
