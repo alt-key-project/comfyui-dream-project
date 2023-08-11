@@ -3,7 +3,7 @@ import hashlib, os, json, glob
 import numpy
 import torch
 from PIL import Image
-from typing import Dict
+from typing import Dict, Tuple
 
 import folder_paths as comfy_paths
 
@@ -19,6 +19,54 @@ def convertToPIL(image) -> Image:
 
 def convertFromPIL(image):
     return torch.from_numpy(numpy.array(image).astype(numpy.float32) / 255.0).unsqueeze(0)
+
+
+class ImageWrapper:
+    def __init__(self, sd_image=None, pil_image=None):
+        if pil_image:
+            self._pil_image = pil_image
+        else:
+            self._pil_image = convertToPIL(sd_image)
+        if self._pil_image.mode not in ("RGB", "RGBA"):
+            raise Exception("Unsupported image mode '{}'".format(self._pil_image.mode))
+        self.width = self._pil_image.width
+        self.height = self._pil_image.height
+        self.size = self._pil_image.size
+
+    def __iter__(self):
+        class _Pixels:
+            def __init__(self, image: ImageWrapper):
+                self.x = 0
+                self.y = 0
+                self._img = image
+
+            def __next__(self) -> Tuple[int, int, int, int]:
+                if self.x >= self._img.width:
+                    self.y += 1
+                    self.x = 1
+                if self.y >= self._img.height:
+                    raise StopIteration
+                p = self._img.get_pixel(self.x, self.y)
+                self.x += 1
+                return (p, self.x, self.y)
+
+        return _Pixels(self)
+
+    def get_sd_image(self):
+        return convertFromPIL(self._pil_image)
+
+    def get_pixel(self, x, y):
+        p = self._pil_image.getpixel((x, y))
+        if len(p) == 4:
+            return p
+        else:
+            return (p[0], p[1], p[2], 255)
+
+    def set_pixel(self, x, y, pixelvalue):
+        if len(pixelvalue) == 4:
+            self._pil_image.putpixel((x, y), pixelvalue)
+        else:
+            self._pil_image.putpixel((x, y), (pixelvalue[0], pixelvalue[1], pixelvalue[2], 255))
 
 
 def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, str]:

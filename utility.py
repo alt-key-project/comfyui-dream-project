@@ -1,5 +1,7 @@
 from .shared import hashed_as_strings
+from .categories import NodeCategories
 import math
+
 
 def _align_num(n: int, alignment: int, type: str):
     if alignment <= 1:
@@ -26,7 +28,7 @@ class AKPFrameDimensions:
             },
         }
 
-    CATEGORY = "AKP Animation/Util"
+    CATEGORY = NodeCategories.UTILS
     RETURN_TYPES = ("INT", "INT")
     RETURN_NAMES = ("width", "height")
     FUNCTION = "result"
@@ -38,7 +40,7 @@ class AKPFrameDimensions:
     def result(self, size, aspect_ratio, orientation, divisor, alignment, alignment_type):
         ratio = tuple(map(int, aspect_ratio.split(":")))
         width = _align_num(int(round(int(size) / float(divisor))), alignment, alignment_type)
-        height = _align_num((float(width) * ratio[1]) / ratio[0], alignment, alignment_type)
+        height = _align_num(int(round((float(width) * ratio[1]) / ratio[0])), alignment, alignment_type)
         if orientation == "wide":
             return (width, height)
         else:

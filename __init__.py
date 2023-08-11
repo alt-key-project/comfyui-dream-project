@@ -3,7 +3,7 @@ from .curves import *
 from .loaders import *
 from .output import *
 from .utility import *
-from .motion import *
+from .image_processing import *
 
 MANIFEST = {
     "name": "AKP Animation",
@@ -18,6 +18,7 @@ NODE_CLASS_MAPPINGS = {
     "Linear": AKPLinear,
     "Image Dimensions": AKPFrameDimensions,
     "Image Motion": AKPImageMotion,
+    "Frame Total (Directory)": AKPFrameCounterOffset,
     "Frame Counter Offset": AKPFrameCounterOffset,
     "Frame Counter (Directory)": AKPDirectoryBackedFrameCounter,
     "Frame Counter (Simple)": AKPSimpleFrameCounter,
@@ -25,3 +26,9 @@ NODE_CLASS_MAPPINGS = {
     "Image Sequence Loader With Fallback": AKPImageSequenceInputWithDefaultFallback,
     "Image Sequence Saver": AKPImageSequenceOutput,
 }
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+}
+
+for name in NODE_CLASS_MAPPINGS.keys():
+    NODE_DISPLAY_NAME_MAPPINGS[name] = "AKP " + name

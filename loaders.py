@@ -1,7 +1,8 @@
 from PIL import Image
-from .types import SharedTypes
+from .types import SharedTypes, FrameCounter
 from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPIL
-import os, json
+from .categories import NodeCategories
+import os
 
 
 class AKPImageSequenceInput:
@@ -15,7 +16,7 @@ class AKPImageSequenceInput:
             }
         }
 
-    CATEGORY = "AKP Animation/IO"
+    CATEGORY = NodeCategories.IMAGE_ANIMATION
     RETURN_TYPES = ("IMAGE", "STRING")
     RETURN_NAMES = ("image", "filename")
     FUNCTION = "result"
@@ -24,9 +25,9 @@ class AKPImageSequenceInput:
     def IS_CHANGED(cls, *values):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, frame_counter, directory_path, pattern, indexing):
+    def result(self, frame_counter : FrameCounter, directory_path, pattern, indexing):
         entries = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
-        entry = entries.get(frame_counter, None)
+        entry = entries.get(frame_counter.current_frame, None)
         if not entry:
             return (None, None)
         else:
@@ -45,7 +46,7 @@ class AKPImageSequenceInputWithDefaultFallback:
             }
         }
 
-    CATEGORY = "AKP Animation/IO"
+    CATEGORY = NodeCategories.IMAGE_ANIMATION
     RETURN_TYPES = ("IMAGE", "STRING")
     RETURN_NAMES = ("image", "filename")
     FUNCTION = "result"
@@ -54,10 +55,9 @@ class AKPImageSequenceInputWithDefaultFallback:
     def IS_CHANGED(cls, *values):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, frame_counter, directory_path, pattern, default_image, indexing):
+    def result(self, frame_counter : FrameCounter, directory_path, pattern, default_image, indexing):
         entries = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
-        print(json.dumps(entries, indent=2))
-        entry = entries.get(frame_counter, None)
+        entry = entries.get(frame_counter.current_frame, None)
         if not entry:
             return (default_image, "")
         else:

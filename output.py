@@ -1,9 +1,8 @@
-from PIL import Image
 import json
-import numpy
 from PIL.PngImagePlugin import PngInfo
+from .categories import NodeCategories
 
-from .types import SharedTypes
+from .types import SharedTypes, FrameCounter
 from .shared import hashed_as_strings, convertToPIL
 import os
 
@@ -25,7 +24,7 @@ class AKPImageSequenceOutput:
             },
         }
 
-    CATEGORY = "AKP Animation/IO"
+    CATEGORY = NodeCategories.IMAGE_ANIMATION
     RETURN_TYPES = ()
     FUNCTION = "was_save_images"
     OUTPUT_NODE = True
@@ -54,8 +53,8 @@ class AKPImageSequenceOutput:
     def save_jpg(self, pil_image, filepath, quality):
         pil_image.save(filepath, quality=quality, optimize=True)
 
-    def save(self, frame_counter, image, directory_path, prefix, digits, filetype, prompt, extra_pnginfo):
-        filename = self.get_new_filename(frame_counter, prefix, digits, filetype)
+    def save(self, frame_counter: FrameCounter, image, directory_path, prefix, digits, filetype, prompt, extra_pnginfo):
+        filename = self.get_new_filename(frame_counter.current_frame, prefix, digits, filetype)
         filepath = os.path.join(directory_path, filename)
         if len(image) != 1:
             print("Warning - batch output not supported for animation nodes. Only saving first result!")
