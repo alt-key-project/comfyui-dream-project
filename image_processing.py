@@ -9,51 +9,29 @@ from .types import SharedTypes, FrameCounter
 
 from .shared import ALWAYS_CHANGED_FLAG, convertToPIL, convertFromPIL, ImageWrapper
 
-
-class AKPImage3WayBlend:
+class AKPMotionBlur:
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "image1": ("IMAGE",),
-                "image2": ("IMAGE",),
-                "image3": ("IMAGE",),
-                "min_max_weight": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 100.0}),
-                "median_weight": ("FLOAT", {"default": 10.0, "min": 1.0, "max": 100.0})
-            }
+                            "fade_in_millis": ("INT", {"default": 200, "min": 0, "max": 1000}),
+                            "fade_out_millis": ("INT", {"default": 200, "min": 0, "max": 1000}),
+                            "image": ("IMAGE",),
+                        } | SharedTypes.frame_counter,
         }
 
-    CATEGORY = NodeCategories.IMAGE_POSTPROCESSING
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("image",)
+    CATEGORY = NodeCategories.ANIMATION_TRANSFORMS
+    RETURN_TYPES = ("IMAGE", FrameCounter.ID)
+    RETURN_NAMES = ("image", "output_frame_counter")
     FUNCTION = "result"
+
 
     @classmethod
     def IS_CHANGED(cls, *values):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, image1, image2, image3, min_max_weight, median_weight):
-        wrapper_image_1 = ImageWrapper(sd_image=image1)
-        wrapper_image_2 = ImageWrapper(sd_image=image2)
-        wrapper_image_3 = ImageWrapper(sd_image=image3)
-        w = min(wrapper_image_1.width, wrapper_image_2.width, wrapper_image_3.width)
-        h = min(wrapper_image_1.height, wrapper_image_2.height, wrapper_image_3.height)
-        total_weight = median_weight + 2 * min_max_weight
-        result = ImageWrapper(pil_image=Image.new("RGBA", size=(w, h)))
-
-        for (_, x, y) in result:
-            p1 = wrapper_image_1.get_pixel(x, y)
-            p2 = wrapper_image_2.get_pixel(x, y)
-            p3 = wrapper_image_2.get_pixel(x, y)
-            new_pixel = []
-            for i in range(4):
-                values = [p1[i], p2[i], p3[i]]
-                values.sort()
-                v = round((min_max_weight * values[0] + median_weight * values[1] + min_max_weight * values[2]) /
-                          total_weight)
-                new_pixel.append(v)
-            result.set_pixel(x, y, tuple(new_pixel))
-        return result.get_sd_image()
+    def result(self, fade_in_millis, fade_out_millis, image, frame_counter: FrameCounter):
+        frame_counter.frames_per_second
 
 
 class AKPImageMotion:
@@ -61,17 +39,17 @@ class AKPImageMotion:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "image": ("IMAGE",),
-                "zoom": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
-                "mask_1_feather": ("INT", {"default": 0, "min": 0}),
-                "mask_1_overlap": ("INT", {"default": 0, "min": 0}),
-                "mask_2_feather": ("INT", {"default": 10, "min": 0}),
-                "mask_2_overlap": ("INT", {"default": 5, "min": 0}),
-                "mask_3_feather": ("INT", {"default": 15, "min": 0}),
-                "mask_3_overlap": ("INT", {"default": 5, "min": 0}),
-                "x_translation": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
-                "y_translation": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
-            } | SharedTypes.frame_counter,
+                            "image": ("IMAGE",),
+                            "zoom": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
+                            "mask_1_feather": ("INT", {"default": 0, "min": 0}),
+                            "mask_1_overlap": ("INT", {"default": 0, "min": 0}),
+                            "mask_2_feather": ("INT", {"default": 10, "min": 0}),
+                            "mask_2_overlap": ("INT", {"default": 5, "min": 0}),
+                            "mask_3_feather": ("INT", {"default": 15, "min": 0}),
+                            "mask_3_overlap": ("INT", {"default": 5, "min": 0}),
+                            "x_translation": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
+                            "y_translation": ("FLOAT", {"default": 0.0, "min": -10, "max": 10, "step": 0.01}),
+                        } | SharedTypes.frame_counter,
             "optional": {
                 "noise": ("IMAGE",),
                 "output_resize_width": ("INT", {"default": 0, "min": 0}),
@@ -124,7 +102,7 @@ class AKPImageMotion:
             return lambda img: img
 
     def result(self, image, zoom, x_translation, y_translation, mask_1_feather, mask_1_overlap,
-               mask_2_feather, mask_2_overlap, mask_3_feather, mask_3_overlap, frame_counter : FrameCounter,
+               mask_2_feather, mask_2_overlap, mask_3_feather, mask_3_overlap, frame_counter: FrameCounter,
                **other):
 
         def _limit_range(f):

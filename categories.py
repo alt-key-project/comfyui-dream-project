@@ -4,4 +4,5 @@ class NodeCategories:
     ANIMATION_CURVES = "animation/curves"
     IMAGE_POSTPROCESSING = "image/postprocessing"
     IMAGE_ANIMATION = "image/animation"
+    IMAGE = "image"
     UTILS = "utils"

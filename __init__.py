@@ -16,19 +16,25 @@ MANIFEST = {
 NODE_CLASS_MAPPINGS = {
     "Sine Wave": AKPSineWave,
     "Linear": AKPLinear,
+    "CSV Curve": AKPCSVCurve,
+    "Beat Curve": AKPBeatCurve,
     "Image Dimensions": AKPFrameDimensions,
     "Image Motion": AKPImageMotion,
-    "Frame Total (Directory)": AKPFrameCounterOffset,
+    "Frame Total (Directory)": AKPDirectoryBackedFrameTotal,
     "Frame Counter Offset": AKPFrameCounterOffset,
     "Frame Counter (Directory)": AKPDirectoryBackedFrameCounter,
     "Frame Counter (Simple)": AKPSimpleFrameCounter,
-    "Image Sequence Loader": AKPImageSequenceInput,
     "Image Sequence Loader With Fallback": AKPImageSequenceInputWithDefaultFallback,
     "Image Sequence Saver": AKPImageSequenceOutput,
+    "Named Image Saver": AKPNamedImageSaver
+}
+
+RENAMED = {
+    "Image Sequence Loader With Fallback": "Image Sequence Loader"
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
 }
 
 for name in NODE_CLASS_MAPPINGS.keys():
-    NODE_DISPLAY_NAME_MAPPINGS[name] = "AKP " + name
+    NODE_DISPLAY_NAME_MAPPINGS[name] = "AKP " + RENAMED.get(name, name)

@@ -25,7 +25,7 @@ class AKPDirectoryBackedFrameTotal:
 
     def result(self, directory_path, pattern, indexing):
         items = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
-        return max(items.keys())
+        return (max(items.keys()),)
 
 
 class AKPFrameCounterOffset:
