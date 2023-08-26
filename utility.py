@@ -29,7 +29,7 @@ class AKPFrameDimensions:
         }
 
     CATEGORY = NodeCategories.UTILS
-    RETURN_TYPES = ("INT", "INT", "INT", "INT", "STRING")
+    RETURN_TYPES = ("INT", "INT", "INT", "INT")
     RETURN_NAMES = ("width", "height", "final_width", "final_height")
     FUNCTION = "result"
 
