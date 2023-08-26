@@ -29,8 +29,8 @@ class AKPFrameDimensions:
         }
 
     CATEGORY = NodeCategories.UTILS
-    RETURN_TYPES = ("INT", "INT", "STRING")
-    RETURN_NAMES = ("width", "height", "dimensions_text")
+    RETURN_TYPES = ("INT", "INT", "INT", "INT", "STRING")
+    RETURN_NAMES = ("width", "height", "final_width", "final_height")
     FUNCTION = "result"
 
     @classmethod
@@ -39,9 +39,11 @@ class AKPFrameDimensions:
 
     def result(self, size, aspect_ratio, orientation, divisor, alignment, alignment_type):
         ratio = tuple(map(int, aspect_ratio.split(":")))
-        width = _align_num(int(round(int(size) / float(divisor))), alignment, alignment_type)
+        final_width = int(size)
+        final_height = int(round((float(final_width) * ratio[1]) / ratio[0]))
+        width = _align_num(int(round(final_width / float(divisor))), alignment, alignment_type)
         height = _align_num(int(round((float(width) * ratio[1]) / ratio[0])), alignment, alignment_type)
         if orientation == "wide":
-            return (width, height, "{}x{}".format(width, height))
+            return (width, height, final_width, final_height)
         else:
-            return (height, width, "{}x{}".format(height, width))
+            return (height, width, final_height, final_width)
