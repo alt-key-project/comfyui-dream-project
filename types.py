@@ -10,6 +10,10 @@ class FrameCounter:
         return FrameCounter(self.current_frame + amount, self.total_frames, self.frames_per_second)
 
     @property
+    def is_final_frame(self):
+        return (self.current_frame + 1) == self.total_frames
+
+    @property
     def current_time_in_seconds(self):
         return float(self.current_frame) / self.frames_per_second
 
