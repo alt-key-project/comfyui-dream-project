@@ -6,9 +6,9 @@ from .utility import *
 from .image_processing import *
 
 MANIFEST = {
-    "name": "AKP Animation",
+    "name": "Dream Project Animation",
     "version": (0, 1, 0),
-    "author": "Alt Key Project",
+    "author": "Dream Project",
     "project": "https://github.com/",
     "description": "Various utility nodes for creating animations with ComfyUI",
 }
@@ -37,4 +37,4 @@ NODE_DISPLAY_NAME_MAPPINGS = {
 }
 
 for name in NODE_CLASS_MAPPINGS.keys():
-    NODE_DISPLAY_NAME_MAPPINGS[name] = "AKP " + RENAMED.get(name, name)
+    NODE_DISPLAY_NAME_MAPPINGS[name] = RENAMED.get(name, name)+" [DrPr]"
