@@ -14,7 +14,7 @@ def _align_num(n: int, alignment: int, type: str):
         return int(round(float(n) / alignment)) * alignment
 
 
-class AKPFrameDimensions:
+class DreamFrameDimensions:
     @classmethod
     def INPUT_TYPES(cls):
         return {

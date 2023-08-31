@@ -1,5 +1,4 @@
 import math
-
 import numpy
 import torch
 from PIL.Image import Resampling
@@ -7,34 +6,12 @@ from PIL import Image, ImageDraw
 from .categories import *
 from .types import SharedTypes, FrameCounter
 
-from .shared import ALWAYS_CHANGED_FLAG, convertToPIL, convertFromPIL, ImageWrapper
-
-class AKPMotionBlur:
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                            "fade_in_millis": ("INT", {"default": 200, "min": 0, "max": 1000}),
-                            "fade_out_millis": ("INT", {"default": 200, "min": 0, "max": 1000}),
-                            "image": ("IMAGE",),
-                        } | SharedTypes.frame_counter,
-        }
-
-    CATEGORY = NodeCategories.ANIMATION_TRANSFORMS
-    RETURN_TYPES = ("IMAGE", FrameCounter.ID)
-    RETURN_NAMES = ("image", "output_frame_counter")
-    FUNCTION = "result"
+from .shared import ALWAYS_CHANGED_FLAG, convertToPIL, convertFromPIL
 
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return ALWAYS_CHANGED_FLAG
+class DreamImageMotion:
+    NODE_NAME = "Image Motion"
 
-    def result(self, fade_in_millis, fade_out_millis, image, frame_counter: FrameCounter):
-        frame_counter.frames_per_second
-
-
-class AKPImageMotion:
     @classmethod
     def INPUT_TYPES(cls):
         return {

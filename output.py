@@ -24,7 +24,9 @@ def _save_jpg(pil_image, filepath, quality):
     pil_image.save(filepath, quality=quality, optimize=True)
 
 
-class AKPNamedImageSaver:
+class DreamNamedImageSaver:
+    NODE_NAME = "Named Image Saver"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -68,7 +70,9 @@ class AKPNamedImageSaver:
         return ()
 
 
-class AKPImageSequenceOutput:
+class DreamImageSequenceOutput:
+    NODE_NAME = "Image Sequence Saver"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {

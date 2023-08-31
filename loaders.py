@@ -4,7 +4,9 @@ from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPI
 from .categories import NodeCategories
 import os
 
-class AKPImageSequenceInputWithDefaultFallback:
+class DreamImageSequenceInputWithDefaultFallback:
+    NODE_NAME = "Image Sequence Loader"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {

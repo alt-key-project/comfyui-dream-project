@@ -8,8 +8,8 @@ from typing import Dict, Tuple
 import folder_paths as comfy_paths
 
 NODE_FILE = os.path.abspath(__file__)
-AKP_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
-TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "AKP_Anim")
+Dream_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
+TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "Dream_Anim")
 ALWAYS_CHANGED_FLAG = float("NaN")
 
 
@@ -96,7 +96,7 @@ def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index
     return result
 
 
-class AKPStateStore:
+class DreamStateStore:
     def __init__(self, name, read_fun, write_fun):
         self._read = read_fun
         self._write = write_fun
@@ -125,7 +125,7 @@ class AKPStateStore:
         return self._write(self._as_key(key), value)
 
 
-class AKPStateFile:
+class DreamStateFile:
     def __init__(self, state_file_path=os.path.join(TEMP_PATH, "state.json")):
         self._dirname = os.path.dirname(state_file_path)
         self._filepath = state_file_path
@@ -137,8 +137,8 @@ class AKPStateFile:
             with open(self._filepath, encoding="utf-8") as f:
                 self._data = json.load(f)
 
-    def get_section(self, name: str) -> AKPStateStore:
-        return AKPStateStore(name, self._read, self._write)
+    def get_section(self, name: str) -> DreamStateStore:
+        return DreamStateStore(name, self._read, self._write)
 
     def _read(self, key):
         return self._data.get(key, None)

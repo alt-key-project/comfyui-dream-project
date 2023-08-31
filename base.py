@@ -3,7 +3,9 @@ from .shared import *
 from .types import *
 
 
-class AKPDirectoryBackedFrameTotal:
+class DreamDirectoryBackedFrameTotal:
+    NODE_NAME = "Frame Total (Directory)"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -28,7 +30,9 @@ class AKPDirectoryBackedFrameTotal:
         return (max(items.keys()),)
 
 
-class AKPFrameCounterOffset:
+class DreamFrameCounterOffset:
+    NODE_NAME = "Frame Counter Offset"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -50,7 +54,9 @@ class AKPFrameCounterOffset:
         return (frame_counter.incremented(offset),)
 
 
-class AKPSimpleFrameCounter:
+class DreamSimpleFrameCounter:
+    NODE_NAME = "Frame Counter (Simple)"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -75,7 +81,9 @@ class AKPSimpleFrameCounter:
         return (FrameCounter(n, float(n) / (max(2, total_frames) - 1)),)
 
 
-class AKPDirectoryBackedFrameCounter:
+class DreamDirectoryBackedFrameCounter:
+    NODE_NAME = "Frame Counter (Directory)"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {

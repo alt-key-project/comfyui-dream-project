@@ -5,7 +5,9 @@ from .shared import hashed_as_strings
 from .categories import NodeCategories
 
 
-class AKPSineWave:
+class DreamSineWave:
+    NODE_NAME = "Sine Curve"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -34,7 +36,10 @@ class AKPSineWave:
         return (v, int(round(v)))
 
 
-class AKPBeatCurve:
+class DreamBeatCurve:
+    NODE_NAME = "Beat Curve"
+
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -43,7 +48,8 @@ class AKPBeatCurve:
                 "measure_length": ("INT", {"default": 4, "min": 1}),
                 "low_value": ("FLOAT", {"default": 0.0}),
                 "high_value": ("FLOAT", {"default": 1.0}),
-                "power": ("FLOAT", {"default": 2.0, "min": 1, "max": 4}),
+                "invert": (["no", "yes"]),
+                "power": ("FLOAT", {"default": 2.0, "min": 0.25, "max": 4}),
                 "accent_1": ("INT", {"default": 1, "min": 1, "max": 24}),
             },
             "optional": {
@@ -73,16 +79,21 @@ class AKPBeatCurve:
             return 1.0 - ((frame - accent_start) / frames_per_beat)
         return 0
 
-    def result(self, bpm, frame_counter: FrameCounter, measure_length, low_value, high_value, power, **accents):
+    def result(self, bpm, frame_counter: FrameCounter, measure_length, low_value, high_value, power, invert, **accents):
         accents_set = set(filter(lambda v: v >= 1 and v <= measure_length,
                                  map(lambda i: accents.get("accent_" + str(i), -1), range(30))))
         v = 0.0
         for a in accents_set:
             v += math.pow(self._get_value_for_accent(a, measure_length, bpm, frame_counter), power)
+        if invert == "yes":
+            v = 1.0 - v
+
         return (low_value + v * (high_value - low_value),)
 
 
-class AKPLinear:
+class DreamLinear:
+    NODE_NAME = "Linear Curve"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -115,7 +126,9 @@ def _is_as_float(s: str):
         return False
 
 
-class AKPCSVCurve:
+class DreamCSVCurve:
+    NODE_NAME = "CSV CURVE"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
