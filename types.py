@@ -14,6 +14,10 @@ class FrameCounter:
         return (self.current_frame + 1) == self.total_frames
 
     @property
+    def is_after_last_frame(self):
+        return self.current_frame >= self.total_frames
+
+    @property
     def current_time_in_seconds(self):
         return float(self.current_frame) / self.frames_per_second
 

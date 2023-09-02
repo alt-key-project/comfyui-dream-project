@@ -81,6 +81,7 @@ class DreamImageSequenceOutput:
                 "directory_path": ("STRING", {"default": '', "multiline": False}),
                 "prefix": ("STRING", {"default": 'frame', "multiline": False}),
                 "digits": ("INT", {"default": 5}),
+                "atend": (["stop output", "keep going"],),
                 "filetype": (['png with embedded workflow', "png", 'jpg small size', 'jpg high quality'],),
             },
             "hidden": {
@@ -103,9 +104,11 @@ class DreamImageSequenceOutput:
         return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]
 
     def _save_single_image(self, dream_image: DreamImage, batch_counter, frame_counter: FrameCounter, directory_path,
-                           prefix, digits, filetype, prompt, extra_pnginfo):
+                           prefix, digits, filetype, prompt, extra_pnginfo, atend):
+        if atend == "stop output" and frame_counter.is_after_last_frame:
+            print("Reached end of animation - not saving output!")
+            return ()
         filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype)
-        print("SAVE " + filename)
         if batch_counter >= 0:
             filepath = os.path.join(directory_path, "batch_" + (str(batch_counter).zfill(4)), filename)
         else:

@@ -78,7 +78,7 @@ class DreamSimpleFrameCounter:
 
     def result(self, frame_index, total_frames, frames_per_second):
         n = frame_index
-        return (FrameCounter(n, float(n) / (max(2, total_frames) - 1)), frames_per_second)
+        return (FrameCounter(n, total_frames, frames_per_second),)
 
 
 class DreamDirectoryBackedFrameCounter:
