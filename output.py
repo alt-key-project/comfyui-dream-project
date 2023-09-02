@@ -3,7 +3,7 @@ from PIL.PngImagePlugin import PngInfo
 from .categories import NodeCategories
 
 from .types import SharedTypes, FrameCounter
-from .shared import hashed_as_strings, convertTensorImageToPIL
+from .shared import hashed_as_strings, convertTensorImageToPIL, DreamImageProcessor, DreamImage
 import os
 
 
@@ -99,26 +99,30 @@ class DreamImageSequenceOutput:
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(*values)
 
-    def _get_new_filename(self, current_frame, prefix, digits, filetype, batchmode, batchnum):
-        if not batchmode:
-            return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]
-        else:
-            return prefix + "_" + str(batchnum).zfill(2) + "_" + str(current_frame).zfill(digits) + "." + \
-                   filetype.split(" ")[0]
+    def _get_new_filename(self, current_frame, prefix, digits, filetype):
+        return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]
 
-    def save(self, frame_counter: FrameCounter, image, directory_path, prefix, digits, filetype, prompt, extra_pnginfo):
-        for batch in range(len(image)):
-            filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype, len(image) > 1,
-                                              batch)
+    def _save_single_image(self, dream_image: DreamImage, batch_counter, frame_counter: FrameCounter, directory_path,
+                           prefix, digits, filetype, prompt, extra_pnginfo):
+        filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype)
+        print("SAVE " + filename)
+        if batch_counter >= 0:
+            filepath = os.path.join(directory_path, "batch_" + (str(batch_counter).zfill(4)), filename)
+        else:
             filepath = os.path.join(directory_path, filename)
-            pil_image = convertTensorImageToPIL(image[batch])
-            if not os.path.isdir(directory_path):
-                os.makedirs(directory_path)
-            if filetype.startswith("png"):
-                _save_png(pil_image, filepath, filetype == 'png with embedded workflow', prompt, extra_pnginfo)
-            elif filetype == "jpg small size":
-                _save_jpg(pil_image, filepath, 70)
-            elif filetype == "jpg high quality":
-                _save_jpg(pil_image, filepath, 98)
-            print("Saved {} in {}".format(filename, os.path.abspath(directory_path)))
-            return ()
+        save_dir = os.path.dirname(filepath)
+        if not os.path.isdir(save_dir):
+            os.makedirs(save_dir)
+        if filetype.startswith("png"):
+            dream_image.save_png(filepath, filetype == 'png with embedded workflow', prompt, extra_pnginfo)
+        elif filetype == "jpg small size":
+            dream_image.save_jpg(filepath, 70)
+        elif filetype == "jpg high quality":
+            dream_image.save_jpg(filepath, 98)
+        print("Saved {} in {}".format(filename, os.path.abspath(save_dir)))
+        return ()
+
+    def save(self, image, **args):
+        proc = DreamImageProcessor(image, **args)
+        proc.process(self._save_single_image)
+        return ()

@@ -3,12 +3,13 @@ import hashlib, os, json, glob
 import numpy
 import torch
 from PIL import Image
-from typing import Dict, Tuple
+from PIL.PngImagePlugin import PngInfo
+from typing import Dict, Tuple, List
 
 import folder_paths as comfy_paths
 
 NODE_FILE = os.path.abspath(__file__)
-Dream_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
+DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
 TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "Dream_Anim")
 ALWAYS_CHANGED_FLAG = float("NaN")
 
@@ -32,6 +33,7 @@ class DreamImageProcessor:
     def __init__(self, inputs: torch.Tensor, **extra_args):
         self._images_in_batch = [convertTensorImageToPIL(tensor) for tensor in inputs]
         self._extra_args = extra_args
+        self.is_batch = len(self._images_in_batch) > 1
 
     def process_PIL(self, fun):
         def _wrap(dream_image):
@@ -42,22 +44,32 @@ class DreamImageProcessor:
 
     def process(self, fun):
         output = []
+        batch_counter = 0 if self.is_batch else -1
         for pil_image in self._images_in_batch:
-            exec_result = fun(DreamImage(pil_image=pil_image),**self._extra_args)
+            exec_result = fun(DreamImage(pil_image=pil_image), batch_counter, **self._extra_args)
             exec_result = list(map(_replace_pil_image, exec_result))
             if not output:
                 output = [list() for i in range(len(exec_result))]
             for i in range(len(exec_result)):
-                output[i].append(exec_result[i].get_tensor_image())
+                output[i].append(exec_result[i].create_tensor_image())
+            if batch_counter >= 0:
+                batch_counter += 1
         return tuple(map(lambda l: torch.cat(l, dim=0), output))
 
 
 class DreamImage:
-    def __init__(self, tensor_image=None, pil_image=None):
+    @classmethod
+    def join_to_tensor_data(cls, images):
+        l = list(map(lambda i: i.create_tensor_image(), images))
+        return torch.cat(l, dim=0)
+
+    def __init__(self, tensor_image=None, pil_image=None, file_path=None):
         if pil_image:
             self.pil_image = pil_image
-        else:
+        elif tensor_image:
             self.pil_image = convertTensorImageToPIL(tensor_image)
+        else:
+            self.pil_image = Image.open(file_path)
         if self.pil_image.mode not in ("RGB", "RGBA"):
             self.pil_image = self.pil_image.convert("RGBA")
         self.width = self.pil_image.width
@@ -83,7 +95,7 @@ class DreamImage:
 
         return _Pixels(self)
 
-    def get_tensor_image(self):
+    def create_tensor_image(self):
         return convertFromPILToTensorImage(self.pil_image)
 
     def get_pixel(self, x, y):
@@ -99,6 +111,22 @@ class DreamImage:
         else:
             self.pil_image.putpixel((x, y), (pixelvalue[0], pixelvalue[1], pixelvalue[2], 255))
 
+    def save_png(self, filepath, embed_info=False, prompt=None, extra_pnginfo=None):
+        info = PngInfo()
+        print(filepath)
+        if extra_pnginfo is not None:
+            for item in extra_pnginfo:
+                info.add_text(item, json.dumps(extra_pnginfo[item]))
+        if prompt is not None:
+            info.add_text("prompt", json.dumps(prompt))
+        if embed_info:
+            self.pil_image.save(filepath, pnginfo=info, optimize=True)
+        else:
+            self.pil_image.save(filepath, optimize=True)
+
+    def save_jpg(self, filepath, quality=98):
+        self.pil_image.save(filepath, quality=quality, optimize=True)
+
 
 class DreamMask:
     def __init__(self, tensor_image=None, pil_image=None):
@@ -106,19 +134,25 @@ class DreamMask:
             self.pil_image = pil_image
         else:
             self.pil_image = convertTensorImageToPIL(tensor_image)
+        if self.pil_image.mode != "L":
+            self.pil_image = self.pil_image.convert("L")
 
-    def get_tensor_image(self):
-        return torch.from_numpy(numpy.array(self.pil_image.convert("L")).astype(numpy.float32) / 255.0)
+    def create_tensor_image(self):
+        return torch.from_numpy(numpy.array(self.pil_image).astype(numpy.float32) / 255.0)
 
 
-def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, str]:
+def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, List[str]]:
     if not os.path.isdir(directory_path):
         return {}
-    files = []
-    for file_name in glob.glob(os.path.join(directory_path, pattern), recursive=True):
-        if file_name.lower().endswith(('.jpeg', '.jpg', '.png', '.tiff', '.gif', '.bmp', '.webp')):
-            files.append(os.path.abspath(file_name))
-    result = dict()
+    dirs_to_search = [directory_path]
+    if os.path.isdir(os.path.join(directory_path, "batch_0001")):
+        dirs_to_search = list()
+        for i in range(10000):
+            dirpath = os.path.join(directory_path, "batch_" + (str(i).zfill(4)))
+            if not os.path.isdir(dirpath):
+                break
+            else:
+                dirs_to_search.append(dirpath)
 
     def _num_from_filename(fn):
         (text, _) = os.path.splitext(fn)
@@ -128,13 +162,25 @@ def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index
         else:
             return -1
 
-    if alphabetic_index:
-        files.sort()
-        for idx, item in enumerate(files):
-            result[idx] = item
-    else:
-        for filepath in files:
-            result[_num_from_filename(os.path.basename(filepath))] = filepath
+    result = dict()
+    for search_path in dirs_to_search:
+        files = []
+        for file_name in glob.glob(os.path.join(search_path, pattern), recursive=False):
+            if file_name.lower().endswith(('.jpeg', '.jpg', '.png', '.tiff', '.gif', '.bmp', '.webp')):
+                files.append(os.path.abspath(file_name))
+
+        if alphabetic_index:
+            files.sort()
+            for idx, item in enumerate(files):
+                lst = result.get(idx, [])
+                lst.append(item)
+                result[idx] = lst
+        else:
+            for filepath in files:
+                idx = _num_from_filename(os.path.basename(filepath))
+                lst = result.get(idx, [])
+                lst.append(filepath)
+                result[idx] = lst
     return result
 
 

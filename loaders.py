@@ -1,8 +1,9 @@
 from PIL import Image
 from .types import SharedTypes, FrameCounter
-from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPILToTensorImage
+from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPILToTensorImage, DreamImage
 from .categories import NodeCategories
 import os
+
 
 class DreamImageSequenceInputWithDefaultFallback:
     NODE_NAME = "Image Sequence Loader"
@@ -21,8 +22,8 @@ class DreamImageSequenceInputWithDefaultFallback:
         }
 
     CATEGORY = NodeCategories.IMAGE_ANIMATION
-    RETURN_TYPES = ("IMAGE", "STRING")
-    RETURN_NAMES = ("image", "filename")
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
     FUNCTION = "result"
 
     @classmethod
@@ -36,4 +37,5 @@ class DreamImageSequenceInputWithDefaultFallback:
         if not entry:
             return (default_image, "")
         else:
-            return (convertFromPILToTensorImage(Image.open(entry)), os.path.basename(entry))
+            images = map(lambda f: DreamImage(file_path=f), entry)
+            return (DreamImage.join_to_tensor_data(images),)
