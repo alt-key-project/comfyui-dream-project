@@ -29,6 +29,24 @@ def _replace_pil_image(data):
         return data
 
 
+class DreamConfig:
+    FILEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+
+    def __init__(self):
+        with open(DreamConfig.FILEPATH) as f:
+            self._data = json.load(f)
+
+    def get(self, key: str, default = None):
+        key = key.split(".")
+        d = self._data
+        for part in key:
+            d = d.get(part, {})
+        if isinstance(d, dict) and not d:
+            return default
+        else:
+            return d
+
+
 class DreamImageProcessor:
     def __init__(self, inputs: torch.Tensor, **extra_args):
         self._images_in_batch = [convertTensorImageToPIL(tensor) for tensor in inputs]

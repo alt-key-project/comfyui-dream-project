@@ -1,3 +1,4 @@
+from .seq_processing import DreamVideoEncoder, DreamSequenceBlur, DreamSequenceTweening
 from typing import List, Type
 
 from .base import *
@@ -12,7 +13,7 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamDirectoryBackedFrameTotal, DreamFrameCounterOffset, DreamDirectoryBackedFrameCounter,
                              DreamSimpleFrameCounter, DreamImageSequenceInputWithDefaultFallback,
                              DreamImageSequenceOutput,
-                             DreamNamedImageSaver]
+                             DreamNamedImageSaver, DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlur]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
@@ -24,21 +25,6 @@ MANIFEST = {
 }
 
 NODE_CLASS_MAPPINGS = { }
-
-"""    "Sine Wave": DreamSineWave,
-    "Linear": DreamLinear,
-    "CSV Curve": DreamCSVCurve,
-    "Beat Curve": DreamBeatCurve,
-    "Image Dimensions": DreamFrameDimensions,
-    "Image Motion": DreamImageMotion,
-    "Frame Total (Directory)": DreamDirectoryBackedFrameTotal,
-    "Frame Counter Offset": DreamFrameCounterOffset,
-    "Frame Counter (Directory)": DreamDirectoryBackedFrameCounter,
-    "Frame Counter (Simple)": DreamSimpleFrameCounter,
-    "Image Sequence Loader With Fallback": DreamImageSequenceInputWithDefaultFallback,
-    "Image Sequence Saver": DreamImageSequenceOutput,
-    "Named Image Saver": DreamNamedImageSaver"""
-
 
 NODE_DISPLAY_NAME_MAPPINGS = {}
 

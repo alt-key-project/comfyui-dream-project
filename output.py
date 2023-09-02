@@ -1,9 +1,10 @@
 import json
 from PIL.PngImagePlugin import PngInfo
 from .categories import NodeCategories
-
-from .types import SharedTypes, FrameCounter
-from .shared import hashed_as_strings, convertTensorImageToPIL, DreamImageProcessor, DreamImage
+import folder_paths as comfy_paths
+from .types import SharedTypes, FrameCounter, AnimationSequence
+from .shared import hashed_as_strings, convertTensorImageToPIL, DreamImageProcessor, DreamImage, \
+    list_images_in_directory
 import os
 
 
@@ -78,10 +79,10 @@ class DreamImageSequenceOutput:
         return {
             "required": SharedTypes.frame_counter | {
                 "image": ("IMAGE",),
-                "directory_path": ("STRING", {"default": '', "multiline": False}),
+                "directory_path": ("STRING", {"default": comfy_paths.output_directory, "multiline": False}),
                 "prefix": ("STRING", {"default": 'frame', "multiline": False}),
                 "digits": ("INT", {"default": 5}),
-                "atend": (["stop output", "keep going"],),
+                "at_end": (["stop output", "keep going"],),
                 "filetype": (['png with embedded workflow', "png", 'jpg small size', 'jpg high quality'],),
             },
             "hidden": {
@@ -91,9 +92,9 @@ class DreamImageSequenceOutput:
         }
 
     CATEGORY = NodeCategories.IMAGE_ANIMATION
-    RETURN_TYPES = ()
+    RETURN_TYPES = (AnimationSequence.ID,)
     OUTPUT_NODE = True
-    RETURN_NAMES = ()
+    RETURN_NAMES = ("sequence",)
     FUNCTION = "save"
 
     @classmethod
@@ -104,8 +105,8 @@ class DreamImageSequenceOutput:
         return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]
 
     def _save_single_image(self, dream_image: DreamImage, batch_counter, frame_counter: FrameCounter, directory_path,
-                           prefix, digits, filetype, prompt, extra_pnginfo, atend):
-        if atend == "stop output" and frame_counter.is_after_last_frame:
+                           prefix, digits, filetype, prompt, extra_pnginfo, at_end):
+        if at_end == "stop output" and frame_counter.is_after_last_frame:
             print("Reached end of animation - not saving output!")
             return ()
         filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype)
@@ -125,7 +126,22 @@ class DreamImageSequenceOutput:
         print("Saved {} in {}".format(filename, os.path.abspath(save_dir)))
         return ()
 
+    def _generate_animation_sequence(self, filetype, directory_path, frame_counter):
+        if filetype.startswith("png"):
+            pattern = "*.png"
+        else:
+            pattern = "*.jpg"
+        frames = list_images_in_directory(directory_path, pattern, False)
+        return AnimationSequence(frame_counter, frames)
+
     def save(self, image, **args):
+        if not args.get("directory_path", ""):
+            args["directory_path"] = comfy_paths.output_directory
         proc = DreamImageProcessor(image, **args)
         proc.process(self._save_single_image)
-        return ()
+        frame_counter: FrameCounter = args["frame_counter"]
+        if frame_counter.is_final_frame:
+            return (self._generate_animation_sequence(args["filetype"], args["directory_path"],
+                                                      frame_counter),)
+        else:
+            return (AnimationSequence(frame_counter),)

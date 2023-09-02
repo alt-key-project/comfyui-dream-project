@@ -1,3 +1,7 @@
+from typing import List, Dict
+
+
+
 class FrameCounter:
     ID = "FRAME_COUNTER"
 
@@ -26,5 +30,38 @@ class FrameCounter:
         return float(self.current_frame) / (max(2, self.total_frames) - 1)
 
 
+
+class AnimationSequence:
+    ID = "ANIMATION_SEQUENCE"
+
+    def __init__(self, frame_counter: FrameCounter, frames: Dict[int, List[str]] = None):
+        self.frames = frames
+        self.fps = frame_counter.frames_per_second
+        self.frame_counter = frame_counter
+        if self.is_defined:
+            self.keys_in_order = sorted(frames.keys())
+            self.num_batches = min(map(len, self.frames.values()))
+        else:
+            self.keys_in_order = []
+            self.num_batches = 0
+
+    @property
+    def batches(self):
+        return range(self.num_batches)
+
+    def get_image_files_of_batch(self, batch_num):
+        for key in self.keys_in_order:
+            yield self.frames[key][batch_num]
+
+    @property
+    def is_defined(self):
+        if self.frames:
+            return True
+        else:
+            return False
+
+
+
 class SharedTypes:
     frame_counter = {"frame_counter": (FrameCounter.ID, {"forceInput": True})}
+    sequence = {"sequence": (AnimationSequence.ID, {"forceInput": True})}
