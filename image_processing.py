@@ -6,7 +6,8 @@ from PIL import Image, ImageDraw
 from .categories import *
 from .types import SharedTypes, FrameCounter
 
-from .shared import ALWAYS_CHANGED_FLAG, convertToPIL, convertFromPIL
+from .shared import ALWAYS_CHANGED_FLAG, convertTensorImageToPIL, DreamImageProcessor, \
+    DreamImage, DreamMask
 
 
 class DreamImageMotion:
@@ -78,40 +79,53 @@ class DreamImageMotion:
         else:
             return lambda img: img
 
-    def result(self, image, zoom, x_translation, y_translation, mask_1_feather, mask_1_overlap,
+    def result(self, image: torch.Tensor, zoom, x_translation, y_translation, mask_1_feather, mask_1_overlap,
                mask_2_feather, mask_2_overlap, mask_3_feather, mask_3_overlap, frame_counter: FrameCounter,
                **other):
-
         def _limit_range(f):
             return max(-1.0, min(1.0, f))
 
-        zoom = _limit_range(zoom / frame_counter.frames_per_second)
-        x_translation = _limit_range(x_translation / frame_counter.frames_per_second)
-        y_translation = _limit_range(y_translation / frame_counter.frames_per_second)
-        pil_image = convertToPIL(image)
-        sz = self._make_resizer(other.get("output_resize_width", None), other.get("output_resize_height", None))
-        noise = other.get("noise", None)
-        multiplier = math.pow(2, zoom)
-        resized_image = pil_image.resize((round(pil_image.width * multiplier),
-                                          round(pil_image.height * multiplier)), Resampling.BILINEAR)
+        def _motion(image: DreamImage, zoom, x_translation, y_translation, mask_1_overlap, mask_2_overlap,
+                    mask_3_overlap):
+            zoom = _limit_range(zoom / frame_counter.frames_per_second)
+            x_translation = _limit_range(x_translation / frame_counter.frames_per_second)
+            y_translation = _limit_range(y_translation / frame_counter.frames_per_second)
+            pil_image = image.pil_image
+            sz = self._make_resizer(other.get("output_resize_width", None), other.get("output_resize_height", None))
+            noise = other.get("noise", None)
+            multiplier = math.pow(2, zoom)
+            resized_image = pil_image.resize((round(pil_image.width * multiplier),
+                                              round(pil_image.height * multiplier)), Resampling.BILINEAR)
 
-        if noise is None:
-            base_image = self._mk_PIL_image(pil_image.size, "black")
-        else:
-            base_image = convertToPIL(noise).resize(pil_image.size, Resampling.BILINEAR)
+            if noise is None:
+                base_image = self._mk_PIL_image(pil_image.size, "black")
+            else:
+                base_image = convertTensorImageToPIL(noise).resize(pil_image.size, Resampling.BILINEAR)
 
-        selection_offset = (round(x_translation * pil_image.width), round(y_translation * pil_image.height))
-        selection = ((pil_image.width - resized_image.width) // 2 + selection_offset[0],
-                     (pil_image.height - resized_image.height) // 2 + selection_offset[1],
-                     (pil_image.width - resized_image.width) // 2 + selection_offset[0] + resized_image.width,
-                     (pil_image.height - resized_image.height) // 2 + selection_offset[1] + resized_image.height)
-        base_image.paste(resized_image, selection)
+            selection_offset = (round(x_translation * pil_image.width), round(y_translation * pil_image.height))
+            selection = ((pil_image.width - resized_image.width) // 2 + selection_offset[0],
+                         (pil_image.height - resized_image.height) // 2 + selection_offset[1],
+                         (pil_image.width - resized_image.width) // 2 + selection_offset[0] + resized_image.width,
+                         (pil_image.height - resized_image.height) // 2 + selection_offset[1] + resized_image.height)
+            base_image.paste(resized_image, selection)
 
-        mask_1_overlap = min(pil_image.width // 3, min(mask_1_overlap, pil_image.height // 3))
-        mask_2_overlap = min(pil_image.width // 3, min(mask_2_overlap, pil_image.height // 3))
-        mask_3_overlap = min(pil_image.width // 3, min(mask_3_overlap, pil_image.height // 3))
-        mask1 = self._make_mask(pil_image.width, pil_image.height, selection, mask_1_feather, mask_1_overlap)
-        mask2 = self._make_mask(pil_image.width, pil_image.height, selection, mask_2_feather, mask_2_overlap)
-        mask3 = self._make_mask(pil_image.width, pil_image.height, selection, mask_3_feather, mask_3_overlap)
-        return (convertFromPIL(sz(base_image)), self._convertPILToMask(sz(mask1)),
-                self._convertPILToMask(sz(mask2)), self._convertPILToMask(sz(mask3)))
+            mask_1_overlap = min(pil_image.width // 3, min(mask_1_overlap, pil_image.height // 3))
+            mask_2_overlap = min(pil_image.width // 3, min(mask_2_overlap, pil_image.height // 3))
+            mask_3_overlap = min(pil_image.width // 3, min(mask_3_overlap, pil_image.height // 3))
+            mask1 = self._make_mask(pil_image.width, pil_image.height, selection, mask_1_feather, mask_1_overlap)
+            mask2 = self._make_mask(pil_image.width, pil_image.height, selection, mask_2_feather, mask_2_overlap)
+            mask3 = self._make_mask(pil_image.width, pil_image.height, selection, mask_3_feather, mask_3_overlap)
+
+            return (DreamImage(pil_image=sz(base_image)),
+                    DreamMask(pil_image=sz(mask1)),
+                    DreamMask(pil_image=sz(mask2)),
+                    DreamMask(pil_image=sz(mask3)))
+
+        proc = DreamImageProcessor(image,
+                                   zoom=zoom,
+                                   x_translation=x_translation,
+                                   y_translation=y_translation,
+                                   mask_1_overlap=mask_1_overlap,
+                                   mask_2_overlap=mask_2_overlap,
+                                   mask_3_overlap=mask_3_overlap)
+        return proc.process(_motion)

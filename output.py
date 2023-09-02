@@ -3,7 +3,7 @@ from PIL.PngImagePlugin import PngInfo
 from .categories import NodeCategories
 
 from .types import SharedTypes, FrameCounter
-from .shared import hashed_as_strings, convertToPIL
+from .shared import hashed_as_strings, convertTensorImageToPIL
 import os
 
 
@@ -55,7 +55,7 @@ class DreamNamedImageSaver:
         filepath = os.path.join(directory_path, filename)
         if len(image) != 1:
             print("Warning - batch output not supported for named image saver. Only saving first result!")
-        pil_image = convertToPIL(image[0])
+        pil_image = convertTensorImageToPIL(image[0])
         if not os.path.isdir(directory_path):
             os.makedirs(directory_path)
         filetype = os.path.splitext(filename)[1].lower()
@@ -111,7 +111,7 @@ class DreamImageSequenceOutput:
             filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype, len(image) > 1,
                                               batch)
             filepath = os.path.join(directory_path, filename)
-            pil_image = convertToPIL(image[batch])
+            pil_image = convertTensorImageToPIL(image[batch])
             if not os.path.isdir(directory_path):
                 os.makedirs(directory_path)
             if filetype.startswith("png"):

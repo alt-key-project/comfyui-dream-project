@@ -1,6 +1,6 @@
 from PIL import Image
 from .types import SharedTypes, FrameCounter
-from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPIL
+from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPILToTensorImage
 from .categories import NodeCategories
 import os
 
@@ -36,4 +36,4 @@ class DreamImageSequenceInputWithDefaultFallback:
         if not entry:
             return (default_image, "")
         else:
-            return (convertFromPIL(Image.open(entry)), os.path.basename(entry))
+            return (convertFromPILToTensorImage(Image.open(entry)), os.path.basename(entry))

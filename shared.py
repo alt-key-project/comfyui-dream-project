@@ -13,29 +13,60 @@ TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "Dream_Ani
 ALWAYS_CHANGED_FLAG = float("NaN")
 
 
-def convertToPIL(image) -> Image:
-    return Image.fromarray(numpy.clip(255. * image.cpu().numpy().squeeze(), 0, 255).astype(numpy.uint8))
+def convertTensorImageToPIL(tensor_image) -> Image:
+    return Image.fromarray(numpy.clip(255. * tensor_image.cpu().numpy().squeeze(), 0, 255).astype(numpy.uint8))
 
 
-def convertFromPIL(image):
-    return torch.from_numpy(numpy.array(image).astype(numpy.float32) / 255.0).unsqueeze(0)
+def convertFromPILToTensorImage(pil_image):
+    return torch.from_numpy(numpy.array(pil_image).astype(numpy.float32) / 255.0).unsqueeze(0)
 
 
-class ImageWrapper:
-    def __init__(self, sd_image=None, pil_image=None):
+def _replace_pil_image(data):
+    if isinstance(data, Image.Image):
+        return DreamImage(pil_image=data)
+    else:
+        return data
+
+
+class DreamImageProcessor:
+    def __init__(self, inputs: torch.Tensor, **extra_args):
+        self._images_in_batch = [convertTensorImageToPIL(tensor) for tensor in inputs]
+        self._extra_args = extra_args
+
+    def process_PIL(self, fun):
+        def _wrap(dream_image):
+            pil_outputs = fun(dream_image.pil_image)
+            return list(map(_replace_pil_image, pil_outputs))
+
+        return self.process(_wrap)
+
+    def process(self, fun):
+        output = []
+        for pil_image in self._images_in_batch:
+            exec_result = fun(DreamImage(pil_image=pil_image),**self._extra_args)
+            exec_result = list(map(_replace_pil_image, exec_result))
+            if not output:
+                output = [list() for i in range(len(exec_result))]
+            for i in range(len(exec_result)):
+                output[i].append(exec_result[i].get_tensor_image())
+        return tuple(map(lambda l: torch.cat(l, dim=0), output))
+
+
+class DreamImage:
+    def __init__(self, tensor_image=None, pil_image=None):
         if pil_image:
-            self._pil_image = pil_image
+            self.pil_image = pil_image
         else:
-            self._pil_image = convertToPIL(sd_image)
-        if self._pil_image.mode not in ("RGB", "RGBA"):
-            raise Exception("Unsupported image mode '{}'".format(self._pil_image.mode))
-        self.width = self._pil_image.width
-        self.height = self._pil_image.height
-        self.size = self._pil_image.size
+            self.pil_image = convertTensorImageToPIL(tensor_image)
+        if self.pil_image.mode not in ("RGB", "RGBA"):
+            self.pil_image = self.pil_image.convert("RGBA")
+        self.width = self.pil_image.width
+        self.height = self.pil_image.height
+        self.size = self.pil_image.size
 
     def __iter__(self):
         class _Pixels:
-            def __init__(self, image: ImageWrapper):
+            def __init__(self, image: DreamImage):
                 self.x = 0
                 self.y = 0
                 self._img = image
@@ -52,11 +83,11 @@ class ImageWrapper:
 
         return _Pixels(self)
 
-    def get_sd_image(self):
-        return convertFromPIL(self._pil_image)
+    def get_tensor_image(self):
+        return convertFromPILToTensorImage(self.pil_image)
 
     def get_pixel(self, x, y):
-        p = self._pil_image.getpixel((x, y))
+        p = self.pil_image.getpixel((x, y))
         if len(p) == 4:
             return p
         else:
@@ -64,9 +95,20 @@ class ImageWrapper:
 
     def set_pixel(self, x, y, pixelvalue):
         if len(pixelvalue) == 4:
-            self._pil_image.putpixel((x, y), pixelvalue)
+            self.pil_image.putpixel((x, y), pixelvalue)
         else:
-            self._pil_image.putpixel((x, y), (pixelvalue[0], pixelvalue[1], pixelvalue[2], 255))
+            self.pil_image.putpixel((x, y), (pixelvalue[0], pixelvalue[1], pixelvalue[2], 255))
+
+
+class DreamMask:
+    def __init__(self, tensor_image=None, pil_image=None):
+        if pil_image:
+            self.pil_image = pil_image
+        else:
+            self.pil_image = convertTensorImageToPIL(tensor_image)
+
+    def get_tensor_image(self):
+        return torch.from_numpy(numpy.array(self.pil_image.convert("L")).astype(numpy.float32) / 255.0)
 
 
 def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index: bool) -> Dict[int, str]:

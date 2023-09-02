@@ -76,9 +76,9 @@ class DreamSimpleFrameCounter:
     def IS_CHANGED(cls, *values):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, frame_index, total_frames):
+    def result(self, frame_index, total_frames, frames_per_second):
         n = frame_index
-        return (FrameCounter(n, float(n) / (max(2, total_frames) - 1)),)
+        return (FrameCounter(n, float(n) / (max(2, total_frames) - 1)), frames_per_second)
 
 
 class DreamDirectoryBackedFrameCounter:
