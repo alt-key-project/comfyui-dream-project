@@ -4,9 +4,10 @@ from .categories import NodeCategories
 import folder_paths as comfy_paths
 from .types import SharedTypes, FrameCounter, AnimationSequence
 from .shared import hashed_as_strings, DreamImageProcessor, DreamImage, \
-    list_images_in_directory
+    list_images_in_directory, DreamConfig
 import os
 
+CONFIG = DreamConfig()
 
 def _save_png(pil_image, filepath, embed_info, prompt, extra_pnginfo):
     info = PngInfo()
@@ -37,7 +38,7 @@ class DreamImageSequenceOutput:
                 "prefix": ("STRING", {"default": 'frame', "multiline": False}),
                 "digits": ("INT", {"default": 5}),
                 "at_end": (["stop output", "keep going"],),
-                "filetype": (['png with embedded workflow', "png", 'jpg small size', 'jpg high quality'],),
+                "filetype": (['png with embedded workflow', "png", 'jpg'],),
             },
             "hidden": {
                 "prompt": "PROMPT",
@@ -73,10 +74,8 @@ class DreamImageSequenceOutput:
             os.makedirs(save_dir)
         if filetype.startswith("png"):
             dream_image.save_png(filepath, filetype == 'png with embedded workflow', prompt, extra_pnginfo)
-        elif filetype == "jpg small size":
-            dream_image.save_jpg(filepath, 70)
-        elif filetype == "jpg high quality":
-            dream_image.save_jpg(filepath, 98)
+        elif filetype == "jpg":
+            dream_image.save_jpg(filepath, int(CONFIG.get("encoding.jpeg_quality", 95)))
         print("Saved {} in {}".format(filename, os.path.abspath(save_dir)))
         return ()
 
