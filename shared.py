@@ -31,12 +31,25 @@ def _replace_pil_image(data):
 
 class DreamConfig:
     FILEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+    DEFAULT_CONFIG = {
+        "ffmpeg": {
+            "path": "ffmpeg",
+            "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
+                          "yuv420p", "%OUTPUT%"]
+        },
+        "encoding": {
+            "jpeg_quality": 95
+        }
+    }
 
     def __init__(self):
+        if not os.path.isfile(DreamConfig.FILEPATH):
+            with open(DreamConfig.FILEPATH, "w") as f:
+                json.dump(DreamConfig.DEFAULT_CONFIG, f, indent=2)
         with open(DreamConfig.FILEPATH) as f:
             self._data = json.load(f)
 
-    def get(self, key: str, default = None):
+    def get(self, key: str, default=None):
         key = key.split(".")
         d = self._data
         for part in key:
@@ -115,6 +128,10 @@ class DreamImage:
 
     def create_tensor_image(self):
         return convertFromPILToTensorImage(self.pil_image)
+
+    def blend(self, other, weight_self: float = 0.5, weight_other: float = 0.5):
+        alpha = 1.0 - weight_self / (weight_other + weight_self)
+        return DreamImage(pil_image=Image.blend(self.pil_image, other.pil_image, alpha))
 
     def get_pixel(self, x, y):
         p = self.pil_image.getpixel((x, y))

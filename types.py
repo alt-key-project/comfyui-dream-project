@@ -5,13 +5,17 @@ from typing import List, Dict
 class FrameCounter:
     ID = "FRAME_COUNTER"
 
-    def __init__(self, current_frame=0, total_frames=1, frames_per_second=25):
+    def __init__(self, current_frame=0, total_frames=1, frames_per_second=25.0):
         self.current_frame = max(0, current_frame)
         self.total_frames = max(total_frames, 1)
-        self.frames_per_second = max(1, frames_per_second)
+        self.frames_per_second = float(max(1.0, frames_per_second))
 
     def incremented(self, amount: int):
         return FrameCounter(self.current_frame + amount, self.total_frames, self.frames_per_second)
+
+    @property
+    def is_first_frame(self):
+        return self.current_frame == 0
 
     @property
     def is_final_frame(self):

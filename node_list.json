@@ -1,0 +1,18 @@
+{
+  "Beat Curve [Dream]": "Beat pattern curve with impulses at specified beats of a measure",
+  "CSV Curve [Dream]": "CSV input curve where first column is frame or second and second column is value",
+  "CSV Generator [Dream]": "CSV output, mainly for debugging purposes",
+  "Common Frame Dimensions [Dream]": "Utility for calculating good width/height based on common video dimensions",
+  "FFMPEG Video Encoder [Dream]": "Post processing for animation sequences calling FFMPEG to generate video file",
+  "File Count [Dream]": "Finds the number of files in a directory matching specified patterns",
+  "Frame Counter (Directory) [Dream]": "Directory backed frame counter, for output directories",
+  "Frame Counter (Simple) [Dream]": "Integer value used as frame counter",
+  "Frame Counter Offset [Dream]": "Adds an offset to a frame counter",
+  "Image Motion [Dream]": "Node supporting zooming in/out and translating an image",
+  "Image Sequence Blend [Dream]": "Post processing for animation sequences blending frame for a smoother blurred effect",
+  "Image Sequence Loader [Dream]": "Loads a frame from a directory of images",
+  "Image Sequence Saver [Dream]": "Saves a frame to a directory",
+  "Image Sequence Tweening [Dream]": "Post processing for animation sequences generating blended in-between frames",
+  "Linear Curve [Dream]": "Linear interpolation between two value over the full animation",
+  "Sine Curve [Dream]": "Simple sine wave curve"
+}

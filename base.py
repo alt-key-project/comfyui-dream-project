@@ -1,18 +1,18 @@
 from .categories import NodeCategories
 from .shared import *
 from .types import *
+import glob
 
 
-class DreamDirectoryBackedFrameTotal:
-    NODE_NAME = "Frame Total (Directory)"
+class DreamDirectoryFileCount:
+    NODE_NAME = "File Count"
 
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "directory_path": ("STRING", {"default": '', "multiline": False}),
-                "pattern": ("STRING", {"default": '*', "multiline": False}),
-                "indexing": (["numeric", "alphabetic order"],),
+                "patterns": ("STRING", {"default": '*.jpg|*.png|*.jpeg', "multiline": False}),
             },
         }
 
@@ -25,9 +25,13 @@ class DreamDirectoryBackedFrameTotal:
     def IS_CHANGED(cls, *v):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, directory_path, pattern, indexing):
-        items = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
-        return (max(items.keys()),)
+    def result(self, directory_path, patterns, indexing):
+        if not os.path.isdir(directory_path):
+            return (0,)
+        total = 0
+        for pattern in patterns.split("|"):
+            total += len(glob.glob(pattern))
+        return (total,)
 
 
 class DreamFrameCounterOffset:

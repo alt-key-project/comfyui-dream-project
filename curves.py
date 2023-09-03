@@ -126,8 +126,41 @@ def _is_as_float(s: str):
         return False
 
 
+class DreamCSVGenerator:
+    NODE_NAME = "CSV Generator"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "value": ("FLOAT", ),
+                "csvfile": ("STRING",),
+                "csv_dialect": (csv.list_dialects(),)
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, csvfile, frame_counter: FrameCounter, value, csv_dialect):
+        if frame_counter.is_first_frame and csvfile:
+            with open(csvfile, 'w', newline='') as csvfile:
+                csvwriter = csv.writer(csvfile, dialect=csv_dialect)
+                csvwriter.writerow(['Frame', 'Value'])
+                csvwriter.writerow([frame_counter.current_frame, str(value)])
+        else:
+            with open(csvfile, 'a', newline='') as csvfile:
+                csvwriter = csv.writer(csvfile, dialect=csv_dialect)
+                csvwriter.writerow([frame_counter.current_frame, str(value)])
+
 class DreamCSVCurve:
-    NODE_NAME = "CSV CURVE"
+    NODE_NAME = "CSV Curve"
 
     @classmethod
     def INPUT_TYPES(cls):
