@@ -1,8 +1,9 @@
 # Dream Project Animation Nodes for ComfyUI
 
 This repository contains various nodes for supporting Deforum-style animation generation with ComfyUI. I created these
-for my own use (generating videos for my "Alt Key Project" music), but I think they should be useful to many ComfyUI 
-users.
+for my own use (producing videos for my "Alt Key Project" music - 
+[youtube channel](https://www.youtube.com/channel/UC4cKvJ4hia7zULxeCc-7OcQ), but I think they should be generic enough 
+and useful to many ComfyUI users.
 
 ## Installation
 
