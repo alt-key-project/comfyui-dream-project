@@ -1,6 +1,6 @@
 {
-  "last_node_id": 334,
-  "last_link_id": 5309,
+  "last_node_id": 335,
+  "last_link_id": 5310,
   "nodes": [
     {
       "id": 77,
@@ -221,61 +221,18 @@
       "bgcolor": "#653"
     },
     {
-      "id": 81,
-      "type": "PrimitiveNode",
-      "pos": [
-        -1360,
-        2840
-      ],
-      "size": {
-        "0": 210,
-        "1": 60
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            5077,
-            5084
-          ],
-          "slot_index": 0,
-          "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
-          }
-        }
-      ],
-      "title": "Output Directory",
-      "properties": {},
-      "widgets_values": [
-        "I:\\AI\\output\\ComfyUI"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 236,
       "type": "LoadImage",
       "pos": [
-        -1343.6044289550607,
-        1887.9784523553856
+        -1350,
+        1890
       ],
       "size": {
         "0": 430,
         "1": 340
       },
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "outputs": [
         {
@@ -298,7 +255,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "forest.jpg",
+        "forest (1).jpg",
         "image"
       ]
     },
@@ -316,7 +273,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -364,7 +321,7 @@
         "1": 90
       },
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "title": "Note on curves",
       "properties": {
@@ -388,7 +345,7 @@
         "1": 90
       },
       "flags": {},
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "title": "Note on motion",
       "properties": {
@@ -412,7 +369,7 @@
         "1": 90
       },
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "title": "Note on outpainting",
       "properties": {
@@ -436,7 +393,7 @@
         "1": 60
       },
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "title": "Note on CN model",
       "properties": {
@@ -460,7 +417,7 @@
         "1": 60
       },
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "title": "Note on full frame sampler",
       "properties": {
@@ -484,7 +441,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "title": "Note on output",
       "properties": {
@@ -508,7 +465,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "outputs": [
         {
@@ -552,7 +509,7 @@
         "1": 110
       },
       "flags": {},
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "title": "Note on settings",
       "properties": {
@@ -576,7 +533,7 @@
         "1": 60
       },
       "flags": {},
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "title": "Note on settings",
       "properties": {
@@ -1647,8 +1604,8 @@
       "id": 87,
       "type": "Reroute",
       "pos": [
-        -542.1877029888922,
-        1381.4148642204277
+        -540,
+        1380
       ],
       "size": [
         75,
@@ -1763,8 +1720,8 @@
       "id": 231,
       "type": "Frame Counter Offset [Dream]",
       "pos": [
-        -462.1877029888921,
-        1451.4148642204277
+        -430,
+        1450
       ],
       "size": {
         "0": 342.5999755859375,
@@ -1955,8 +1912,8 @@
       "id": 232,
       "type": "Image Sequence Loader [Dream]",
       "pos": [
-        -62.18770298889121,
-        1451.4148642204277
+        -50,
+        1480
       ],
       "size": {
         "0": 320,
@@ -2204,8 +2161,8 @@
       "id": 211,
       "type": "ImageScale",
       "pos": [
-        297.8122970111077,
-        1581.4148642204277
+        290,
+        1580
       ],
       "size": {
         "0": 320,
@@ -2280,8 +2237,8 @@
       "id": 234,
       "type": "Image Motion [Dream]",
       "pos": [
-        632.3241600952149,
-        1412.409956054687
+        630,
+        1410
       ],
       "size": {
         "0": 320,
@@ -2761,7 +2718,7 @@
       "type": "InpaintPreprocessor",
       "pos": [
         -40,
-        2420
+        2410
       ],
       "size": {
         "0": 210,
@@ -3018,7 +2975,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        911715919818600,
+        966736961643100,
         "randomize",
         25,
         9,
@@ -3154,7 +3111,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        78496708155132,
+        880535515729217,
         "randomize",
         5,
         5,
@@ -3373,56 +3330,6 @@
       }
     },
     {
-      "id": 233,
-      "type": "Image Sequence Saver [Dream]",
-      "pos": [
-        1318.8752982425551,
-        1649.6520428194888
-      ],
-      "size": {
-        "0": 315,
-        "1": 174
-      },
-      "flags": {},
-      "order": 81,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "frame_counter",
-          "type": "FRAME_COUNTER",
-          "link": 5195
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 5193
-        }
-      ],
-      "outputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "links": [
-            5196
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Image Sequence Saver [Dream]"
-      },
-      "widgets_values": [
-        "I:\\AI\\output\\ComfyUI",
-        "frame",
-        5,
-        "stop output",
-        "jpg"
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
       "id": 280,
       "type": "Reroute",
       "pos": [
@@ -3570,6 +3477,116 @@
         "video.mp4",
         1,
         "yes"
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 81,
+      "type": "PrimitiveNode",
+      "pos": [
+        -1360,
+        2840
+      ],
+      "size": {
+        "0": 210,
+        "1": 60
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            5077,
+            5084,
+            5310
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "directory_path",
+            "config": [
+              "STRING",
+              {
+                "default": "",
+                "multiline": false
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Output Directory",
+      "properties": {},
+      "widgets_values": [
+        "I:\\AI\\output\\ComfyUI"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 233,
+      "type": "Image Sequence Saver [Dream]",
+      "pos": [
+        1320,
+        1650
+      ],
+      "size": [
+        320,
+        170
+      ],
+      "flags": {},
+      "order": 81,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frame_counter",
+          "type": "FRAME_COUNTER",
+          "link": 5195
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 5193
+        },
+        {
+          "name": "directory_path",
+          "type": "STRING",
+          "link": 5310,
+          "widget": {
+            "name": "directory_path",
+            "config": [
+              "STRING",
+              {
+                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output",
+                "multiline": false
+              }
+            ]
+          },
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "links": [
+            5196
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Sequence Saver [Dream]"
+      },
+      "widgets_values": [
+        "I:\\AI\\output\\ComfyUI",
+        "frame",
+        5,
+        "stop output",
+        "jpg"
       ],
       "color": "#332922",
       "bgcolor": "#593930"
@@ -4343,6 +4360,14 @@
       263,
       0,
       "LATENT"
+    ],
+    [
+      5310,
+      81,
+      0,
+      233,
+      2,
+      "STRING"
     ]
   ],
   "groups": [
