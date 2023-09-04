@@ -106,4 +106,5 @@ nodes in parallel - they will not work as intended!
 
 This example should be a starting point for anyone wanting to build with the Dream Project Animation nodes.
 
-![image workflow](examples/motion-workflow-example.png)
+[motion-workflow-example](motion-workflow-example.json)
+
