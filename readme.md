@@ -99,3 +99,11 @@ nodes in parallel - they will not work as intended!
  
  Many of the nodes found in 'WAS Node Suite' are useful the Dream Project Animation nodes - I suggest you install those 
  custom nodes as well!
+
+ ## Examples
+
+ ### Image Motion with Curves
+
+This example should be a starting point for anyone wanting to build with the Dream Project Animation nodes.
+
+![image workflow](examples/motion-workflow-example.png)
