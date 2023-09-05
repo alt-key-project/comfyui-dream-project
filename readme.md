@@ -2,7 +2,7 @@
 
 This repository contains various nodes for supporting Deforum-style animation generation with ComfyUI. I created these
 for my own use (producing videos for my "Alt Key Project" music - 
-[youtube channel](https://www.youtube.com/channel/UC4cKvJ4hia7zULxeCc-7OcQ), but I think they should be generic enough 
+[youtube channel](https://www.youtube.com/channel/UC4cKvJ4hia7zULxeCc-7OcQ)), but I think they should be generic enough 
 and useful to many ComfyUI users.
 
 I have demonstrated the use of these custom nodes in this [youtube video](https://youtu.be/pZ6Li3qF-Kk).
