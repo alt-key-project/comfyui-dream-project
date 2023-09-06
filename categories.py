@@ -5,5 +5,7 @@ class NodeCategories:
     ANIMATION_CURVES = "animation/curves"
     IMAGE_POSTPROCESSING = "image/postprocessing"
     IMAGE_ANIMATION = "image/animation"
+    IMAGE_COLORS = "image/color"
+    IMAGE_GENERATE = "image/generate"
     IMAGE = "image"
     UTILS = "utils"

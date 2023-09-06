@@ -39,6 +39,10 @@ and how does the current frame fit into the current animation.
 
 A curve is simply a node that produces a value based on the frame counter (changing over time).
 
+### Palette
+
+A palette is a collection of color values.
+
 ### Sequence
 
 A sequence is a full set of animation frames and a corresponding timeline for these frames. The sequence is
@@ -47,6 +51,9 @@ video file using ffmpeg. These nodes should be seen as a convenience and they ar
 nodes in parallel - they will not work as intended!
 
 ## The nodes
+  ### Analyze Palette [Dream]
+  Output brightness, red, green and blue averages of a palette. Useful to control other processing.
+
   ### Beat Curve [Dream]
   Beat pattern curve with impulses at specified beats of a measure.
   
@@ -93,6 +100,20 @@ nodes in parallel - they will not work as intended!
   
   ### Linear Curve [Dream]
   Linear interpolation between two values over the full animation.
+  
+  ### Noise from Palette [Dream]
+  Generates noise based on the colors in a palette.
+  
+  ### Palette Color Align [Dream]
+  Shifts the colors of one palette towards another target palette. If the alignment factor 
+  is 0.5 the result is nearly an average of the two palettes. At 0 no alignment is done and at 1 we get a close 
+  alignment to the target. Above one we will overshoot the alignment.
+  
+  ### Palette Color Shift [Dream]
+  Multiplies the color values in a palette to shift the color balance or brightness.
+  
+  ### Sample Image as Palette [Dream]
+  Randomly samples pixels from a source image to build a palette from it.
   
   ### Sine Curve [Dream]
   Simple sine wave curve.

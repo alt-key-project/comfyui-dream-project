@@ -1,11 +1,13 @@
-from .seq_processing import *
 from typing import List, Type
 
+from .seq_processing import *
 from .base import *
 from .curves import *
 from .loaders import *
 from .output import *
 from .utility import *
+from .colors import *
+from .noise import *
 from .image_processing import *
 
 _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBeatCurve, DreamFrameDimensions,
@@ -13,7 +15,8 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamDirectoryFileCount, DreamFrameCounterOffset, DreamDirectoryBackedFrameCounter,
                              DreamSimpleFrameCounter, DreamImageSequenceInputWithDefaultFallback,
                              DreamImageSequenceOutput, DreamCSVGenerator,
-                             DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlend]
+                             DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlend, DreamColorAlign,
+                             DreamImageSampler, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {

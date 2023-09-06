@@ -1,4 +1,5 @@
 {
+  "Analyze Palette [Dream]": "Output brightness, red, green and blue averages of a palette",
   "Beat Curve [Dream]": "Beat pattern curve with impulses at specified beats of a measure",
   "CSV Curve [Dream]": "CSV input curve where first column is frame or second and second column is value",
   "CSV Generator [Dream]": "CSV output, mainly for debugging purposes",
@@ -14,5 +15,9 @@
   "Image Sequence Saver [Dream]": "Saves a frame to a directory",
   "Image Sequence Tweening [Dream]": "Post processing for animation sequences generating blended in-between frames",
   "Linear Curve [Dream]": "Linear interpolation between two value over the full animation",
+  "Noise from Palette [Dream]": "Generates noise based on the colors in a palette",
+  "Palette Color Align [Dream]": "Shifts the colors of one palette towards another target palette",
+  "Palette Color Shift [Dream]": "Multiplies the color values in a palette",
+  "Sample Image as Palette [Dream]": "Randomly samples pixel values to build a palette from an image",
   "Sine Curve [Dream]": "Simple sine wave curve"
 }

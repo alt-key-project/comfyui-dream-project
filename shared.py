@@ -2,7 +2,8 @@ import hashlib, os, json, glob
 
 import numpy
 import torch
-from PIL import Image
+from PIL import Image, ImageFilter
+from PIL.ImageDraw import ImageDraw
 from PIL.PngImagePlugin import PngInfo
 from typing import Dict, Tuple, List
 
@@ -95,9 +96,9 @@ class DreamImage:
         return torch.cat(l, dim=0)
 
     def __init__(self, tensor_image=None, pil_image=None, file_path=None):
-        if pil_image:
+        if pil_image is not None:
             self.pil_image = pil_image
-        elif tensor_image:
+        elif tensor_image is not None:
             self.pil_image = convertTensorImageToPIL(tensor_image)
         else:
             self.pil_image = Image.open(file_path)
@@ -106,6 +107,12 @@ class DreamImage:
         self.width = self.pil_image.width
         self.height = self.pil_image.height
         self.size = self.pil_image.size
+        self._draw = ImageDraw(self.pil_image)
+
+    def _renew(self, pil_image):
+        self.pil_image = pil_image
+        self._draw = ImageDraw(self.pil_image)
+
 
     def __iter__(self):
         class _Pixels:
@@ -132,6 +139,12 @@ class DreamImage:
     def blend(self, other, weight_self: float = 0.5, weight_other: float = 0.5):
         alpha = 1.0 - weight_self / (weight_other + weight_self)
         return DreamImage(pil_image=Image.blend(self.pil_image, other.pil_image, alpha))
+
+    def color_area(self, x, y, w, h, col):
+        self._draw.rectangle((x, y, x + w - 1, y + h - 1), fill=col, outline=col)
+
+    def blur(self, amount):
+        return DreamImage(pil_image=self.pil_image.filter(ImageFilter.GaussianBlur(amount)))
 
     def get_pixel(self, x, y):
         p = self.pil_image.getpixel((x, y))
