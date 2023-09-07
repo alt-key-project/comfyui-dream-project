@@ -136,7 +136,7 @@ This example should be a starting point for anyone wanting to build with the Dre
 ### FFMPEG
 
 The call to FFMPEG currently in the default configuration (in config.json) does not seem to work for everyone. The good 
-news is that you can change the arguments to whatever works for you - the fixed parameters (that need to be in the call)
+news is that you can change the arguments to whatever works for you - the node-supplied parameters (that probably all need to be in the call)
 are:
 
 * -i %FRAMES% (the input file listing frames)
