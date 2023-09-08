@@ -1,7 +1,8 @@
+import glob
+
 from .categories import NodeCategories
 from .shared import *
 from .types import *
-import glob
 
 
 class DreamDirectoryFileCount:
