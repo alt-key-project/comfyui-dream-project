@@ -11,7 +11,7 @@ I have demonstrated the use of these custom nodes in this [youtube video](https:
 
 ### Simple option
 
-You can install Dream Project Animation Nodes using the ConfyUI Manager.
+You can install Dream Project Animation Nodes using the ComfyUI Manager.
 
 ### Manual option
 
