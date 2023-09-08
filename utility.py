@@ -1,6 +1,7 @@
-from .shared import hashed_as_strings
-from .categories import NodeCategories
 import math
+
+from .categories import NodeCategories
+from .shared import hashed_as_strings
 
 
 def _align_num(n: int, alignment: int, type: str):
@@ -16,6 +17,7 @@ def _align_num(n: int, alignment: int, type: str):
 
 class DreamFrameDimensions:
     NODE_NAME = "Common Frame Dimensions"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {

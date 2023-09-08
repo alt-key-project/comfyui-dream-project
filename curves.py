@@ -1,8 +1,9 @@
-import math, csv
+import csv
+import math
 
-from .types import SharedTypes, FrameCounter
-from .shared import hashed_as_strings
 from .categories import NodeCategories
+from .shared import hashed_as_strings
+from .types import SharedTypes, FrameCounter
 
 
 class DreamSineWave:
@@ -82,7 +83,8 @@ class DreamBeatCurve:
             return 1.0 - ((frame - accent_start) / frames_per_beat)
         return 0
 
-    def result(self, bpm, frame_counter: FrameCounter, measure_length, low_value, high_value, power, invert, time_offset, **accents):
+    def result(self, bpm, frame_counter: FrameCounter, measure_length, low_value, high_value, power, invert,
+               time_offset, **accents):
         frame_offset = int(round(time_offset * frame_counter.frames_per_second))
         accents_set = set(filter(lambda v: v >= 1 and v <= measure_length,
                                  map(lambda i: accents.get("accent_" + str(i), -1), range(30))))

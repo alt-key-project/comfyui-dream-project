@@ -1,27 +1,27 @@
-from typing import List, Type
+from typing import Type
 
-from .seq_processing import *
 from .base import *
-from .curves import *
-from .loaders import *
-from .output import *
-from .utility import *
 from .colors import *
-from .noise import *
+from .curves import *
 from .image_processing import *
+from .loaders import *
+from .noise import *
+from .output import *
+from .seq_processing import *
+from .utility import *
 
 _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBeatCurve, DreamFrameDimensions,
-                             DreamImageMotion,
+                             DreamImageMotion, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift,
                              DreamDirectoryFileCount, DreamFrameCounterOffset, DreamDirectoryBackedFrameCounter,
                              DreamSimpleFrameCounter, DreamImageSequenceInputWithDefaultFallback,
-                             DreamImageSequenceOutput, DreamCSVGenerator,
+                             DreamImageSequenceOutput, DreamCSVGenerator, DreamImageAreaSampler,
                              DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlend, DreamColorAlign,
-                             DreamImageSampler, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift]
+                             DreamImageSampler, DreamNoiseFromAreaPalettes]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (1, 1, 0),
+    "version": (2, 0, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",
