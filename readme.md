@@ -139,6 +139,12 @@ This example should be a starting point for anyone wanting to build with the Dre
 
 [motion-workflow-example](examples/motion-workflow-example.json)
 
+### Image Motion with Color Coherence.
+
+Same as above but with added color coherence through palettes.
+
+[motion-workflow-with-color-coherence](examples/motion-workflow-with-color-coherence.json)
+
 ## Known issues
 
 ### FFMPEG
