@@ -9,6 +9,12 @@ I have demonstrated the use of these custom nodes in this [youtube video](https:
 
 ## Installation
 
+### Simple option
+
+You can install Dream Project Animation Nodes using the ConfyUI Manager.
+
+### Manual option
+
 Run within (ComfyUI)/custom_nodes/ folder:
 
 * git clone https://github.com/alt-key-project/comfyui-dream-project.git
