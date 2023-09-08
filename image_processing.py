@@ -1,13 +1,14 @@
 import math
+
 import numpy
 import torch
-from PIL.Image import Resampling
 from PIL import Image, ImageDraw
-from .categories import *
-from .types import SharedTypes, FrameCounter
+from PIL.Image import Resampling
 
+from .categories import *
 from .shared import ALWAYS_CHANGED_FLAG, convertTensorImageToPIL, DreamImageProcessor, \
     DreamImage, DreamMask
+from .types import SharedTypes, FrameCounter
 
 
 class DreamImageMotion:
@@ -85,7 +86,8 @@ class DreamImageMotion:
         def _limit_range(f):
             return max(-1.0, min(1.0, f))
 
-        def _motion(image: DreamImage, batch_counter, zoom, x_translation, y_translation, mask_1_overlap, mask_2_overlap,
+        def _motion(image: DreamImage, batch_counter, zoom, x_translation, y_translation, mask_1_overlap,
+                    mask_2_overlap,
                     mask_3_overlap):
             zoom = _limit_range(zoom / frame_counter.frames_per_second)
             x_translation = _limit_range(x_translation / frame_counter.frames_per_second)

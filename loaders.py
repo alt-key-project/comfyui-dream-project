@@ -1,8 +1,7 @@
-from PIL import Image
 from .types import SharedTypes, FrameCounter
-from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, convertFromPILToTensorImage, DreamImage
 from .categories import NodeCategories
-import os
+from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, DreamImage
+from .types import SharedTypes, FrameCounter
 
 
 class DreamImageSequenceInputWithDefaultFallback:

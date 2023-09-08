@@ -1,13 +1,16 @@
 import json
-from PIL.PngImagePlugin import PngInfo
-from .categories import NodeCategories
-import folder_paths as comfy_paths
-from .types import SharedTypes, FrameCounter, AnimationSequence
-from .shared import hashed_as_strings, DreamImageProcessor, DreamImage, \
-    list_images_in_directory, DreamConfig
 import os
 
+import folder_paths as comfy_paths
+from PIL.PngImagePlugin import PngInfo
+
+from .categories import NodeCategories
+from .shared import hashed_as_strings, DreamImageProcessor, DreamImage, \
+    list_images_in_directory, DreamConfig
+from .types import SharedTypes, FrameCounter, AnimationSequence
+
 CONFIG = DreamConfig()
+
 
 def _save_png(pil_image, filepath, embed_info, prompt, extra_pnginfo):
     info = PngInfo()

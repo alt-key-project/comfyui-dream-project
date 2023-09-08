@@ -101,6 +101,10 @@ Post processing for animation sequences generating blended in-between frames.
 ### Linear Curve [Dream]
 Linear interpolation between two values over the full animation.
 
+### Noise from Area Palettes [Dream]
+Generates noise based on the colors of up to nine different palettes, each connected to position/area of the 
+image. Although the palettes are optional, at least one palette should be provided.
+
 ### Noise from Palette [Dream]
 Generates noise based on the colors in a palette.
 
@@ -111,6 +115,10 @@ alignment to the target. Above one we will overshoot the alignment.
 
 ### Palette Color Shift [Dream]
 Multiplies the color values in a palette to shift the color balance or brightness.
+
+### Sample Image Area as Palette [Dream]
+Randomly samples a palette from an image based on pre-defined areas. The image is separated into nine rectangular areas 
+of equal size and each node may sample one of these.
 
 ### Sample Image as Palette [Dream]
 Randomly samples pixels from a source image to build a palette from it.

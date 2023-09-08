@@ -1,13 +1,16 @@
-import hashlib, os, json, glob
+import glob
+import hashlib
+import json
+import os
 
+import folder_paths as comfy_paths
 import numpy
+import random
 import torch
 from PIL import Image, ImageFilter
 from PIL.ImageDraw import ImageDraw
 from PIL.PngImagePlugin import PngInfo
 from typing import Dict, Tuple, List
-
-import folder_paths as comfy_paths
 
 NODE_FILE = os.path.abspath(__file__)
 DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
@@ -89,6 +92,16 @@ class DreamImageProcessor:
         return tuple(map(lambda l: torch.cat(l, dim=0), output))
 
 
+def pick_random_by_weight(data: List[Tuple[float, object]], rng: random.Random):
+    total_weight = sum(map(lambda item: item[0], data))
+    r = rng.random()
+    for (weight, obj) in data:
+        r -= weight / total_weight
+        if r <= 0:
+            return obj
+    return data[0][1]
+
+
 class DreamImage:
     @classmethod
     def join_to_tensor_data(cls, images):
@@ -112,7 +125,6 @@ class DreamImage:
     def _renew(self, pil_image):
         self.pil_image = pil_image
         self._draw = ImageDraw(self.pil_image)
-
 
     def __iter__(self):
         class _Pixels:
