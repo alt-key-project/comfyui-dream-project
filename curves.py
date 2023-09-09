@@ -135,6 +135,7 @@ def _is_as_float(s: str):
 
 class DreamCSVGenerator:
     NODE_NAME = "CSV Generator"
+    ICON = "⌗"
 
     @classmethod
     def INPUT_TYPES(cls):

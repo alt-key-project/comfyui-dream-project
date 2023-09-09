@@ -1,5 +1,4 @@
 import os
-import random
 import shutil
 import subprocess
 import tempfile
@@ -8,7 +7,8 @@ from functools import lru_cache
 from PIL import Image
 
 from .categories import NodeCategories
-from .shared import DreamConfig, DreamImage
+from .err import on_error
+from .shared import DreamConfig
 from .types import *
 
 CONFIG = DreamConfig()
@@ -121,13 +121,14 @@ def _ffmpeg(config, filenames, fps, output):
         for (key, value) in replacements.items():
             cmd = list(map(lambda s: s.replace(key, value), cmd))
 
-        subprocess.run(cmd, shell=True)
+        subprocess.check_output(cmd, shell=True)
     finally:
         os.unlink(tempfilepath)
 
 
 class DreamVideoEncoder:
     NODE_NAME = "FFMPEG Video Encoder"
+    ICON = "🎬"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -178,8 +179,7 @@ class DreamVideoEncoder:
                         if os.path.isfile(imagepath):
                             os.unlink(imagepath)
             except Exception as e:
-                print("Failed to encode files in dir {}!".format(os.path.dirname(images[0])))
-                print(str(e))
+                on_error(self.__class__, str(e))
         return ()
 
 

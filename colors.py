@@ -215,6 +215,7 @@ class DreamColorShift:
 
 class DreamAnalyzePalette:
     NODE_NAME = "Analyze Palette"
+    NODE = "📊"
 
     @classmethod
     def INPUT_TYPES(cls):

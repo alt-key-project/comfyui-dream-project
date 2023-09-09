@@ -6,6 +6,7 @@ from .types import SharedTypes, FrameCounter
 
 class DreamImageSequenceInputWithDefaultFallback:
     NODE_NAME = "Image Sequence Loader"
+    ICON = "💾"
 
     @classmethod
     def INPUT_TYPES(cls):

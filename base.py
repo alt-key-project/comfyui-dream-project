@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import glob
 
 from .categories import NodeCategories
@@ -7,6 +8,7 @@ from .types import *
 
 class DreamDirectoryFileCount:
     NODE_NAME = "File Count"
+    ICON = "📂"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -38,6 +40,8 @@ class DreamDirectoryFileCount:
 class DreamFrameCounterOffset:
     NODE_NAME = "Frame Counter Offset"
 
+    ICON = "±"
+
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -61,6 +65,7 @@ class DreamFrameCounterOffset:
 
 class DreamSimpleFrameCounter:
     NODE_NAME = "Frame Counter (Simple)"
+    ICON = "⚋"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -88,6 +93,7 @@ class DreamSimpleFrameCounter:
 
 class DreamDirectoryBackedFrameCounter:
     NODE_NAME = "Frame Counter (Directory)"
+    ICON = "⚋"
 
     @classmethod
     def INPUT_TYPES(cls):

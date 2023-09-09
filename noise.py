@@ -24,6 +24,7 @@ def _generate_noise(image: DreamImage, color_function, rng: random.Random, block
 
 class DreamNoiseFromPalette:
     NODE_NAME = "Noise from Palette"
+    ICON = "🌫"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -88,6 +89,7 @@ class DreamNoiseFromAreaPalettes:
         }
 
     CATEGORY = NodeCategories.IMAGE_GENERATE
+    ICON = "🌫"
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "result"

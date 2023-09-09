@@ -15,7 +15,7 @@
   "Image Sequence Saver [Dream]": "Saves a frame to a directory",
   "Image Sequence Tweening [Dream]": "Post processing for animation sequences generating blended in-between frames",
   "Linear Curve [Dream]": "Linear interpolation between two value over the full animation",
-  "Noise from Area Palettes [Dream]": "",
+  "Noise from Area Palettes [Dream]": "Generates noise based on the colors of up to nine different palettes",
   "Noise from Palette [Dream]": "Generates noise based on the colors in a palette",
   "Palette Color Align [Dream]": "Shifts the colors of one palette towards another target palette",
   "Palette Color Shift [Dream]": "Multiplies the color values in a palette",

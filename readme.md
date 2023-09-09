@@ -32,6 +32,41 @@ Finally:
 After startup, a configuration file 'config.json' should have been created in the 'comfyui-dream-project' directory. 
 Specifically check that the path of ffmpeg works in your system (add full path to the command if needed).
 
+## Configuration
+
+### ffmpeg.path 
+
+Path to the ffmpeg executable or just the command if ffmpeg is in PATH.
+
+### ffmpeg.arguments
+
+The arguments sent to FFMPEG. A few of the values are provided by the node:
+
+* %FPS% the target framerate
+* %FRAMES% a frame ionput file
+* %OUTPUT% output video file path
+
+### encoding.jpeg__quality
+
+Sets the encoding quality of jpeg images.
+
+### ui.top_category
+
+Sets the name of the top level category on the menu. Set to empty string "" to remove the top level. If the top level 
+is removed you may also want to disable the category icons to get nodes into existing category folders.
+
+### prepend_icon_to_category / append_icon_to_category
+
+Flags to add a icon before and/or after the category name at each level.
+
+### prepend_icon_icon_to_node / append_icon_icon_to_node
+
+Flags to add an icon before and/or after the node name.
+
+### ui.category_icons
+
+Each key defines a unicode symbol as an icon used for the specified category.
+
 ## Concepts used
 
 These are some concepts used in nodes:

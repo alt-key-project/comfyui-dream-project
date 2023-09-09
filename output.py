@@ -31,6 +31,7 @@ def _save_jpg(pil_image, filepath, quality):
 
 class DreamImageSequenceOutput:
     NODE_NAME = "Image Sequence Saver"
+    ICON = "💾"
 
     @classmethod
     def INPUT_TYPES(cls):
