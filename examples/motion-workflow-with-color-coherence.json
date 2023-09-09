@@ -1,6 +1,6 @@
 {
-  "last_node_id": 359,
-  "last_link_id": 5344,
+  "last_node_id": 360,
+  "last_link_id": 5350,
   "nodes": [
     {
       "id": 77,
@@ -186,7 +186,7 @@
       ],
       "size": {
         "0": 210,
-        "1": 80
+        "1": 82
       },
       "flags": {},
       "order": 4,
@@ -337,7 +337,7 @@
         "text": ""
       },
       "widgets_values": [
-        "This is outpainting done using controlnet. This are other ways to do outpainting."
+        "This is outpainting done using controlnet. There are other ways to do outpainting."
       ],
       "color": "#568479",
       "bgcolor": "#427065"
@@ -423,7 +423,7 @@
       ],
       "size": {
         "0": 210,
-        "1": 80
+        "1": 82
       },
       "flags": {},
       "order": 12,
@@ -515,7 +515,7 @@
       ],
       "size": {
         "0": 210,
-        "1": 60
+        "1": 58
       },
       "flags": {},
       "order": 15,
@@ -599,7 +599,7 @@
       ],
       "size": {
         "0": 210,
-        "1": 80
+        "1": 82
       },
       "flags": {},
       "order": 17,
@@ -2799,79 +2799,16 @@
       "bgcolor": "#653"
     },
     {
-      "id": 350,
-      "type": "Palette Color Align [Dream]",
-      "pos": [
-        1530,
-        970
-      ],
-      "size": [
-        320,
-        80
-      ],
-      "flags": {},
-      "order": 69,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "link": 5332
-        },
-        {
-          "name": "target_align",
-          "type": "RGB_PALETTE",
-          "link": 5331
-        },
-        {
-          "name": "alignment_factor",
-          "type": "FLOAT",
-          "link": 5334,
-          "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "links": [
-            5340
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Palette Color Align [Dream]"
-      },
-      "widgets_values": [
-        1.2
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 347,
       "type": "Palette Color Align [Dream]",
       "pos": [
         1540,
         510
       ],
-      "size": [
-        320,
-        80
-      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
       "flags": {},
       "order": 70,
       "mode": 0,
@@ -2909,9 +2846,7 @@
         {
           "name": "palette",
           "type": "RGB_PALETTE",
-          "links": [
-            5337
-          ],
+          "links": [],
           "shape": 3,
           "slot_index": 0
         }
@@ -2926,230 +2861,16 @@
       "bgcolor": "#533"
     },
     {
-      "id": 349,
-      "type": "Palette Color Align [Dream]",
-      "pos": [
-        1530,
-        820
-      ],
-      "size": [
-        320,
-        80
-      ],
-      "flags": {},
-      "order": 71,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "link": 5330
-        },
-        {
-          "name": "target_align",
-          "type": "RGB_PALETTE",
-          "link": 5329
-        },
-        {
-          "name": "alignment_factor",
-          "type": "FLOAT",
-          "link": 5333,
-          "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "links": [
-            5339
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Palette Color Align [Dream]"
-      },
-      "widgets_values": [
-        1.2
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 348,
-      "type": "Palette Color Align [Dream]",
-      "pos": [
-        1540,
-        660
-      ],
-      "size": [
-        320,
-        80
-      ],
-      "flags": {},
-      "order": 72,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "link": 5326
-        },
-        {
-          "name": "target_align",
-          "type": "RGB_PALETTE",
-          "link": 5327
-        },
-        {
-          "name": "alignment_factor",
-          "type": "FLOAT",
-          "link": 5328,
-          "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "palette",
-          "type": "RGB_PALETTE",
-          "links": [
-            5338
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Palette Color Align [Dream]"
-      },
-      "widgets_values": [
-        1.2
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 354,
-      "type": "Noise from Area Palettes [Dream]",
-      "pos": [
-        2030,
-        760
-      ],
-      "size": {
-        "0": 342.5999755859375,
-        "1": 362
-      },
-      "flags": {},
-      "order": 73,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "top_left_palette",
-          "type": "RGB_PALETTE",
-          "link": null
-        },
-        {
-          "name": "top_center_palette",
-          "type": "RGB_PALETTE",
-          "link": 5337
-        },
-        {
-          "name": "top_right_palette",
-          "type": "RGB_PALETTE",
-          "link": null
-        },
-        {
-          "name": "center_left_palette",
-          "type": "RGB_PALETTE",
-          "link": 5339
-        },
-        {
-          "name": "center_palette",
-          "type": "RGB_PALETTE",
-          "link": null
-        },
-        {
-          "name": "center_right_palette",
-          "type": "RGB_PALETTE",
-          "link": 5338
-        },
-        {
-          "name": "bottom_left_palette",
-          "type": "RGB_PALETTE",
-          "link": null
-        },
-        {
-          "name": "bottom_center_palette",
-          "type": "RGB_PALETTE",
-          "link": 5340
-        },
-        {
-          "name": "bottom_right_palette",
-          "type": "RGB_PALETTE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            5341,
-            5342
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Noise from Area Palettes [Dream]"
-      },
-      "widgets_values": [
-        0.18181762695312503,
-        256,
-        256,
-        0.11818237304687501,
-        0.5,
-        963558209863296,
-        "randomize"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 355,
       "type": "PreviewImage",
       "pos": [
         2200,
         450
       ],
-      "size": [
-        170,
-        200
-      ],
+      "size": {
+        "0": 170,
+        "1": 200
+      },
       "flags": {},
       "order": 74,
       "mode": 0,
@@ -3157,7 +2878,7 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 5341
+          "link": 5349
         }
       ],
       "properties": {
@@ -3182,7 +2903,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 5342,
+          "link": 5350,
           "pos": [
             41,
             0
@@ -4559,16 +4280,206 @@
       "bgcolor": "#593930"
     },
     {
+      "id": 350,
+      "type": "Palette Color Align [Dream]",
+      "pos": [
+        1530,
+        970
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 69,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "link": 5332
+        },
+        {
+          "name": "target_align",
+          "type": "RGB_PALETTE",
+          "link": 5331
+        },
+        {
+          "name": "alignment_factor",
+          "type": "FLOAT",
+          "link": 5334,
+          "widget": {
+            "name": "alignment_factor",
+            "config": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0,
+                "max": 10,
+                "step": 0.1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "links": [
+            5345
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Palette Color Align [Dream]"
+      },
+      "widgets_values": [
+        1.2
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 349,
+      "type": "Palette Color Align [Dream]",
+      "pos": [
+        1530,
+        820
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 71,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "link": 5330
+        },
+        {
+          "name": "target_align",
+          "type": "RGB_PALETTE",
+          "link": 5329
+        },
+        {
+          "name": "alignment_factor",
+          "type": "FLOAT",
+          "link": 5333,
+          "widget": {
+            "name": "alignment_factor",
+            "config": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0,
+                "max": 10,
+                "step": 0.1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "links": [
+            5347
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Palette Color Align [Dream]"
+      },
+      "widgets_values": [
+        1.2
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 348,
+      "type": "Palette Color Align [Dream]",
+      "pos": [
+        1540,
+        660
+      ],
+      "size": {
+        "0": 320,
+        "1": 80
+      },
+      "flags": {},
+      "order": 72,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "link": 5326
+        },
+        {
+          "name": "target_align",
+          "type": "RGB_PALETTE",
+          "link": 5327
+        },
+        {
+          "name": "alignment_factor",
+          "type": "FLOAT",
+          "link": 5328,
+          "widget": {
+            "name": "alignment_factor",
+            "config": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0,
+                "max": 10,
+                "step": 0.1
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "palette",
+          "type": "RGB_PALETTE",
+          "links": [
+            5346,
+            5348
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Palette Color Align [Dream]"
+      },
+      "widgets_values": [
+        1.2
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
       "id": 359,
       "type": "Note",
       "pos": [
-        1910,
-        450
+        1926,
+        442
       ],
-      "size": [
-        250,
-        270
-      ],
+      "size": {
+        "0": 250,
+        "1": 270
+      },
       "flags": {},
       "order": 18,
       "mode": 0,
@@ -4581,6 +4492,111 @@
       ],
       "color": "#568479",
       "bgcolor": "#427065"
+    },
+    {
+      "id": 360,
+      "type": "Noise from Area Palettes [Dream]",
+      "pos": [
+        1968,
+        763
+      ],
+      "size": [
+        342.5999755859375,
+        362
+      ],
+      "flags": {},
+      "order": 73,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "top_left_palette",
+          "type": "RGB_PALETTE",
+          "link": null
+        },
+        {
+          "name": "top_center_palette",
+          "type": "RGB_PALETTE",
+          "link": 5348
+        },
+        {
+          "name": "top_right_palette",
+          "type": "RGB_PALETTE",
+          "link": null
+        },
+        {
+          "name": "center_left_palette",
+          "type": "RGB_PALETTE",
+          "link": 5347
+        },
+        {
+          "name": "center_palette",
+          "type": "RGB_PALETTE",
+          "link": null
+        },
+        {
+          "name": "center_right_palette",
+          "type": "RGB_PALETTE",
+          "link": 5346
+        },
+        {
+          "name": "bottom_left_palette",
+          "type": "RGB_PALETTE",
+          "link": null
+        },
+        {
+          "name": "bottom_center_palette",
+          "type": "RGB_PALETTE",
+          "link": 5345
+        },
+        {
+          "name": "bottom_right_palette",
+          "type": "RGB_PALETTE",
+          "link": null
+        },
+        {
+          "name": "density",
+          "type": "FLOAT",
+          "link": null,
+          "widget": {
+            "name": "density",
+            "config": [
+              "FLOAT",
+              {
+                "default": 0.5,
+                "min": 0.1,
+                "max": 1,
+                "step": 0.025
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            5349,
+            5350
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Noise from Area Palettes [Dream]"
+      },
+      "widgets_values": [
+        0.2,
+        256,
+        256,
+        0,
+        "randomize",
+        1,
+        0.5
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     }
   ],
   "links": [
@@ -5545,54 +5561,6 @@
       "FLOAT"
     ],
     [
-      5337,
-      347,
-      0,
-      354,
-      1,
-      "RGB_PALETTE"
-    ],
-    [
-      5338,
-      348,
-      0,
-      354,
-      5,
-      "RGB_PALETTE"
-    ],
-    [
-      5339,
-      349,
-      0,
-      354,
-      3,
-      "RGB_PALETTE"
-    ],
-    [
-      5340,
-      350,
-      0,
-      354,
-      7,
-      "RGB_PALETTE"
-    ],
-    [
-      5341,
-      354,
-      0,
-      355,
-      0,
-      "IMAGE"
-    ],
-    [
-      5342,
-      354,
-      0,
-      356,
-      0,
-      "*"
-    ],
-    [
       5343,
       356,
       0,
@@ -5607,6 +5575,54 @@
       234,
       2,
       "IMAGE"
+    ],
+    [
+      5345,
+      350,
+      0,
+      360,
+      7,
+      "RGB_PALETTE"
+    ],
+    [
+      5346,
+      348,
+      0,
+      360,
+      5,
+      "RGB_PALETTE"
+    ],
+    [
+      5347,
+      349,
+      0,
+      360,
+      3,
+      "RGB_PALETTE"
+    ],
+    [
+      5348,
+      348,
+      0,
+      360,
+      1,
+      "RGB_PALETTE"
+    ],
+    [
+      5349,
+      360,
+      0,
+      355,
+      0,
+      "IMAGE"
+    ],
+    [
+      5350,
+      360,
+      0,
+      356,
+      0,
+      "*"
     ]
   ],
   "groups": [
@@ -5618,8 +5634,7 @@
         474,
         885
       ],
-      "color": "#a1309b",
-      "locked": false
+      "color": "#a1309b"
     },
     {
       "title": "Settings",
@@ -5629,8 +5644,7 @@
         482,
         742
       ],
-      "color": "#b58b2a",
-      "locked": false
+      "color": "#b58b2a"
     },
     {
       "title": "Inpainting/Outpainting",
@@ -5640,8 +5654,7 @@
         1711,
         528
       ],
-      "color": "#929054",
-      "locked": false
+      "color": "#929054"
     },
     {
       "title": "Inpainting previews",
@@ -5651,8 +5664,7 @@
         1895,
         300
       ],
-      "color": "#878787",
-      "locked": false
+      "color": "#878787"
     },
     {
       "title": "Prev Frame Move",
@@ -5662,8 +5674,7 @@
         1450,
         456
       ],
-      "color": "#3f789e",
-      "locked": false
+      "color": "#3f789e"
     },
     {
       "title": "Full frame sampler",
@@ -5673,8 +5684,7 @@
         683,
         682
       ],
-      "color": "#88A",
-      "locked": false
+      "color": "#88A"
     },
     {
       "title": "Output",
@@ -5684,8 +5694,7 @@
         695,
         622
       ],
-      "color": "#b06634",
-      "locked": false
+      "color": "#b06634"
     },
     {
       "title": "Animation Driver",
@@ -5695,8 +5704,7 @@
         336,
         373
       ],
-      "color": "#3f789e",
-      "locked": false
+      "color": "#3f789e"
     },
     {
       "title": "Motion Control",
@@ -5706,8 +5714,7 @@
         1163,
         392
       ],
-      "color": "#ef75ff",
-      "locked": false
+      "color": "#ef75ff"
     },
     {
       "title": "Model selection",
@@ -5717,8 +5724,7 @@
         476,
         204
       ],
-      "color": "#3f789e",
-      "locked": false
+      "color": "#3f789e"
     },
     {
       "title": "Noise",
@@ -5728,8 +5734,7 @@
         1840,
         765
       ],
-      "color": "#3f789e",
-      "locked": false
+      "color": "#3f789e"
     }
   ],
   "config": {},

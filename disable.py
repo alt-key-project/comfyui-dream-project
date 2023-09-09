@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def run_disable():
     pass
 

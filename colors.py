@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .categories import NodeCategories
 from .shared import *
 from .types import *
@@ -127,7 +128,7 @@ class DreamColorAlign:
     def INPUT_TYPES(cls):
         return {
             "required": SharedTypes.palette | {
-                "target_align": (RGBPalette.ID, {"forceInput": True}),
+                "target_align": (RGBPalette.ID, ),
                 "alignment_factor": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 10.0, "step": 0.1}),
             }
         }

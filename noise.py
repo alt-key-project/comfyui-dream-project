@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import math
 
 from .categories import NodeCategories
@@ -68,15 +69,15 @@ class DreamNoiseFromAreaPalettes:
     def INPUT_TYPES(cls):
         return {
             "optional": {
-                "top_left_palette": (RGBPalette.ID, {"forceInput": True}),
-                "top_center_palette": (RGBPalette.ID, {"forceInput": True}),
-                "top_right_palette": (RGBPalette.ID, {"forceInput": True}),
-                "center_left_palette": (RGBPalette.ID, {"forceInput": True}),
-                "center_palette": (RGBPalette.ID, {"forceInput": True}),
-                "center_right_palette": (RGBPalette.ID, {"forceInput": True}),
-                "bottom_left_palette": (RGBPalette.ID, {"forceInput": True}),
-                "bottom_center_palette": (RGBPalette.ID, {"forceInput": True}),
-                "bottom_right_palette": (RGBPalette.ID, {"forceInput": True}),
+                "top_left_palette": (RGBPalette.ID,),
+                "top_center_palette": (RGBPalette.ID,),
+                "top_right_palette": (RGBPalette.ID,),
+                "center_left_palette": (RGBPalette.ID,),
+                "center_palette": (RGBPalette.ID,),
+                "center_right_palette": (RGBPalette.ID,),
+                "bottom_left_palette": (RGBPalette.ID,),
+                "bottom_center_palette": (RGBPalette.ID,),
+                "bottom_right_palette": (RGBPalette.ID,),
             },
             "required": {
                 "area_sharpness": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}),
@@ -84,7 +85,7 @@ class DreamNoiseFromAreaPalettes:
                 "height": ("INT", {"default": 512, "min": 1, "max": 8192}),
                 "blur_amount": ("FLOAT", {"default": 0.3, "min": 0, "max": 1.0, "step": 0.05}),
                 "density": ("FLOAT", {"default": 0.5, "min": 0.1, "max": 1.0, "step": 0.025}),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff})
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
             },
         }
 

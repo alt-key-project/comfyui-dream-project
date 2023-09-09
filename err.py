@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def _get_node_name(cls):
     return cls.__dict__.get("NODE_NAME", str(cls))
 

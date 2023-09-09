@@ -6,6 +6,7 @@
   "Common Frame Dimensions [Dream]": "Utility for calculating good width/height based on common video dimensions",
   "FFMPEG Video Encoder [Dream]": "Post processing for animation sequences calling FFMPEG to generate video file",
   "File Count [Dream]": "Finds the number of files in a directory matching specified patterns",
+  "Float Input [Dream]": "Float input (until primitive routing issues are solved)",
   "Frame Counter (Directory) [Dream]": "Directory backed frame counter, for output directories",
   "Frame Counter (Simple) [Dream]": "Integer value used as frame counter",
   "Frame Counter Offset [Dream]": "Adds an offset to a frame counter",
@@ -14,6 +15,7 @@
   "Image Sequence Loader [Dream]": "Loads a frame from a directory of images",
   "Image Sequence Saver [Dream]": "Saves a frame to a directory",
   "Image Sequence Tweening [Dream]": "Post processing for animation sequences generating blended in-between frames",
+  "Int Input [Dream]": "Integer input (until primitive routing issues are solved)",
   "Linear Curve [Dream]": "Linear interpolation between two value over the full animation",
   "Noise from Area Palettes [Dream]": "Generates noise based on the colors of up to nine different palettes",
   "Noise from Palette [Dream]": "Generates noise based on the colors in a palette",
@@ -21,5 +23,7 @@
   "Palette Color Shift [Dream]": "Multiplies the color values in a palette",
   "Sample Image Area as Palette [Dream]": "Samples a palette from an image based on pre-defined areas",
   "Sample Image as Palette [Dream]": "Randomly samples pixel values to build a palette from an image",
-  "Sine Curve [Dream]": "Simple sine wave curve"
+  "Sine Curve [Dream]": "Simple sine wave curve",
+  "String Input [Dream]": "String input (until primitive routing issues are solved)",
+  "Text Input [Dream]": ""
 }

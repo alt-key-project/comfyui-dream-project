@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import random
 import time
 
@@ -126,6 +127,6 @@ class AnimationSequence:
 
 
 class SharedTypes:
-    frame_counter = {"frame_counter": (FrameCounter.ID, {"forceInput": True})}
-    sequence = {"sequence": (AnimationSequence.ID, {"forceInput": True})}
-    palette = {"palette": (RGBPalette.ID, {"forceInput": True})}
+    frame_counter = {"frame_counter": (FrameCounter.ID,)}
+    sequence = {"sequence": (AnimationSequence.ID,)}
+    palette = {"palette": (RGBPalette.ID,)}

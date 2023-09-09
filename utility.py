@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import math
 
 from .categories import NodeCategories
@@ -17,6 +18,7 @@ def _align_num(n: int, alignment: int, type: str):
 
 class DreamFrameDimensions:
     NODE_NAME = "Common Frame Dimensions"
+    ICON = "⌗"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -50,3 +52,4 @@ class DreamFrameDimensions:
             return (width, height, final_width, final_height)
         else:
             return (height, width, final_height, final_width)
+

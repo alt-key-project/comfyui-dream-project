@@ -1,4 +1,4 @@
-from .types import SharedTypes, FrameCounter
+# -*- coding: utf-8 -*-
 from .categories import NodeCategories
 from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, DreamImage
 from .types import SharedTypes, FrameCounter
