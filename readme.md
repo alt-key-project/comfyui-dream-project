@@ -180,11 +180,17 @@ This example should be a starting point for anyone wanting to build with the Dre
 
 [motion-workflow-example](examples/motion-workflow-example.json)
 
-### Image Motion with Color Coherence.
+### Image Motion with Color Coherence
 
 Same as above but with added color coherence through palettes.
 
 [motion-workflow-with-color-coherence](examples/motion-workflow-with-color-coherence.json)
+
+### Area Sampled Noise
+
+This flow demonstrates sampling image areas into palettes and generating noise for these areas.
+
+[area-sampled-noise](examples/area-sampled-noise.json)
 
 ## Known issues
 
