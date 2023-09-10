@@ -248,5 +248,4 @@ know what arguments are causing issues for you!
 ### Framerate is not always right with mpegCoder encoding node
 
 The mpegCoder library will always use variable frame rate encoding if it is available in the output format. With most 
-outputs this means that your actual framerate will differ slightly from the requested one. This is why the default 
-configuration uses MPEG2 output as it forces fixed frame rate.
+outputs this means that your actual framerate will differ slightly from the requested one.

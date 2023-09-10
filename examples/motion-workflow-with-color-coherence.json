@@ -1,6 +1,6 @@
 {
-  "last_node_id": 420,
-  "last_link_id": 5461,
+  "last_node_id": 421,
+  "last_link_id": 5462,
   "nodes": [
     {
       "id": 77,
@@ -390,7 +390,7 @@
       },
       "widgets_values": [
         256,
-        351652659588009,
+        183250672320803,
         "randomize",
         "center-right"
       ],
@@ -434,7 +434,7 @@
       },
       "widgets_values": [
         256,
-        478826819381149,
+        57339603779837,
         "randomize",
         "bottom-center"
       ],
@@ -518,42 +518,6 @@
       "bgcolor": "#353"
     },
     {
-      "id": 297,
-      "type": "Reroute",
-      "pos": [
-        2010.9353410012322,
-        940.4982211899616
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 65,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 5228
-        }
-      ],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
       "id": 87,
       "type": "Reroute",
       "pos": [
@@ -565,7 +529,7 @@
         26
       ],
       "flags": {},
-      "order": 69,
+      "order": 68,
       "mode": 0,
       "inputs": [
         {
@@ -604,7 +568,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 73,
+      "order": 72,
       "mode": 0,
       "inputs": [
         {
@@ -646,7 +610,7 @@
         26
       ],
       "flags": {},
-      "order": 74,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -682,7 +646,7 @@
         26
       ],
       "flags": {},
-      "order": 72,
+      "order": 71,
       "mode": 0,
       "inputs": [
         {
@@ -720,7 +684,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 84,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -745,7 +709,7 @@
       },
       "widgets_values": [
         256,
-        1077607406859418,
+        902082438494247,
         "randomize",
         "bottom-center"
       ],
@@ -764,7 +728,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 87,
+      "order": 86,
       "mode": 0,
       "inputs": [
         {
@@ -789,7 +753,7 @@
       },
       "widgets_values": [
         256,
-        960497933218755,
+        638849047502927,
         "randomize",
         "center-right"
       ],
@@ -808,7 +772,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 89,
+      "order": 88,
       "mode": 0,
       "inputs": [
         {
@@ -871,7 +835,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 90,
+      "order": 89,
       "mode": 0,
       "inputs": [
         {
@@ -935,7 +899,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 91,
+      "order": 90,
       "mode": 0,
       "inputs": [
         {
@@ -998,7 +962,7 @@
         "1": 80
       },
       "flags": {},
-      "order": 92,
+      "order": 91,
       "mode": 0,
       "inputs": [
         {
@@ -1061,7 +1025,7 @@
         26
       ],
       "flags": {},
-      "order": 104,
+      "order": 103,
       "mode": 0,
       "inputs": [
         {
@@ -1099,7 +1063,7 @@
         "1": 166
       },
       "flags": {},
-      "order": 105,
+      "order": 104,
       "mode": 0,
       "inputs": [
         {
@@ -1164,7 +1128,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 107,
+      "order": 106,
       "mode": 0,
       "inputs": [
         {
@@ -1205,7 +1169,7 @@
         "1": 262
       },
       "flags": {},
-      "order": 108,
+      "order": 107,
       "mode": 0,
       "inputs": [
         {
@@ -1245,7 +1209,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        163260973445717,
+        586618692559734,
         "randomize",
         25,
         9,
@@ -1266,7 +1230,7 @@
         26
       ],
       "flags": {},
-      "order": 109,
+      "order": 108,
       "mode": 0,
       "inputs": [
         {
@@ -1302,7 +1266,7 @@
         "1": 370
       },
       "flags": {},
-      "order": 115,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -1456,7 +1420,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 113,
+      "order": 112,
       "mode": 0,
       "inputs": [
         {
@@ -1498,7 +1462,7 @@
         26
       ],
       "flags": {},
-      "order": 116,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -1764,7 +1728,7 @@
         "1": 102
       },
       "flags": {},
-      "order": 66,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -1811,7 +1775,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 67,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -1859,7 +1823,7 @@
         "1": 318
       },
       "flags": {},
-      "order": 68,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -2026,7 +1990,7 @@
       },
       "widgets_values": [
         256,
-        322646091840210,
+        1019724837772866,
         "randomize",
         "center-left"
       ],
@@ -2045,7 +2009,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 86,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -2070,7 +2034,7 @@
       },
       "widgets_values": [
         256,
-        345955875901544,
+        1014748475294523,
         "randomize",
         "center-left"
       ],
@@ -2461,7 +2425,7 @@
         "1": 470
       },
       "flags": {},
-      "order": 111,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -2500,7 +2464,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        369620366130291,
+        55143763493153,
         "randomize",
         5,
         5,
@@ -2624,7 +2588,7 @@
         26
       ],
       "flags": {},
-      "order": 82,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
@@ -2663,7 +2627,7 @@
         26
       ],
       "flags": {},
-      "order": 80,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -2767,7 +2731,7 @@
         26
       ],
       "flags": {},
-      "order": 96,
+      "order": 95,
       "mode": 0,
       "inputs": [
         {
@@ -2803,7 +2767,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 78,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -2905,7 +2869,7 @@
       },
       "widgets_values": [
         256,
-        483703842850282,
+        309821851176166,
         "randomize",
         "top-center"
       ],
@@ -2924,7 +2888,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 85,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -2949,7 +2913,7 @@
       },
       "widgets_values": [
         256,
-        1045611241700232,
+        973129878717336,
         "randomize",
         "top-center"
       ],
@@ -3002,7 +2966,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 102,
+      "order": 101,
       "mode": 0,
       "inputs": [
         {
@@ -3057,7 +3021,6 @@
           "name": "VAE",
           "type": "VAE",
           "links": [
-            5228,
             5242
           ],
           "slot_index": 0
@@ -3082,7 +3045,7 @@
         26
       ],
       "flags": {},
-      "order": 100,
+      "order": 99,
       "mode": 0,
       "inputs": [
         {
@@ -3349,7 +3312,7 @@
         "1": 360
       },
       "flags": {},
-      "order": 97,
+      "order": 96,
       "mode": 0,
       "inputs": [
         {
@@ -3482,7 +3445,7 @@
         26
       ],
       "flags": {},
-      "order": 79,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -3520,7 +3483,7 @@
         26
       ],
       "flags": {},
-      "order": 71,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -3545,79 +3508,6 @@
       }
     },
     {
-      "id": 288,
-      "type": "FFMPEG Video Encoder [Dream]",
-      "pos": [
-        4780,
-        560
-      ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
-      "flags": {},
-      "order": 123,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "link": 5211
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "FFMPEG Video Encoder [Dream]"
-      },
-      "widgets_values": [
-        "video.mp4",
-        1,
-        "yes"
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
-      "id": 281,
-      "type": "Image Sequence Tweening [Dream]",
-      "pos": [
-        4440,
-        560
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 122,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "link": 5210
-        }
-      ],
-      "outputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "links": [
-            5211
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Image Sequence Tweening [Dream]"
-      },
-      "widgets_values": [
-        2
-      ],
-      "color": "#332922",
-      "bgcolor": "#593930"
-    },
-    {
       "id": 287,
       "type": "Image Sequence Blend [Dream]",
       "pos": [
@@ -3629,7 +3519,7 @@
         "1": 106
       },
       "flags": {},
-      "order": 120,
+      "order": 119,
       "mode": 0,
       "inputs": [
         {
@@ -3672,7 +3562,7 @@
         "1": 170
       },
       "flags": {},
-      "order": 118,
+      "order": 117,
       "mode": 0,
       "inputs": [
         {
@@ -4027,7 +3917,7 @@
         26
       ],
       "flags": {},
-      "order": 70,
+      "order": 69,
       "mode": 0,
       "inputs": [
         {
@@ -4099,7 +3989,7 @@
         26
       ],
       "flags": {},
-      "order": 75,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -4135,7 +4025,7 @@
         26
       ],
       "flags": {},
-      "order": 77,
+      "order": 76,
       "mode": 0,
       "inputs": [
         {
@@ -4171,7 +4061,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 76,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -4269,7 +4159,7 @@
         26
       ],
       "flags": {},
-      "order": 94,
+      "order": 93,
       "mode": 0,
       "inputs": [
         {
@@ -4305,7 +4195,7 @@
         26
       ],
       "flags": {},
-      "order": 81,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -4346,7 +4236,7 @@
         "1": 362
       },
       "flags": {},
-      "order": 93,
+      "order": 92,
       "mode": 0,
       "inputs": [
         {
@@ -4416,7 +4306,7 @@
         256,
         0.11818237304687501,
         0.5,
-        708194490523208,
+        340337213218643,
         "randomize"
       ],
       "color": "#2a363b",
@@ -4434,7 +4324,7 @@
         26
       ],
       "flags": {},
-      "order": 99,
+      "order": 98,
       "mode": 0,
       "inputs": [
         {
@@ -4471,7 +4361,7 @@
         26
       ],
       "flags": {},
-      "order": 98,
+      "order": 97,
       "mode": 0,
       "inputs": [
         {
@@ -4511,7 +4401,7 @@
         26
       ],
       "flags": {},
-      "order": 110,
+      "order": 109,
       "mode": 0,
       "inputs": [
         {
@@ -4741,7 +4631,7 @@
         26
       ],
       "flags": {},
-      "order": 83,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -4779,7 +4669,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 103,
+      "order": 102,
       "mode": 0,
       "inputs": [
         {
@@ -4853,7 +4743,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 112,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -4894,7 +4784,7 @@
         26
       ],
       "flags": {},
-      "order": 117,
+      "order": 116,
       "mode": 0,
       "inputs": [
         {
@@ -4931,7 +4821,7 @@
         26
       ],
       "flags": {},
-      "order": 119,
+      "order": 118,
       "mode": 0,
       "inputs": [
         {
@@ -4966,12 +4856,12 @@
         1970,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 121,
+      "order": 120,
       "mode": 0,
       "inputs": [
         {
@@ -4992,12 +4882,12 @@
         1730,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 114,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -5018,12 +4908,12 @@
         1510,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 101,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -5044,12 +4934,12 @@
         1270,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 106,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -5070,12 +4960,12 @@
         1040,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 95,
+      "order": 94,
       "mode": 0,
       "inputs": [
         {
@@ -5096,12 +4986,12 @@
         800,
         2080
       ],
-      "size": [
-        210,
-        246
-      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
       "flags": {},
-      "order": 88,
+      "order": 87,
       "mode": 0,
       "inputs": [
         {
@@ -5114,6 +5004,77 @@
       "properties": {
         "Node name for S&R": "PreviewImage"
       }
+    },
+    {
+      "id": 281,
+      "type": "Image Sequence Tweening [Dream]",
+      "pos": [
+        4440,
+        560
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 121,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "link": 5210
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "links": [
+            5462
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Sequence Tweening [Dream]"
+      },
+      "widgets_values": [
+        2
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 421,
+      "type": "Video Encoder (mpegCoder) [Dream]",
+      "pos": [
+        4778,
+        559
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 122,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "link": 5462
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Video Encoder (mpegCoder) [Dream]"
+      },
+      "widgets_values": [
+        "video",
+        1,
+        true
+      ]
     }
   ],
   "links": [
@@ -5326,14 +5287,6 @@
       "ANIMATION_SEQUENCE"
     ],
     [
-      5211,
-      281,
-      0,
-      288,
-      0,
-      "ANIMATION_SEQUENCE"
-    ],
-    [
       5220,
       293,
       0,
@@ -5380,14 +5333,6 @@
       234,
       5,
       "FLOAT"
-    ],
-    [
-      5228,
-      240,
-      0,
-      297,
-      0,
-      "*"
     ],
     [
       5241,
@@ -6276,6 +6221,14 @@
       418,
       0,
       "IMAGE"
+    ],
+    [
+      5462,
+      281,
+      0,
+      421,
+      0,
+      "ANIMATION_SEQUENCE"
     ]
   ],
   "groups": [
