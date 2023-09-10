@@ -28,12 +28,14 @@ class DreamDirectoryFileCount:
     def IS_CHANGED(cls, *v):
         return ALWAYS_CHANGED_FLAG
 
-    def result(self, directory_path, patterns, indexing):
+    def result(self, directory_path, patterns):
         if not os.path.isdir(directory_path):
             return (0,)
         total = 0
         for pattern in patterns.split("|"):
-            total += len(glob.glob(pattern))
+            files = list(glob.glob(pattern, root_dir=directory_path))
+            total += len(files)
+        print("total "+str(total))
         return (total,)
 
 

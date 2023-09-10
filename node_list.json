@@ -25,5 +25,6 @@
   "Sample Image as Palette [Dream]": "Randomly samples pixel values to build a palette from an image",
   "Sine Curve [Dream]": "Simple sine wave curve",
   "String Input [Dream]": "String input (until primitive routing issues are solved)",
-  "Text Input [Dream]": ""
+  "Text Input [Dream]": "Multiline string input (until primitive routing issues are solved)",
+  "Video Encoder (mpegCoder) [Dream]": "Post processing for animation sequences using mpegCoder module to generate video file"
 }

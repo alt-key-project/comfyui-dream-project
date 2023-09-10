@@ -32,7 +32,20 @@ Finally:
 After startup, a configuration file 'config.json' should have been created in the 'comfyui-dream-project' directory. 
 Specifically check that the path of ffmpeg works in your system (add full path to the command if needed).
 
+## Upgrade
+
+When upgrading, it is good to re-run the pip install command as specified in the install section. This will install any 
+new dependencies.
+
 ## Configuration
+
+### debug
+
+Setting this to true will enable some trace-level logging.
+
+### ffmpeg.file_extension
+
+Sets the output file extension and with that the envelope used.
 
 ### ffmpeg.path 
 
@@ -66,6 +79,28 @@ Flags to add an icon before and/or after the node name.
 ### ui.category_icons
 
 Each key defines a unicode symbol as an icon used for the specified category.
+
+### mpeg_coder.bitrate_factor
+
+This factor allows changing the bitrate to better fit the required quality and codec. A value of 1 is typically 
+suitable for H.265.
+
+### mpeg_coder.codec_name
+
+Codec names as specified by ffmpeg. Some common options include "libx264", "libx264" and "mpeg2video".
+
+### mpeg_coder.encoding_threads
+
+Increasing the number of encoding threads in mpegCoder will generally reduce the overall encoding time, but it will also 
+increase the load on the computer.
+
+### mpeg_coder.file_extension
+
+Sets the output file extension and with that the envelope used.
+
+### mpeg_coder.max_b_frame
+
+Sets the max-b-frames parameter for as specified in ffmpeg.
 
 ## Concepts used
 
@@ -108,8 +143,11 @@ Recreates file at frame 0 (removing and existing content in the file).
 ### Common Frame Dimensions [Dream]
 Utility for calculating good width/height based on common video dimensions.
 
-### FFMPEG Video Encoder [Dream]
-Post processing for animation sequences calling FFMPEG to generate video file.
+### Video Encoder (FFMPEG) [Dream]
+Post processing for animation sequences calling FFMPEG to generate video files.
+
+### Video Encoder (mpegCoder) [Dream]
+Post processing for animation sequences using the python module mpegCoder with ffmpeg library to generate video files.
 
 ### File Count [Dream]
 Finds the number of files in a directory matching specified patterns.
@@ -206,3 +244,9 @@ are:
 
 If possible, I will change the default configuration to one that more versions/builds of ffmpeg will accept. Do let me 
 know what arguments are causing issues for you!
+
+### Framerate is not always right with mpegCoder encoding node
+
+The mpegCoder library will always use variable frame rate encoding if it is available in the output format. With most 
+outputs this means that your actual framerate will differ slightly from the requested one. This is why the default 
+configuration uses MPEG2 output as it forces fixed frame rate.

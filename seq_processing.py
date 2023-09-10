@@ -9,7 +9,7 @@ from PIL import Image
 
 from .categories import NodeCategories
 from .err import on_error
-from .shared import DreamConfig
+from .shared import DreamConfig, MpegEncoderUtility
 from .types import *
 
 CONFIG = DreamConfig()
@@ -127,40 +127,82 @@ def _ffmpeg(config, filenames, fps, output):
         os.unlink(tempfilepath)
 
 
-class DreamVideoEncoderOpenCV:
-    NODE_NAME = "OpenCV Video Encoder"
+def _make_video_filename(name, file_ext):
+    (b, _) = os.path.splitext(name)
+    return b + "." + file_ext.strip(".")
 
 
-    def encode(self):
-        pass
-        """self._name = name + '.mp4'
-        self._cap = VideoCapture(0)
-        self._fourcc = VideoWriter_fourcc(*'MP4V')
-        self._out = VideoWriter(self._name, self._fourcc, 20.0, (640, 480))
+class DreamVideoEncoderMpegCoder:
+    NODE_NAME = "Video Encoder (mpegCoder)"
+    ICON = "🎬"
+    CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    OUTPUT_NODE = True
+    FUNCTION = "encode"
 
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.sequence | {
+                "name": ("STRING", {"default": 'video', "multiline": False}),
+                "framerate_factor": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 100.0}),
+                "remove_images": ("BOOLEAN", {"default": True})
+            },
+        }
 
-        from moviepy.editor import *
+    def _find_free_filename(self, filename, defaultdir):
+        if os.path.basename(filename) == filename:
+            filename = os.path.join(defaultdir, filename)
+        n = 1
+        tested = filename
+        while os.path.exists(tested):
+            n += 1
+            (b, ext) = os.path.splitext(filename)
+            tested = b + "_" + str(n) + ext
+        return tested
 
-        img = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png',
-               '7.png', '8.png', '9.png', '10.png', '11.png', '12.png']
+    def encode(self, sequence, name, framerate_factor, remove_images):
+        if not sequence.is_defined:
+            return ()
+        config = DreamConfig()
+        filename = _make_video_filename(name, config.get("mpeg_coder.file_exension"))
+        for batch_num in sequence.batches:
+            try:
+                images = list(sequence.get_image_files_of_batch(batch_num))
+                filename = self._find_free_filename(filename, os.path.dirname(images[0]))
+                first_image = DreamImage.from_file(images[0])
+                enc = MpegEncoderUtility(video_path=filename,
+                                         bit_rate_factor=float(config.get("mpeg_coder.bitrate_factor", 1.0)),
+                                         encoding_threads=int(config.get("mpeg_coder.encoding_threads", 4)),
+                                         max_b_frame=int(config.get("mpeg_coder.max_b_frame", 2)),
+                                         width=first_image.width,
+                                         height=first_image.height,
+                                         files=images,
+                                         fps=sequence.fps * framerate_factor,
+                                         codec_name=config.get("mpeg_coder.codec_name", "libx265"))
+                enc.encode()
+                if remove_images:
+                    for imagepath in images:
+                        if os.path.isfile(imagepath):
+                            os.unlink(imagepath)
+            except Exception as e:
+                on_error(self.__class__, str(e))
+        return ()
 
-        clips = [ImageClip(m).set_duration(2)
-                 for m in img]
-
-        concat_clip = concatenate_videoclips(clips, method="compose")
-        concat_clip.write_videofile("test.mp4", fps=24)"""
 
 class DreamVideoEncoder:
     NODE_NAME = "FFMPEG Video Encoder"
+    DISPLAY_NAME = "Video Encoder (FFMPEG)"
     ICON = "🎬"
 
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": SharedTypes.sequence | {
-                "filename": ("STRING", {"default": 'video.mp4', "multiline": False}),
+                "name": ("STRING", {"default": 'video', "multiline": False}),
                 "framerate_factor": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 100.0}),
-                "remove_images": (["yes", "no"],)
+                "remove_images": ("BOOLEAN", {"default": True})
             },
         }
 
@@ -189,16 +231,17 @@ class DreamVideoEncoder:
         filename = self._find_free_filename(filename, os.path.dirname(files[0]))
         _ffmpeg(config, files, fps, filename)
 
-    def encode(self, sequence: AnimationSequence, filename: str, remove_images, framerate_factor):
+    def encode(self, sequence: AnimationSequence, name: str, remove_images, framerate_factor):
         if not sequence.is_defined:
             return ()
 
         config = DreamConfig()
+        filename = _make_video_filename(name, config.get("ffmpeg.file_exension"))
         for batch_num in sequence.batches:
             try:
                 images = list(sequence.get_image_files_of_batch(batch_num))
                 self.generate_video(images, sequence.fps * framerate_factor, filename, config)
-                if remove_images == "yes":
+                if remove_images:
                     for imagepath in images:
                         if os.path.isfile(imagepath):
                             os.unlink(imagepath)

@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import random
+import time
 
 import folder_paths as comfy_paths
 import glob
@@ -13,6 +14,8 @@ from PIL import Image, ImageFilter
 from PIL.ImageDraw import ImageDraw
 from PIL.PngImagePlugin import PngInfo
 from typing import Dict, Tuple, List
+
+from .dreamlogger import DreamLog
 
 NODE_FILE = os.path.abspath(__file__)
 DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
@@ -43,12 +46,21 @@ class DreamConfig:
     DEFAULT_CONFIG = {
         "ffmpeg": {
             "path": "ffmpeg",
-            "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
+            "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-vsync",
+                          "cfr", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
                           "yuv420p", "%OUTPUT%"]
+        },
+        "mpeg_coder": {
+            "encoding_threads": 4,
+            "bitrate_factor": 8.0,
+            "max_b_frame": 2,
+            "file_exension": "mpg",
+            "codec_name": "mpeg2video"
         },
         "encoding": {
             "jpeg_quality": 95
         },
+        "debug": False,
         "ui": {
             "top_category": "Dream",
             "prepend_icon_to_category": True,
@@ -109,6 +121,11 @@ class DreamConfig:
             return d
 
 
+def get_logger():
+    config = DreamConfig()
+    return DreamLog(config.get("debug", False))
+
+
 class DreamImageProcessor:
     def __init__(self, inputs: torch.Tensor, **extra_args):
         self._images_in_batch = [convertTensorImageToPIL(tensor) for tensor in inputs]
@@ -153,19 +170,25 @@ class DreamImage:
         l = list(map(lambda i: i.create_tensor_image(), images))
         return torch.cat(l, dim=0)
 
-    def __init__(self, tensor_image=None, pil_image=None, file_path=None):
+    def __init__(self, tensor_image=None, pil_image=None, file_path=None, with_alpha=False):
         if pil_image is not None:
             self.pil_image = pil_image
         elif tensor_image is not None:
             self.pil_image = convertTensorImageToPIL(tensor_image)
         else:
             self.pil_image = Image.open(file_path)
-        if self.pil_image.mode not in ("RGB", "RGBA"):
+        if with_alpha and self.pil_image.mode != "RGBA":
             self.pil_image = self.pil_image.convert("RGBA")
+        else:
+            if self.pil_image.mode not in ("RGB", "RGBA"):
+                self.pil_image = self.pil_image.convert("RGB")
         self.width = self.pil_image.width
         self.height = self.pil_image.height
         self.size = self.pil_image.size
         self._draw = ImageDraw(self.pil_image)
+
+    def numpy_array(self):
+        return numpy.array(self.pil_image)
 
     def _renew(self, pil_image):
         self.pil_image = pil_image
@@ -189,6 +212,11 @@ class DreamImage:
                 return (p, self.x, self.y)
 
         return _Pixels(self)
+
+    def convert(self, mode="RGB"):
+        if self.pil_image.mode == mode:
+            return self
+        return DreamImage(pil_image=self.pil_image.convert(mode))
 
     def create_tensor_image(self):
         return convertFromPILToTensorImage(self.pil_image)
@@ -231,6 +259,10 @@ class DreamImage:
 
     def save_jpg(self, filepath, quality=98):
         self.pil_image.save(filepath, quality=quality, optimize=True)
+
+    @classmethod
+    def from_file(cls, file_path):
+        return DreamImage(pil_image=Image.open(file_path))
 
 
 class DreamMask:
@@ -354,3 +386,52 @@ def hashed_as_strings(*items):
     m = hashlib.sha256()
     m.update(tokens.encode(encoding="utf-8"))
     return m.digest().hex()
+
+
+class MpegEncoderUtility:
+    def __init__(self, video_path: str, bit_rate_factor: float, width: int, height: int, files: List[str],
+                 fps: float, encoding_threads: int, codec_name, max_b_frame):
+        import mpegCoder
+        self._files = files
+        self._logger = get_logger()
+        self._enc = mpegCoder.MpegEncoder()
+        bit_rate = self._calculate_bit_rate(width, height, fps, bit_rate_factor)
+        self._logger.info("Bitrate "+str(bit_rate))
+        self._enc.setParameter(
+            videoPath=video_path, codecName=codec_name,
+            nthread=encoding_threads, bitRate=bit_rate, width=width, height=height, widthSrc=width,
+            heightSrc=height,
+            GOPSize=len(files), maxBframe=max_b_frame, frameRate=self._fps_to_tuple(fps))
+
+    def _calculate_bit_rate(self, width: int, height: int, fps: float, bit_rate_factor: float):
+        bits_per_pixel_base = 0.075
+        return round(max(10, float(width * height * fps * bits_per_pixel_base * bit_rate_factor * 0.001)))
+
+    def encode(self):
+        if not self._enc.FFmpegSetup():
+            raise Exception("Failed to setup MPEG Encoder - check parameters!")
+        try:
+            t = time.time()
+
+            for filepath in self._files:
+                self._logger.debug("Encoding frame {}", filepath)
+                image = DreamImage.from_file(filepath).convert("RGB")
+                self._enc.EncodeFrame(image.numpy_array())
+            self._enc.FFmpegClose()
+            self._logger.info("Completed video encoding of {n} frames in {t} seconds", n=len(self._files),
+                              t=round(time.time() - t))
+        finally:
+            self._enc.clear()
+
+    def _fps_to_tuple(self, fps: float):
+        def _is_almost_int(f: float):
+            return abs(f - int(f)) < 0.001
+        a = fps
+        b = 1
+        while not _is_almost_int(a) and b < 100:
+            a /= 10
+            b *= 10
+        a = round(a)
+        b = round(b)
+        self._logger.info("Video specified as {fps} fps - encoder framerate {a}/{b}", fps=fps, a=a, b=b)
+        return (a, b)
