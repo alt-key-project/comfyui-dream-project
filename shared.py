@@ -45,7 +45,7 @@ class DreamConfig:
     FILEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
     DEFAULT_CONFIG = {
         "ffmpeg": {
-            "file_exension": "mp4",
+            "file_extension": "mp4",
             "path": "ffmpeg",
             "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-vsync",
                           "cfr", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
@@ -55,7 +55,7 @@ class DreamConfig:
             "encoding_threads": 4,
             "bitrate_factor": 1.0,
             "max_b_frame": 2,
-            "file_exension": "mp4",
+            "file_extension": "mp4",
             "codec_name": "libx265"
         },
         "encoding": {

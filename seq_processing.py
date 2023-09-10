@@ -166,7 +166,7 @@ class DreamVideoEncoderMpegCoder:
         if not sequence.is_defined:
             return ()
         config = DreamConfig()
-        filename = _make_video_filename(name, config.get("mpeg_coder.file_exension"))
+        filename = _make_video_filename(name, config.get("mpeg_coder.file_extension", "mp4"))
         for batch_num in sequence.batches:
             try:
                 images = list(sequence.get_image_files_of_batch(batch_num))
@@ -236,7 +236,7 @@ class DreamVideoEncoder:
             return ()
 
         config = DreamConfig()
-        filename = _make_video_filename(name, config.get("ffmpeg.file_exension"))
+        filename = _make_video_filename(name, config.get("ffmpeg.file_extension", "mp4"))
         for batch_num in sequence.batches:
             try:
                 images = list(sequence.get_image_files_of_batch(batch_num))
