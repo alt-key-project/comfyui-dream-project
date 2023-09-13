@@ -64,6 +64,52 @@ class RGBPalette:
         return _ColorIterator()
 
 
+class PartialPrompt:
+    ID = "PARTIAL_PROMPT"
+
+    def __init__(self):
+        self._data = {}
+
+    def add(self, text: str, weight: float):
+        output = PartialPrompt()
+        output._data = dict(self._data)
+        output._data[text.strip()] = weight
+        return output
+
+    def is_empty(self):
+        return not self._data
+
+    def abs_sum(self):
+        if not self._data:
+            return 0.0
+        return sum(map(abs, self._data.values()))
+
+    def abs_max(self):
+        if not self._data:
+            return 0.0
+        return max(map(abs, self._data.values()))
+
+    def scaled_by(self, f: float):
+        new_data = PartialPrompt()
+        new_data._data = dict(self._data)
+        for text, weight in new_data._data.items():
+            new_data._data[text] = weight * f
+        return new_data
+
+    def finalize(self, clamp: float):
+        items = self._data.items()
+        items = sorted(items, key=lambda pair: (pair[1], pair[0]))
+        pos = list()
+        neg = list()
+        for text, w in sorted(items, key=lambda pair: (-pair[1], pair[0])):
+            if w >= 0.0001:
+                pos.append("({}:{:.3f})".format(text, min(clamp, w)))
+        for text, w in sorted(items, key=lambda pair: (pair[1], pair[0])):
+            if w <= -0.0001:
+                neg.append("({}:{:.3f})".format(text, min(clamp, -w)))
+        return ", ".join(pos), ", ".join(neg)
+
+
 class FrameCounter:
     ID = "FRAME_COUNTER"
 
@@ -90,6 +136,14 @@ class FrameCounter:
     @property
     def current_time_in_seconds(self):
         return float(self.current_frame) / self.frames_per_second
+
+    @property
+    def total_time_in_seconds(self):
+        return float(self.total_frames) / self.frames_per_second
+
+    @property
+    def remaining_time_in_seconds(self):
+        return self.total_time_in_seconds - self.current_time_in_seconds
 
     @property
     def progress(self):

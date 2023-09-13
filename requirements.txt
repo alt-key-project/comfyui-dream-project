@@ -4,3 +4,4 @@ scipy
 numpy<1.24>=1.18
 torchvision
 mpegCoder
+evalidate

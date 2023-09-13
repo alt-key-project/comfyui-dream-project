@@ -133,6 +133,20 @@ Output brightness, red, green and blue averages of a palette. Useful to control 
 ### Beat Curve [Dream]
 Beat pattern curve with impulses at specified beats of a measure.
 
+### Big *** Switch [Dream]
+Switch nodes for different type for up to ten inputs.
+
+### Boolean To Float/Int [Dream]
+Converts a boolean value to two different numeric values.
+
+### Build Prompt [Dream] (and Finalize Prompt [Dream])
+Weighted text prompt builder utility. Chain any number of these nodes and terminate with 'Finalize Prompt'.
+
+### Calculation [Dream]
+Mathematical calculation node. Exposes most of the mathematical functions in the python 
+[math module](https://docs.python.org/3/library/math.html), mathematical operators as well as round, abs, int, 
+float, max and min.
+
 ### CSV Curve [Dream]
 CSV input curve where first column is frame or second and second column is value.
 
@@ -152,12 +166,18 @@ Post processing for animation sequences using the python module mpegCoder with f
 ### File Count [Dream]
 Finds the number of files in a directory matching specified patterns.
 
+### Frame Count Calculator [Dream]
+Simple utility to calculate number of frames based on time and framerate.
+
 ### Frame Counter (Directory) [Dream]
 Directory backed frame counter, for output directories.
 
 ### Frame Counter (Simple) [Dream]
 Integer value used as frame counter. Useful for testing or if an auto-incrementing primitive is used as a frame 
 counter.
+
+### Frame Counter Info [Dream]
+Extracts information from the frame counter.
 
 ### Frame Counter Offset [Dream]
 Adds an offset to a frame counter.
@@ -202,8 +222,20 @@ of equal size and each node may sample one of these.
 ### Sample Image as Palette [Dream]
 Randomly samples pixels from a source image to build a palette from it.
 
+### Saw Curve [Dream]
+Saw wave curve.
+
 ### Sine Curve [Dream]
 Simple sine wave curve.
+
+### Smooth Event Curve [Dream]
+Single event/peak curve with a slight bell-shape. 
+
+### Triangle Curve [Dream]
+Triangle wave curve. 
+
+### Triangle Event Curve [Dream]
+Single event/peak curve with triangular shape.
 
 ### Other custom nodes
 

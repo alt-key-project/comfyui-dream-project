@@ -5,12 +5,15 @@ from .base import *
 from .colors import *
 from .curves import *
 from .image_processing import *
+from .inputfields import *
 from .loaders import *
 from .noise import *
 from .output import *
+from .prompting import *
 from .seq_processing import *
+from .switches import *
 from .utility import *
-from .inputfields import *
+from .calculate import *
 
 _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBeatCurve, DreamFrameDimensions,
                              DreamImageMotion, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift,
@@ -19,12 +22,16 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamImageSequenceOutput, DreamCSVGenerator, DreamImageAreaSampler,
                              DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlend, DreamColorAlign,
                              DreamImageSampler, DreamNoiseFromAreaPalettes, DreamVideoEncoderMpegCoder,
-                             DreamInputString, DreamInputFloat, DreamInputInt, DreamInputText]
+                             DreamInputString, DreamInputFloat, DreamInputInt, DreamInputText, DreamBigLatentSwitch,
+                             DreamFrameCountCalculator, DreamBigImageSwitch, DreamBigTextSwitch, DreamBigFloatSwitch,
+                             DreamBigIntSwitch, DreamBigPaletteSwitch, DreamWeightedPromptBuilder, DreamPromptFinalizer,
+                             DreamFrameCounterInfo, DreamBoolToFloat, DreamBoolToInt, DreamSawWave, DreamTriangleWave,
+                             DreamTriangleEvent, DreamSmoothEvent, DreamCalculation]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (3, 0, 2),
+    "version": (3, 1, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",

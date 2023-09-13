@@ -6,6 +6,37 @@ from .shared import *
 from .types import *
 
 
+class DreamFrameCounterInfo:
+    NODE_NAME = "Frame Counter Info"
+    ICON = "⚋"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter
+        }
+
+    CATEGORY = NodeCategories.ANIMATION
+    RETURN_TYPES = ("INT", "INT", "BOOLEAN", "BOOLEAN", "FLOAT", "FLOAT", "FLOAT", "FLOAT")
+    RETURN_NAMES = ("frames_completed", "total_frames", "first_frame", "last_frame",
+                    "elapsed_seconds", "remaining_seconds", "total_seconds", "completion")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *v):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, frame_counter: FrameCounter):
+        return (frame_counter.current_frame,
+                frame_counter.total_frames,
+                frame_counter.is_first_frame,
+                frame_counter.is_final_frame,
+                frame_counter.current_time_in_seconds,
+                frame_counter.remaining_time_in_seconds,
+                frame_counter.total_time_in_seconds,
+                frame_counter.current_time_in_seconds / max(0.01, frame_counter.total_time_in_seconds))
+
+
 class DreamDirectoryFileCount:
     NODE_NAME = "File Count"
     ICON = "📂"
@@ -35,7 +66,7 @@ class DreamDirectoryFileCount:
         for pattern in patterns.split("|"):
             files = list(glob.glob(pattern, root_dir=directory_path))
             total += len(files)
-        print("total "+str(total))
+        print("total " + str(total))
         return (total,)
 
 
@@ -105,7 +136,7 @@ class DreamDirectoryBackedFrameCounter:
                 "pattern": ("STRING", {"default": '*', "multiline": False}),
                 "indexing": (["numeric", "alphabetic order"],),
                 "total_frames": ("INT", {"default": 100, "min": 2, "max": 24 * 3600 * 60}),
-                "frames_per_second": ("INT", {"min": 1, "default": 25}),
+                "frames_per_second": ("INT", {"min": 1, "default": 30}),
             },
         }
 
@@ -124,3 +155,33 @@ class DreamDirectoryBackedFrameCounter:
             return (FrameCounter(0, total_frames, frames_per_second),)
         n = max(results.keys()) + 1
         return (FrameCounter(n, total_frames, frames_per_second),)
+
+
+class DreamFrameCountCalculator:
+    NODE_NAME = "Frame Count Calculator"
+    ICON = "⌛"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "hours": ("INT", {"min": 0, "default": 0, "max": 23}),
+                "minutes": ("INT", {"min": 0, "default": 0, "max": 59}),
+                "seconds": ("INT", {"min": 0, "default": 10, "max": 59}),
+                "milliseconds": ("INT", {"min": 0, "default": 0, "max": 59}),
+                "frames_per_second": ("INT", {"min": 1, "default": 30})
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION
+    RETURN_TYPES = ("INT",)
+    RETURN_NAMES = ("TOTAL",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *v):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, hours, minutes, seconds, milliseconds, frames_per_second):
+        total_s = seconds + 0.001 * milliseconds + minutes * 60 + hours * 3600
+        return (round(total_s * frames_per_second),)

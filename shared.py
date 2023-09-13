@@ -13,6 +13,7 @@ import torch
 from PIL import Image, ImageFilter
 from PIL.ImageDraw import ImageDraw
 from PIL.PngImagePlugin import PngInfo
+from .embedded_config import EMBEDDED_CONFIGURATION
 from typing import Dict, Tuple, List
 
 from .dreamlogger import DreamLog
@@ -43,45 +44,7 @@ _config_data = None
 
 class DreamConfig:
     FILEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
-    DEFAULT_CONFIG = {
-        "ffmpeg": {
-            "file_extension": "mp4",
-            "path": "ffmpeg",
-            "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-vsync",
-                          "cfr", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
-                          "yuv420p", "%OUTPUT%"]
-        },
-        "mpeg_coder": {
-            "encoding_threads": 4,
-            "bitrate_factor": 1.0,
-            "max_b_frame": 2,
-            "file_extension": "mp4",
-            "codec_name": "libx265"
-        },
-        "encoding": {
-            "jpeg_quality": 95
-        },
-        "debug": False,
-        "ui": {
-            "top_category": "Dream",
-            "prepend_icon_to_category": True,
-            "append_icon_to_category": False,
-            "prepend_icon_to_node": True,
-            "append_icon_to_node": False,
-            "category_icons": {
-                "animation": "🎥",
-                "postprocessing": "⚙",
-                "transforms": "🔀",
-                "curves": "📈",
-                "color": "🎨",
-                "generate": "⚡",
-                "utils": "🛠",
-                "image": "🌄",
-                "Dream": "✨"
-            }
-        },
-
-    }
+    DEFAULT_CONFIG = EMBEDDED_CONFIGURATION
 
     def __init__(self):
         global _config_data

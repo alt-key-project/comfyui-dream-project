@@ -7,6 +7,20 @@ from .shared import hashed_as_strings
 from .types import SharedTypes, FrameCounter
 
 
+def _linear_value_calc(x, x_start, x_end, y_start, y_end):
+    if x <= x_start:
+        return y_start
+    if x >= x_end:
+        return y_end
+    dx = max(x_end - x_start, 0.0001)
+    n = (x - x_start) / dx
+    return (y_end - y_start) * n + y_start
+
+
+def _curve_result(f: float):
+    return (f, int(round(f)))
+
+
 class DreamSineWave:
     NODE_NAME = "Sine Curve"
 
@@ -37,7 +51,149 @@ class DreamSineWave:
         b = 2 * math.pi / periodicity_seconds
         d = (max_value + min_value) / 2
         y = a * math.sin(b * (x + c)) + d
-        return (y, int(round(y)))
+        return _curve_result(y)
+
+
+class DreamSawWave:
+    NODE_NAME = "Saw Curve"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "max_value": ("FLOAT", {"default": 1.0, "multiline": False}),
+                "min_value": ("FLOAT", {"default": 0.0, "multiline": False}),
+                "periodicity_seconds": ("FLOAT", {"default": 10.0, "multiline": False, "min": 0.01}),
+                "phase": ("FLOAT", {"default": 0.0, "multiline": False, "min": -1, "max": 1}),
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ("FLOAT", "INT")
+    RETURN_NAMES = ("FLOAT", "INT")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, frame_counter: FrameCounter, max_value, min_value, periodicity_seconds, phase):
+        x = frame_counter.current_time_in_seconds
+        x = ((x + periodicity_seconds * phase) % periodicity_seconds) / periodicity_seconds
+        y = x * (max_value - min_value) + min_value
+        return _curve_result(y)
+
+
+class DreamTriangleWave:
+    NODE_NAME = "Triangle Curve"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "max_value": ("FLOAT", {"default": 1.0, "multiline": False}),
+                "min_value": ("FLOAT", {"default": 0.0, "multiline": False}),
+                "periodicity_seconds": ("FLOAT", {"default": 10.0, "multiline": False, "min": 0.01}),
+                "phase": ("FLOAT", {"default": 0.0, "multiline": False, "min": -1, "max": 1}),
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ("FLOAT", "INT")
+    RETURN_NAMES = ("FLOAT", "INT")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, frame_counter: FrameCounter, max_value, min_value, periodicity_seconds, phase):
+        x = frame_counter.current_time_in_seconds
+        x = ((x + periodicity_seconds * phase) % periodicity_seconds) / periodicity_seconds
+        if x <= 0.5:
+            x *= 2
+            y = x * (max_value - min_value) + min_value
+        else:
+            x = (x - 0.5) * 2
+            y = max_value - x * (max_value - min_value)
+        return _curve_result(y)
+
+
+class DreamTriangleEvent:
+    NODE_NAME = "Triangle Event Curve"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "max_value": ("FLOAT", {"default": 1.0, "multiline": False}),
+                "min_value": ("FLOAT", {"default": 0.0, "multiline": False}),
+                "width_seconds": ("FLOAT", {"default": 1.0, "multiline": False, "min": 0.1}),
+                "center_seconds": ("FLOAT", {"default": 10.0, "multiline": False, "min": 0.0}),
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ("FLOAT", "INT")
+    RETURN_NAMES = ("FLOAT", "INT")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, frame_counter: FrameCounter, max_value, min_value, width_seconds, center_seconds):
+        x = frame_counter.current_time_in_seconds
+        start = center_seconds - width_seconds * 0.5
+        end = center_seconds + width_seconds * 0.5
+        if start <= x <= center_seconds:
+            y = _linear_value_calc(x, start, center_seconds, min_value, max_value)
+        elif center_seconds < x <= end:
+            y = _linear_value_calc(x, center_seconds, end, max_value, min_value)
+        else:
+            y = min_value
+        return _curve_result(y)
+
+
+class DreamSmoothEvent:
+    NODE_NAME = "Smooth Event Curve"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "max_value": ("FLOAT", {"default": 1.0, "multiline": False}),
+                "min_value": ("FLOAT", {"default": 0.0, "multiline": False}),
+                "width_seconds": ("FLOAT", {"default": 1.0, "multiline": False, "min": 0.1}),
+                "center_seconds": ("FLOAT", {"default": 10.0, "multiline": False, "min": 0.0}),
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ("FLOAT", "INT")
+    RETURN_NAMES = ("FLOAT", "INT")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, frame_counter: FrameCounter, max_value, min_value, width_seconds, center_seconds):
+        x = frame_counter.current_time_in_seconds
+        start = center_seconds - width_seconds * 0.5
+        end = center_seconds + width_seconds * 0.5
+        if start <= x <= center_seconds:
+            y = _linear_value_calc(x, start, center_seconds, 0.0, 1.0)
+        elif center_seconds < x <= end:
+            y = _linear_value_calc(x, center_seconds, end, 1.0, 0.0)
+        else:
+            y = 0.0
+        if y < 0.5:
+            y = ((y + y) * (y + y)) * 0.5
+        else:
+            a = (y - 0.5) * 2
+            y = math.pow(a, 0.25) * 0.5 + 0.5
+        return _curve_result(y * (max_value - min_value) + min_value)
 
 
 class DreamBeatCurve:
@@ -96,7 +252,7 @@ class DreamBeatCurve:
             v = 1.0 - v
 
         r = low_value + v * (high_value - low_value)
-        return (r, int(round(r)))
+        return _curve_result(r)
 
 
 class DreamLinear:
