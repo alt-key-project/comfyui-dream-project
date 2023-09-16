@@ -42,7 +42,7 @@ class DreamImageSequenceOutput:
                 "directory_path": ("STRING", {"default": comfy_paths.output_directory, "multiline": False}),
                 "prefix": ("STRING", {"default": 'frame', "multiline": False}),
                 "digits": ("INT", {"default": 5}),
-                "at_end": (["stop output", "keep going"],),
+                "at_end": (["stop output", "raise error", "keep going"],),
                 "filetype": (['png with embedded workflow', "png", 'jpg'],),
             },
             "hidden": {
@@ -69,6 +69,9 @@ class DreamImageSequenceOutput:
         if at_end == "stop output" and frame_counter.is_after_last_frame:
             print("Reached end of animation - not saving output!")
             return ()
+        if at_end == "raise error" and frame_counter.is_after_last_frame:
+            print("Reached end of animation - raising error to stop processing!")
+            raise Exception("Reached end of animation!")
         filename = self._get_new_filename(frame_counter.current_frame, prefix, digits, filetype)
         if batch_counter >= 0:
             filepath = os.path.join(directory_path, "batch_" + (str(batch_counter).zfill(4)), filename)

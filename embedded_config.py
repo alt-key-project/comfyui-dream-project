@@ -3,7 +3,7 @@ EMBEDDED_CONFIGURATION = {
         "file_extension": "mp4",
         "path": "ffmpeg",
         "arguments": ["-r", "%FPS%", "-f", "concat", "-safe", "0", "-vsync",
-                      "cfr", "-i", "%FRAMES%", "-c:v", "libx265", "-pix_fmt",
+                      "cfr", "-i", "%FRAMES%", "-c:v", "libx264", "-pix_fmt",
                       "yuv420p", "%OUTPUT%"]
     },
     "mpeg_coder": {
@@ -11,7 +11,7 @@ EMBEDDED_CONFIGURATION = {
         "bitrate_factor": 1.0,
         "max_b_frame": 2,
         "file_extension": "mp4",
-        "codec_name": "libx265"
+        "codec_name": "libx264"
     },
     "encoding": {
         "jpeg_quality": 95
