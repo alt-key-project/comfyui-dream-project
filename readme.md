@@ -147,6 +147,9 @@ Mathematical calculation node. Exposes most of the mathematical functions in the
 [math module](https://docs.python.org/3/library/math.html), mathematical operators as well as round, abs, int, 
 float, max and min.
 
+### Compare Palettes [Dream]
+Analyses two palettes and produces the quotient for each individual channel (b/a) and brightness.
+
 ### CSV Curve [Dream]
 CSV input curve where first column is frame or second and second column is value.
 
@@ -181,6 +184,15 @@ Extracts information from the frame counter.
 
 ### Frame Counter Offset [Dream]
 Adds an offset to a frame counter.
+
+### Image Brightness Adjustment [Dream]
+Adjusts the brightness of an image by a factor.
+
+### Image Color Shift [Dream]
+Allows changing the colors of an image with a multiplier for each channel (RGB).
+
+### Image Contrast Adjustment [Dream]
+Adjusts the contrast of an image by a factor.
 
 ### Image Motion [Dream]
 Node supporting zooming in/out and translating an image.

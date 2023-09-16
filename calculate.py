@@ -10,6 +10,7 @@ from .shared import hashed_as_strings
 
 class DreamCalculation:
     NODE_NAME = "Calculation"
+    ICON = "🖩"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -27,7 +28,7 @@ class DreamCalculation:
             }
         }
 
-    CATEGORY = NodeCategories.ANIMATION_CURVES
+    CATEGORY = NodeCategories.UTILS
     RETURN_TYPES = ("FLOAT", "INT")
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"

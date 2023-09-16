@@ -10,13 +10,13 @@ import folder_paths as comfy_paths
 import glob
 import numpy
 import torch
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageEnhance
 from PIL.ImageDraw import ImageDraw
 from PIL.PngImagePlugin import PngInfo
-from .embedded_config import EMBEDDED_CONFIGURATION
 from typing import Dict, Tuple, List
 
 from .dreamlogger import DreamLog
+from .embedded_config import EMBEDDED_CONFIGURATION
 
 NODE_FILE = os.path.abspath(__file__)
 DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
@@ -151,6 +151,14 @@ class DreamImage:
         self.size = self.pil_image.size
         self._draw = ImageDraw(self.pil_image)
 
+    def change_brightness(self, factor):
+        enhancer = ImageEnhance.Brightness(self.pil_image)
+        return DreamImage(pil_image=enhancer.enhance(factor))
+
+    def change_contrast(self, factor):
+        enhancer = ImageEnhance.Contrast(self.pil_image)
+        return DreamImage(pil_image=enhancer.enhance(factor))
+
     def numpy_array(self):
         return numpy.array(self.pil_image)
 
@@ -194,6 +202,15 @@ class DreamImage:
 
     def blur(self, amount):
         return DreamImage(pil_image=self.pil_image.filter(ImageFilter.GaussianBlur(amount)))
+
+    def adjust_colors(self, red_factor=1.0, green_factor=1.0, blue_factor=1.0):
+        # newRed   = 1.1*oldRed  +  0*oldGreen    +  0*oldBlue  + constant
+        # newGreen = 0*oldRed    +  0.9*OldGreen  +  0*OldBlue  + constant
+        # newBlue  = 0*oldRed    +  0*OldGreen    +  1*OldBlue  + constant
+        matrix = (red_factor, 0, 0, 0,
+                  0, green_factor, 0, 0,
+                  0, 0, blue_factor, 0)
+        return DreamImage(pil_image=self.pil_image.convert("RGB", matrix))
 
     def get_pixel(self, x, y):
         p = self.pil_image.getpixel((x, y))
@@ -360,7 +377,7 @@ class MpegEncoderUtility:
         self._logger = get_logger()
         self._enc = mpegCoder.MpegEncoder()
         bit_rate = self._calculate_bit_rate(width, height, fps, bit_rate_factor)
-        self._logger.info("Bitrate "+str(bit_rate))
+        self._logger.info("Bitrate " + str(bit_rate))
         self._enc.setParameter(
             videoPath=video_path, codecName=codec_name,
             nthread=encoding_threads, bitRate=bit_rate, width=width, height=height, widthSrc=width,
@@ -368,7 +385,7 @@ class MpegEncoderUtility:
             GOPSize=len(files), maxBframe=max_b_frame, frameRate=self._fps_to_tuple(fps))
 
     def _calculate_bit_rate(self, width: int, height: int, fps: float, bit_rate_factor: float):
-        bits_per_pixel_base = 0.075
+        bits_per_pixel_base = 0.125
         return round(max(10, float(width * height * fps * bits_per_pixel_base * bit_rate_factor * 0.001)))
 
     def encode(self):
@@ -390,6 +407,7 @@ class MpegEncoderUtility:
     def _fps_to_tuple(self, fps: float):
         def _is_almost_int(f: float):
             return abs(f - int(f)) < 0.001
+
         a = fps
         b = 1
         while not _is_almost_int(a) and b < 100:

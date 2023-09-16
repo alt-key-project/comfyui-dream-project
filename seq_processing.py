@@ -4,9 +4,7 @@ import shutil
 import subprocess
 import tempfile
 from functools import lru_cache
-
-from PIL import Image
-
+from PIL import Image as PilImage
 from .categories import NodeCategories
 from .err import on_error
 from .shared import DreamConfig, MpegEncoderUtility
@@ -16,8 +14,8 @@ CONFIG = DreamConfig()
 
 
 @lru_cache(5)
-def _load_image_cached(filename) -> Image:
-    return Image.open(filename)
+def _load_image_cached(filename):
+    return PilImage.open(filename)
 
 
 class TempFileSet:

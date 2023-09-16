@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from .categories import NodeCategories
 from .shared import *
 from .types import *
@@ -128,7 +129,7 @@ class DreamColorAlign:
     def INPUT_TYPES(cls):
         return {
             "required": SharedTypes.palette | {
-                "target_align": (RGBPalette.ID, ),
+                "target_align": (RGBPalette.ID,),
                 "alignment_factor": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 10.0, "step": 0.1}),
             }
         }
@@ -151,8 +152,8 @@ class DreamColorAlign:
         for i in range(len(palette)):
             p = palette[i]
             t = target_align[i]
-            (_, r1, g1, b1) = p.analyze()
-            (_, r2, g2, b2) = t.analyze()
+            (_, _, r1, g1, b1) = p.analyze()
+            (_, _, r2, g2, b2) = t.analyze()
 
             dr = (r2 - r1) * alignment_factor
             dg = (g2 - g1) * alignment_factor
@@ -214,9 +215,150 @@ class DreamColorShift:
         return (tuple(results),)
 
 
+class DreamImageColorShift:
+    NODE_NAME = "Image Color Shift"
+    ICON = "🖼"
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"image": ("IMAGE",),
+                         "red_multiplier": ("FLOAT", {"default": 1.0, "min": 0.0}),
+                         "green_multiplier": ("FLOAT", {"default": 1.0, "min": 0.0}),
+                         "blue_multiplier": ("FLOAT", {"default": 1.0, "min": 0.0}),
+                         },
+
+        }
+
+    CATEGORY = NodeCategories.IMAGE_COLORS
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, image, red_multiplier, green_multiplier, blue_multiplier):
+        proc = DreamImageProcessor(inputs=image)
+
+        def recolor(im: DreamImage, *a, **args):
+            return (im.adjust_colors(red_multiplier, green_multiplier, blue_multiplier),)
+
+        return proc.process(recolor)
+
+
+class DreamImageBrightness:
+    NODE_NAME = "Image Brightness Adjustment"
+    ICON = "☼"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"image": ("IMAGE",),
+                         "factor": ("FLOAT", {"default": 1.0, "min": 0.0}),
+                         },
+
+        }
+
+    CATEGORY = NodeCategories.IMAGE_COLORS
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, image, factor):
+        proc = DreamImageProcessor(inputs=image)
+
+        def change(im: DreamImage, *a, **args):
+            return (im.change_brightness(factor),)
+
+        return proc.process(change)
+
+
+class DreamImageContrast:
+    NODE_NAME = "Image Contrast Adjustment"
+    ICON = "◐"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {"image": ("IMAGE",),
+                         "factor": ("FLOAT", {"default": 1.0, "min": 0.0}),
+                         },
+
+        }
+
+    CATEGORY = NodeCategories.IMAGE_COLORS
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("image",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, image, factor):
+        proc = DreamImageProcessor(inputs=image)
+
+        def change(im: DreamImage, *a, **args):
+            return (im.change_contrast(factor),)
+
+        return proc.process(change)
+
+
+class DreamComparePalette:
+    NODE_NAME = "Compare Palettes"
+    ICON = "📊"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "a": (RGBPalette.ID,),
+                "b": (RGBPalette.ID,),
+            },
+        }
+
+    CATEGORY = NodeCategories.IMAGE_COLORS
+    RETURN_TYPES = ("FLOAT", "FLOAT", "FLOAT", "FLOAT")
+    RETURN_NAMES = (
+        "brightness_multiplier", "contrast_multiplier", "red_multiplier", "green_multiplier", "blue_multiplier")
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return ALWAYS_CHANGED_FLAG
+
+    def result(self, a, b):
+        MIN_VALUE = 1 / 255.0
+
+        brightness = list()
+        contrasts = list()
+        reds = list()
+        greens = list()
+        blues = list()
+
+        for i in range(min(len(a), len(b))):
+            (bright, ctr, red, green, blue) = a[i].analyze()
+            (bright2, ctr2, red2, green2, blue2) = b[i].analyze()
+            brightness.append(bright2 / max(MIN_VALUE, bright))
+            contrasts.append(ctr2 / max(MIN_VALUE, ctr))
+            reds.append(red2 / max(MIN_VALUE, red))
+            greens.append(green2 / max(MIN_VALUE, green))
+            blues.append(blue2 / max(MIN_VALUE, blue))
+
+        n = len(brightness)
+
+        return (sum(brightness) / n, sum(contrasts) / n, sum(reds) / n,
+                sum(greens) / n, sum(blues) / n)
+
+
 class DreamAnalyzePalette:
     NODE_NAME = "Analyze Palette"
-    NODE = "📊"
+    ICON = "📊"
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -226,8 +368,8 @@ class DreamAnalyzePalette:
         }
 
     CATEGORY = NodeCategories.IMAGE_COLORS
-    RETURN_TYPES = ("FLOAT", "FLOAT", "FLOAT", "FLOAT")
-    RETURN_NAMES = ("brightness", "redness", "greenness", "blueness")
+    RETURN_TYPES = ("FLOAT", "FLOAT", "FLOAT", "FLOAT", "FLOAT")
+    RETURN_NAMES = ("brightness", "contrast", "redness", "greenness", "blueness")
     FUNCTION = "result"
 
     @classmethod
@@ -236,12 +378,13 @@ class DreamAnalyzePalette:
 
     def result(self, palette):
         f = 1.0 / len(palette)
-        (w, r, g, b) = (0, 0, 0, 0)
+        (w, c, r, g, b) = (0, 0, 0, 0, 0)
         for p in palette:
-            (brightness, red, green, blue) = p.analyze()
+            (brightness, contrast, red, green, blue) = p.analyze()
             w += brightness
+            c += contrast
             r += red
             g += green
             b += blue
 
-        return w * f, r * f, g * f, b * f
+        return w * f, c * f, r * f, g * f, b * f

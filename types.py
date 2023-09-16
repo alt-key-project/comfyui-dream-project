@@ -26,6 +26,24 @@ class RGBPalette:
             for c in colors:
                 self._colors.append(_fix_tuple(c))
 
+    def _calculate_channel_contrast(self, c):
+        hist = list(map(lambda _: 0, range(16)))
+        for pixel in self._colors:
+            hist[pixel[c] // 16] += 1
+        s = 0
+        max_possible = (15 - 0) * (len(self) // 2) * (len(self) // 2)
+        for i in range(16):
+            for j in range(i):
+                if i != j:
+                    s += abs(i - j) * hist[i] * hist[j]
+        return s / max_possible
+
+    def _calculate_combined_contrast(self):
+        s = 0
+        for c in range(3):
+            s += self._calculate_channel_contrast(c)
+        return s / 3
+
     def analyze(self):
         total_red = 0
         total_blue = 0
@@ -38,7 +56,7 @@ class RGBPalette:
         r = float(total_red) / (255 * n)
         g = float(total_green) / (255 * n)
         b = float(total_blue) / (255 * n)
-        return ((r + g + b) / 3.0, r, g, b)
+        return ((r + g + b) / 3.0, self._calculate_combined_contrast(), r, g, b)
 
     def __len__(self):
         return len(self._colors)
@@ -73,7 +91,12 @@ class PartialPrompt:
     def add(self, text: str, weight: float):
         output = PartialPrompt()
         output._data = dict(self._data)
-        output._data[text.strip()] = weight
+        for parts in text.split(","):
+            parts = parts.strip()
+            if " " in parts:
+                output._data["(" + parts + ")"] = weight
+            else:
+                output._data[parts] = weight
         return output
 
     def is_empty(self):

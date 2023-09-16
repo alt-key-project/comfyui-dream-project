@@ -26,12 +26,13 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamFrameCountCalculator, DreamBigImageSwitch, DreamBigTextSwitch, DreamBigFloatSwitch,
                              DreamBigIntSwitch, DreamBigPaletteSwitch, DreamWeightedPromptBuilder, DreamPromptFinalizer,
                              DreamFrameCounterInfo, DreamBoolToFloat, DreamBoolToInt, DreamSawWave, DreamTriangleWave,
-                             DreamTriangleEvent, DreamSmoothEvent, DreamCalculation]
+                             DreamTriangleEvent, DreamSmoothEvent, DreamCalculation, DreamImageColorShift,
+                             DreamComparePalette, DreamImageContrast, DreamImageBrightness]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (3, 1, 1),
+    "version": (3, 2, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",
