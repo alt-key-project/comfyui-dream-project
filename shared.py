@@ -385,7 +385,7 @@ class MpegEncoderUtility:
             GOPSize=len(files), maxBframe=max_b_frame, frameRate=self._fps_to_tuple(fps))
 
     def _calculate_bit_rate(self, width: int, height: int, fps: float, bit_rate_factor: float):
-        bits_per_pixel_base = 0.125
+        bits_per_pixel_base = 0.5
         return round(max(10, float(width * height * fps * bits_per_pixel_base * bit_rate_factor * 0.001)))
 
     def encode(self):

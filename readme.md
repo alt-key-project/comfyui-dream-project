@@ -274,6 +274,12 @@ This flow demonstrates sampling image areas into palettes and generating noise f
 
 [area-sampled-noise](examples/area-sampled-noise.json)
 
+### Prompt Morphing
+
+This flow demonstrates prompt building with weights based on curves and brightness and contrast control.
+
+[prompt-morphing](examples/prompt-morphing.json)
+
 ## Known issues
 
 ### FFMPEG
