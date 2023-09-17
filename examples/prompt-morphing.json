@@ -1,6 +1,6 @@
 {
-  "last_node_id": 187,
-  "last_link_id": 327,
+  "last_node_id": 191,
+  "last_link_id": 334,
   "nodes": [
     {
       "id": 62,
@@ -50,7 +50,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 86,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -105,7 +105,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 83,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -160,7 +160,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 76,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -202,119 +202,6 @@
         "autumn, rain",
         1
       ]
-    },
-    {
-      "id": 3,
-      "type": "CLIPTextEncode",
-      "pos": [
-        2216,
-        -345
-      ],
-      "size": {
-        "0": 210,
-        "1": 54
-      },
-      "flags": {},
-      "order": 97,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 98,
-          "slot_index": 0
-        },
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 94,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            104
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 9,
-      "type": "CLIPTextEncode",
-      "pos": [
-        2220,
-        -244
-      ],
-      "size": {
-        "0": 210,
-        "1": 54
-      },
-      "flags": {},
-      "order": 99,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 99,
-          "slot_index": 0
-        },
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 95,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
-          },
-          "slot_index": 1
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            105
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 85,
@@ -392,8 +279,8 @@
       "id": 19,
       "type": "Frame Counter Offset [Dream]",
       "pos": [
-        2630.120089685328,
-        -125.26936922439663
+        2762.9266748065575,
+        -73.37708387563696
       ],
       "size": {
         "0": 342.5999755859375,
@@ -402,7 +289,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 73,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -549,7 +436,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 77,
+      "order": 76,
       "mode": 0,
       "inputs": [
         {
@@ -590,7 +477,7 @@
         26
       ],
       "flags": {},
-      "order": 101,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -627,7 +514,7 @@
         26
       ],
       "flags": {},
-      "order": 105,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -665,7 +552,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 104,
+      "order": 109,
       "mode": 0,
       "inputs": [
         {
@@ -706,7 +593,7 @@
         "1": 86
       },
       "flags": {},
-      "order": 109,
+      "order": 112,
       "mode": 0,
       "inputs": [
         {
@@ -768,7 +655,7 @@
         26
       ],
       "flags": {},
-      "order": 112,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -806,7 +693,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 114,
+      "order": 118,
       "mode": 0,
       "inputs": [
         {
@@ -882,7 +769,7 @@
         26
       ],
       "flags": {},
-      "order": 111,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -918,7 +805,7 @@
         26
       ],
       "flags": {},
-      "order": 118,
+      "order": 122,
       "mode": 0,
       "inputs": [
         {
@@ -956,7 +843,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 115,
+      "order": 119,
       "mode": 0,
       "inputs": [
         {
@@ -1032,7 +919,7 @@
         26
       ],
       "flags": {},
-      "order": 119,
+      "order": 123,
       "mode": 0,
       "inputs": [
         {
@@ -1068,7 +955,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 122,
+      "order": 124,
       "mode": 0,
       "inputs": [
         {
@@ -1122,7 +1009,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 123,
+      "order": 125,
       "mode": 0,
       "inputs": [
         {
@@ -1162,176 +1049,6 @@
       },
       "widgets_values": [
         1
-      ]
-    },
-    {
-      "id": 60,
-      "type": "Reroute",
-      "pos": [
-        1988,
-        -272
-      ],
-      "size": [
-        90.4,
-        26
-      ],
-      "flags": {},
-      "order": 94,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 89
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            95,
-            236
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 136,
-      "type": "Text to Console",
-      "pos": [
-        2213,
-        -8
-      ],
-      "size": {
-        "0": 315,
-        "1": 82
-      },
-      "flags": {},
-      "order": 100,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 236,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "forceInput": true
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Text to Console"
-      },
-      "widgets_values": [
-        "",
-        "NEG"
-      ]
-    },
-    {
-      "id": 59,
-      "type": "Reroute",
-      "pos": [
-        1986,
-        -317
-      ],
-      "size": [
-        90.4,
-        26
-      ],
-      "flags": {},
-      "order": 93,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 88
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            94,
-            237
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 137,
-      "type": "Text to Console",
-      "pos": [
-        2211,
-        -136
-      ],
-      "size": {
-        "0": 315,
-        "1": 82
-      },
-      "flags": {},
-      "order": 98,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 237,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "forceInput": true
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Text to Console"
-      },
-      "widgets_values": [
-        "",
-        "POS"
       ]
     },
     {
@@ -1689,7 +1406,7 @@
           "name": "FRAME_COUNTER",
           "type": "FRAME_COUNTER",
           "links": [
-            110
+            332
           ],
           "slot_index": 0
         }
@@ -1711,7 +1428,7 @@
         26
       ],
       "flags": {},
-      "order": 72,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -1747,7 +1464,7 @@
         26
       ],
       "flags": {},
-      "order": 80,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -1783,7 +1500,7 @@
         26
       ],
       "flags": {},
-      "order": 87,
+      "order": 89,
       "mode": 0,
       "inputs": [
         {
@@ -1823,7 +1540,7 @@
         26
       ],
       "flags": {},
-      "order": 84,
+      "order": 86,
       "mode": 0,
       "inputs": [
         {
@@ -1897,7 +1614,7 @@
         26
       ],
       "flags": {},
-      "order": 79,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -1933,7 +1650,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 124,
+      "order": 126,
       "mode": 0,
       "inputs": [
         {
@@ -2119,7 +1836,7 @@
         26
       ],
       "flags": {},
-      "order": 78,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -2445,7 +2162,7 @@
         "1": 106
       },
       "flags": {},
-      "order": 131,
+      "order": 133,
       "mode": 0,
       "inputs": [
         {
@@ -2761,43 +2478,6 @@
       }
     },
     {
-      "id": 74,
-      "type": "Reroute",
-      "pos": [
-        2671,
-        -608
-      ],
-      "size": [
-        149.2,
-        26
-      ],
-      "flags": {},
-      "order": 65,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 110
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FRAME_COUNTER",
-          "type": "FRAME_COUNTER",
-          "links": [
-            130,
-            269
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
       "id": 126,
       "type": "Reroute",
       "pos": [
@@ -2882,7 +2562,7 @@
         26
       ],
       "flags": {},
-      "order": 95,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -3238,7 +2918,7 @@
         26
       ],
       "flags": {},
-      "order": 74,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -3308,7 +2988,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 126,
+      "order": 128,
       "mode": 0,
       "inputs": [
         {
@@ -3477,7 +3157,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 128,
+      "order": 130,
       "mode": 0,
       "inputs": [
         {
@@ -3941,7 +3621,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 129,
+      "order": 131,
       "mode": 0,
       "inputs": [
         {
@@ -4009,15 +3689,15 @@
       "id": 18,
       "type": "Image Sequence Loader [Dream]",
       "pos": [
-        2841.598583984375,
-        -81.7999533081055
+        2974.4051691056047,
+        -29.907667959345808
       ],
       "size": {
         "0": 315,
         "1": 126
       },
       "flags": {},
-      "order": 81,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -4071,15 +3751,15 @@
       "id": 153,
       "type": "Reroute",
       "pos": [
-        3376.598583984375,
-        -50.79995330810549
+        3509.4051691056047,
+        1.0923320406542087
       ],
       "size": [
         82,
         26
       ],
       "flags": {},
-      "order": 89,
+      "order": 91,
       "mode": 0,
       "inputs": [
         {
@@ -4115,7 +3795,7 @@
         26
       ],
       "flags": {},
-      "order": 92,
+      "order": 95,
       "mode": 0,
       "inputs": [
         {
@@ -4152,7 +3832,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 96,
+      "order": 101,
       "mode": 0,
       "inputs": [
         {
@@ -4214,8 +3894,8 @@
       "id": 34,
       "type": "ImageScale",
       "pos": [
-        3205,
-        -53
+        3337.8065851212295,
+        -1.1077146512402969
       ],
       "size": {
         "0": 315,
@@ -4224,7 +3904,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 85,
+      "order": 87,
       "mode": 0,
       "inputs": [
         {
@@ -4494,7 +4174,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 75,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -4558,7 +4238,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 82,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
@@ -4622,7 +4302,7 @@
         "1": 126
       },
       "flags": {},
-      "order": 90,
+      "order": 88,
       "mode": 0,
       "inputs": [
         {
@@ -4814,7 +4494,7 @@
         "1": 318
       },
       "flags": {},
-      "order": 91,
+      "order": 94,
       "mode": 0,
       "inputs": [
         {
@@ -5164,7 +4844,7 @@
         "1": 166
       },
       "flags": {},
-      "order": 110,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -5262,7 +4942,7 @@
         "1": 262
       },
       "flags": {},
-      "order": 125,
+      "order": 127,
       "mode": 0,
       "inputs": [
         {
@@ -5340,7 +5020,7 @@
         "1": 436.3568115234375
       },
       "flags": {},
-      "order": 127,
+      "order": 129,
       "mode": 0,
       "inputs": [
         {
@@ -5365,7 +5045,7 @@
         26
       ],
       "flags": {},
-      "order": 88,
+      "order": 90,
       "mode": 0,
       "inputs": [
         {
@@ -5507,7 +5187,7 @@
         "1": 174
       },
       "flags": {},
-      "order": 130,
+      "order": 132,
       "mode": 0,
       "inputs": [
         {
@@ -5546,6 +5226,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -5571,7 +5257,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 132,
+      "order": 134,
       "mode": 0,
       "inputs": [
         {
@@ -5610,13 +5296,21 @@
         "1": 106
       },
       "flags": {},
-      "order": 133,
+      "order": 135,
       "mode": 0,
       "inputs": [
         {
           "name": "sequence",
           "type": "ANIMATION_SEQUENCE",
           "link": 327
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -5627,6 +5321,441 @@
         1,
         true
       ]
+    },
+    {
+      "id": 59,
+      "type": "Reroute",
+      "pos": [
+        1986,
+        -317
+      ],
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 92,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            94,
+            328
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 60,
+      "type": "Reroute",
+      "pos": [
+        1988,
+        -272
+      ],
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 93,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 89
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            95,
+            329
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 188,
+      "type": "Log File [Dream]",
+      "pos": [
+        2456,
+        19
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 104,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frame_counter",
+          "type": "FRAME_COUNTER",
+          "link": 334
+        },
+        {
+          "name": "entry_0",
+          "type": "LOG_ENTRY",
+          "link": 330
+        },
+        {
+          "name": "entry_1",
+          "type": "LOG_ENTRY",
+          "link": 331
+        },
+        {
+          "name": "entry_2",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_3",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_4",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_5",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_6",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_7",
+          "type": "LOG_ENTRY",
+          "link": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Log File [Dream]"
+      },
+      "widgets_values": [
+        "I:\\AI\\ComfyUI\\ComfyUI\\output",
+        "dreamlog.txt",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 189,
+      "type": "String to Log Entry [Dream]",
+      "pos": [
+        2065,
+        -124
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 97,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 328,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": [
+            330
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String to Log Entry [Dream]"
+      },
+      "widgets_values": [
+        "",
+        "Positive prompt"
+      ]
+    },
+    {
+      "id": 190,
+      "type": "String to Log Entry [Dream]",
+      "pos": [
+        2066,
+        -10
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 99,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 329,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": [
+            331
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String to Log Entry [Dream]"
+      },
+      "widgets_values": [
+        "",
+        "Negative prompt"
+      ]
+    },
+    {
+      "id": 74,
+      "type": "Reroute",
+      "pos": [
+        2671,
+        -608
+      ],
+      "size": [
+        149.2,
+        26
+      ],
+      "flags": {},
+      "order": 72,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 333
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FRAME_COUNTER",
+          "type": "FRAME_COUNTER",
+          "links": [
+            130,
+            269
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 191,
+      "type": "Reroute",
+      "pos": [
+        2267,
+        -614
+      ],
+      "size": [
+        149.2,
+        26
+      ],
+      "flags": {},
+      "order": 65,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 332
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FRAME_COUNTER",
+          "type": "FRAME_COUNTER",
+          "links": [
+            333,
+            334
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2179,
+        -346
+      ],
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 96,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 98,
+          "slot_index": 0
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 94,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            104
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 9,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2176,
+        -243
+      ],
+      "size": {
+        "0": 210,
+        "1": 54
+      },
+      "flags": {},
+      "order": 98,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 99,
+          "slot_index": 0
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 95,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "multiline": true
+              }
+            ]
+          },
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            105
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -5899,14 +6028,6 @@
       9,
       0,
       71,
-      0,
-      "*"
-    ],
-    [
-      110,
-      48,
-      0,
-      74,
       0,
       "*"
     ],
@@ -6381,22 +6502,6 @@
       21,
       0,
       "IMAGE"
-    ],
-    [
-      236,
-      60,
-      0,
-      136,
-      0,
-      "STRING"
-    ],
-    [
-      237,
-      59,
-      0,
-      137,
-      0,
-      "STRING"
     ],
     [
       239,
@@ -6893,6 +6998,62 @@
       187,
       0,
       "ANIMATION_SEQUENCE"
+    ],
+    [
+      328,
+      59,
+      0,
+      189,
+      0,
+      "STRING"
+    ],
+    [
+      329,
+      60,
+      0,
+      190,
+      0,
+      "STRING"
+    ],
+    [
+      330,
+      189,
+      0,
+      188,
+      1,
+      "LOG_ENTRY"
+    ],
+    [
+      331,
+      190,
+      0,
+      188,
+      2,
+      "LOG_ENTRY"
+    ],
+    [
+      332,
+      48,
+      0,
+      191,
+      0,
+      "*"
+    ],
+    [
+      333,
+      191,
+      0,
+      74,
+      0,
+      "*"
+    ],
+    [
+      334,
+      191,
+      0,
+      188,
+      0,
+      "FRAME_COUNTER"
     ]
   ],
   "groups": [
@@ -6919,8 +7080,8 @@
     {
       "title": "Previous Frame",
       "bounding": [
-        2671,
-        -240,
+        2804,
+        -188,
         748,
         385
       ],

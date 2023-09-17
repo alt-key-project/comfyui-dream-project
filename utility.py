@@ -97,10 +97,17 @@ class DreamStringToLog:
             "required": {
                 "text": ("STRING", {"default": ""}),
             },
+            "optional": {
+                "label": ("STRING", {"default": ""}),
+            }
         }
 
-    def convert(self, text):
-        return (LogEntry.new(text),)
+    def convert(self, text, **values):
+        label = values.get("label", "")
+        if label:
+            return (LogEntry.new(label + ": " + text),)
+        else:
+            return (LogEntry.new(text),)
 
 
 class DreamLogFile:
@@ -169,10 +176,10 @@ class DreamLogFile:
         for (t, text) in log_entry.get_filtered_entries(ts):
             dt = datetime.datetime.fromtimestamp(t)
             output_text.append("[frame {}/{} (~{}%), timestamp {}]\n{}".format(frame_counter.current_frame + 1,
-                                                                              frame_counter.total_frames,
-                                                                              round(frame_counter.progress * 100),
-                                                                              dt.strftime(self._get_tm_format(
-                                                                                  clock_has_24_hours)), text.rstrip()))
+                                                                               frame_counter.total_frames,
+                                                                               round(frame_counter.progress * 100),
+                                                                               dt.strftime(self._get_tm_format(
+                                                                                   clock_has_24_hours)), text.rstrip()))
             output_text.append("---")
             last_t = max(t, last_t)
         output_text = "\n".join(output_text) + "\n"
