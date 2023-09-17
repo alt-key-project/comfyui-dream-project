@@ -1,6 +1,6 @@
 {
-  "last_node_id": 191,
-  "last_link_id": 334,
+  "last_node_id": 192,
+  "last_link_id": 340,
   "nodes": [
     {
       "id": 62,
@@ -14,7 +14,7 @@
         26
       ],
       "flags": {},
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -50,7 +50,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 85,
+      "order": 86,
       "mode": 0,
       "inputs": [
         {
@@ -105,7 +105,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 82,
+      "order": 83,
       "mode": 0,
       "inputs": [
         {
@@ -160,7 +160,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 75,
+      "order": 76,
       "mode": 0,
       "inputs": [
         {
@@ -289,7 +289,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 80,
+      "order": 81,
       "mode": 0,
       "inputs": [
         {
@@ -342,7 +342,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            157
+            335
           ],
           "slot_index": 0
         }
@@ -398,7 +398,7 @@
         26
       ],
       "flags": {},
-      "order": 69,
+      "order": 70,
       "mode": 0,
       "inputs": [
         {
@@ -436,7 +436,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 76,
+      "order": 77,
       "mode": 0,
       "inputs": [
         {
@@ -461,7 +461,7 @@
       },
       "widgets_values": [
         1024,
-        133592330641116,
+        1023351604428941,
         "randomize"
       ]
     },
@@ -477,7 +477,7 @@
         26
       ],
       "flags": {},
-      "order": 105,
+      "order": 106,
       "mode": 0,
       "inputs": [
         {
@@ -514,7 +514,7 @@
         26
       ],
       "flags": {},
-      "order": 110,
+      "order": 111,
       "mode": 0,
       "inputs": [
         {
@@ -552,7 +552,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 109,
+      "order": 110,
       "mode": 0,
       "inputs": [
         {
@@ -577,7 +577,7 @@
       },
       "widgets_values": [
         1024,
-        287812031426553,
+        557841854168100,
         "randomize"
       ]
     },
@@ -593,7 +593,7 @@
         "1": 86
       },
       "flags": {},
-      "order": 112,
+      "order": 113,
       "mode": 0,
       "inputs": [
         {
@@ -655,7 +655,7 @@
         26
       ],
       "flags": {},
-      "order": 115,
+      "order": 116,
       "mode": 0,
       "inputs": [
         {
@@ -693,7 +693,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 118,
+      "order": 119,
       "mode": 0,
       "inputs": [
         {
@@ -769,7 +769,7 @@
         26
       ],
       "flags": {},
-      "order": 114,
+      "order": 115,
       "mode": 0,
       "inputs": [
         {
@@ -805,7 +805,7 @@
         26
       ],
       "flags": {},
-      "order": 122,
+      "order": 123,
       "mode": 0,
       "inputs": [
         {
@@ -843,7 +843,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 119,
+      "order": 120,
       "mode": 0,
       "inputs": [
         {
@@ -919,7 +919,7 @@
         26
       ],
       "flags": {},
-      "order": 123,
+      "order": 124,
       "mode": 0,
       "inputs": [
         {
@@ -955,7 +955,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 124,
+      "order": 125,
       "mode": 0,
       "inputs": [
         {
@@ -1009,7 +1009,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 125,
+      "order": 126,
       "mode": 0,
       "inputs": [
         {
@@ -1063,7 +1063,7 @@
         26
       ],
       "flags": {},
-      "order": 64,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -1099,7 +1099,7 @@
         "1": 82
       },
       "flags": {},
-      "order": 62,
+      "order": 63,
       "mode": 0,
       "inputs": [
         {
@@ -1139,7 +1139,7 @@
         26
       ],
       "flags": {},
-      "order": 107,
+      "order": 108,
       "mode": 0,
       "inputs": [
         {
@@ -1247,7 +1247,7 @@
         26
       ],
       "flags": {},
-      "order": 39,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -1283,7 +1283,7 @@
         26
       ],
       "flags": {},
-      "order": 26,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -1319,7 +1319,7 @@
         26
       ],
       "flags": {},
-      "order": 41,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -1381,42 +1381,6 @@
       }
     },
     {
-      "id": 48,
-      "type": "Reroute",
-      "pos": [
-        1361,
-        -612
-      ],
-      "size": [
-        149.2,
-        26
-      ],
-      "flags": {},
-      "order": 58,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 71
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FRAME_COUNTER",
-          "type": "FRAME_COUNTER",
-          "links": [
-            332
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
       "id": 82,
       "type": "Reroute",
       "pos": [
@@ -1428,7 +1392,7 @@
         26
       ],
       "flags": {},
-      "order": 79,
+      "order": 80,
       "mode": 0,
       "inputs": [
         {
@@ -1464,7 +1428,7 @@
         26
       ],
       "flags": {},
-      "order": 83,
+      "order": 84,
       "mode": 0,
       "inputs": [
         {
@@ -1500,7 +1464,7 @@
         26
       ],
       "flags": {},
-      "order": 89,
+      "order": 90,
       "mode": 0,
       "inputs": [
         {
@@ -1540,7 +1504,7 @@
         26
       ],
       "flags": {},
-      "order": 86,
+      "order": 87,
       "mode": 0,
       "inputs": [
         {
@@ -1577,7 +1541,7 @@
         26
       ],
       "flags": {},
-      "order": 71,
+      "order": 72,
       "mode": 0,
       "inputs": [
         {
@@ -1614,7 +1578,7 @@
         26
       ],
       "flags": {},
-      "order": 78,
+      "order": 79,
       "mode": 0,
       "inputs": [
         {
@@ -1650,7 +1614,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 126,
+      "order": 127,
       "mode": 0,
       "inputs": [
         {
@@ -1691,7 +1655,7 @@
         26
       ],
       "flags": {},
-      "order": 37,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -1727,7 +1691,7 @@
         26
       ],
       "flags": {},
-      "order": 38,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -1800,7 +1764,7 @@
         26
       ],
       "flags": {},
-      "order": 70,
+      "order": 71,
       "mode": 0,
       "inputs": [
         {
@@ -1836,7 +1800,7 @@
         26
       ],
       "flags": {},
-      "order": 77,
+      "order": 78,
       "mode": 0,
       "inputs": [
         {
@@ -1872,7 +1836,7 @@
         26
       ],
       "flags": {},
-      "order": 24,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -2054,7 +2018,7 @@
         26
       ],
       "flags": {},
-      "order": 61,
+      "order": 62,
       "mode": 0,
       "inputs": [
         {
@@ -2090,7 +2054,7 @@
         26
       ],
       "flags": {},
-      "order": 120,
+      "order": 121,
       "mode": 0,
       "inputs": [
         {
@@ -2126,7 +2090,7 @@
         26
       ],
       "flags": {},
-      "order": 121,
+      "order": 122,
       "mode": 0,
       "inputs": [
         {
@@ -2162,7 +2126,7 @@
         "1": 106
       },
       "flags": {},
-      "order": 133,
+      "order": 134,
       "mode": 0,
       "inputs": [
         {
@@ -2203,7 +2167,7 @@
         26
       ],
       "flags": {},
-      "order": 116,
+      "order": 117,
       "mode": 0,
       "inputs": [
         {
@@ -2239,7 +2203,7 @@
         26
       ],
       "flags": {},
-      "order": 117,
+      "order": 118,
       "mode": 0,
       "inputs": [
         {
@@ -2275,7 +2239,7 @@
         26
       ],
       "flags": {},
-      "order": 102,
+      "order": 104,
       "mode": 0,
       "inputs": [
         {
@@ -2311,7 +2275,7 @@
         26
       ],
       "flags": {},
-      "order": 103,
+      "order": 105,
       "mode": 0,
       "inputs": [
         {
@@ -2348,7 +2312,7 @@
         26
       ],
       "flags": {},
-      "order": 108,
+      "order": 109,
       "mode": 0,
       "inputs": [
         {
@@ -2381,7 +2345,7 @@
         26
       ],
       "flags": {},
-      "order": 106,
+      "order": 107,
       "mode": 0,
       "inputs": [
         {
@@ -2489,7 +2453,7 @@
         26
       ],
       "flags": {},
-      "order": 42,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -2514,43 +2478,6 @@
       }
     },
     {
-      "id": 97,
-      "type": "Reroute",
-      "pos": [
-        2710,
-        460
-      ],
-      "size": [
-        90.4,
-        26
-      ],
-      "flags": {},
-      "order": 29,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 157
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            218,
-            257
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
       "id": 155,
       "type": "Reroute",
       "pos": [
@@ -2562,7 +2489,7 @@
         26
       ],
       "flags": {},
-      "order": 100,
+      "order": 102,
       "mode": 0,
       "inputs": [
         {
@@ -2675,7 +2602,7 @@
         "1": 100
       },
       "flags": {},
-      "order": 68,
+      "order": 69,
       "mode": 0,
       "inputs": [
         {
@@ -2844,7 +2771,7 @@
         26
       ],
       "flags": {},
-      "order": 66,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -2918,7 +2845,7 @@
         26
       ],
       "flags": {},
-      "order": 73,
+      "order": 74,
       "mode": 0,
       "inputs": [
         {
@@ -2988,7 +2915,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 128,
+      "order": 129,
       "mode": 0,
       "inputs": [
         {
@@ -3121,7 +3048,7 @@
         26
       ],
       "flags": {},
-      "order": 63,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -3157,7 +3084,7 @@
         "1": 46
       },
       "flags": {},
-      "order": 130,
+      "order": 131,
       "mode": 0,
       "inputs": [
         {
@@ -3199,7 +3126,7 @@
         26
       ],
       "flags": {},
-      "order": 53,
+      "order": 61,
       "mode": 0,
       "inputs": [
         {
@@ -3621,7 +3548,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 131,
+      "order": 132,
       "mode": 0,
       "inputs": [
         {
@@ -3697,7 +3624,7 @@
         "1": 126
       },
       "flags": {},
-      "order": 84,
+      "order": 85,
       "mode": 0,
       "inputs": [
         {
@@ -3748,42 +3675,6 @@
       ]
     },
     {
-      "id": 153,
-      "type": "Reroute",
-      "pos": [
-        3509.4051691056047,
-        1.0923320406542087
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 91,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 270
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            271
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
       "id": 154,
       "type": "Reroute",
       "pos": [
@@ -3795,7 +3686,7 @@
         26
       ],
       "flags": {},
-      "order": 95,
+      "order": 98,
       "mode": 0,
       "inputs": [
         {
@@ -3832,7 +3723,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 101,
+      "order": 103,
       "mode": 0,
       "inputs": [
         {
@@ -3904,7 +3795,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 87,
+      "order": 88,
       "mode": 0,
       "inputs": [
         {
@@ -4005,7 +3896,7 @@
         "Node name for S&R": "Build Prompt [Dream]"
       },
       "widgets_values": [
-        "mountain landscape, photo, professional",
+        "mountain landscape, photo, professional, realistic",
         0.8
       ],
       "color": "#232",
@@ -4110,7 +4001,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 67,
+      "order": 68,
       "mode": 0,
       "inputs": [
         {
@@ -4174,7 +4065,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 74,
+      "order": 75,
       "mode": 0,
       "inputs": [
         {
@@ -4238,7 +4129,7 @@
         "1": 150
       },
       "flags": {},
-      "order": 81,
+      "order": 82,
       "mode": 0,
       "inputs": [
         {
@@ -4291,56 +4182,6 @@
       ]
     },
     {
-      "id": 38,
-      "type": "Finalize Prompt [Dream]",
-      "pos": [
-        1610,
-        -310
-      ],
-      "size": {
-        "0": 315,
-        "1": 126
-      },
-      "flags": {},
-      "order": 88,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "partial_prompt",
-          "type": "PARTIAL_PROMPT",
-          "link": 87
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "STRING",
-          "links": [
-            88
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "negative",
-          "type": "STRING",
-          "links": [
-            89
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Finalize Prompt [Dream]"
-      },
-      "widgets_values": [
-        "by_abs_max",
-        1.5,
-        1.25
-      ]
-    },
-    {
       "id": 39,
       "type": "Build Prompt [Dream]",
       "pos": [
@@ -4376,7 +4217,7 @@
         "Node name for S&R": "Build Prompt [Dream]"
       },
       "widgets_values": [
-        "logo, text, watermark, signature, signed, frame, signed",
+        "logo, text, watermark, signature, signed, frame, signed, pumpkin",
         -0.8
       ],
       "color": "#322",
@@ -4394,7 +4235,7 @@
         "1": 166
       },
       "flags": {},
-      "order": 113,
+      "order": 114,
       "mode": 0,
       "inputs": [
         {
@@ -4494,7 +4335,7 @@
         "1": 318
       },
       "flags": {},
-      "order": 94,
+      "order": 97,
       "mode": 0,
       "inputs": [
         {
@@ -4568,150 +4409,6 @@
       ]
     },
     {
-      "id": 179,
-      "type": "Reroute",
-      "pos": [
-        5409,
-        574
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 36,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 321,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            319
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 181,
-      "type": "Reroute",
-      "pos": [
-        1174.9588037546873,
-        597.6795042002306
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 23,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 322,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            321
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 180,
-      "type": "Reroute",
-      "pos": [
-        5463,
-        619
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 40,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 323,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            320
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 183,
-      "type": "Reroute",
-      "pos": [
-        1075.4022158880746,
-        648.7148680774587
-      ],
-      "size": [
-        82,
-        26
-      ],
-      "flags": {},
-      "order": 27,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 324,
-          "slot_index": 0
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            323
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": true,
-        "horizontal": false
-      }
-    },
-    {
       "id": 45,
       "type": "LoadImage",
       "pos": [
@@ -4751,38 +4448,6 @@
       ]
     },
     {
-      "id": 182,
-      "type": "Float Input [Dream]",
-      "pos": [
-        -828,
-        712
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            322
-          ],
-          "shape": 3
-        }
-      ],
-      "title": "✍ Low Denoise",
-      "properties": {
-        "Node name for S&R": "Float Input [Dream]"
-      },
-      "widgets_values": [
-        0.6
-      ]
-    },
-    {
       "id": 5,
       "type": "CheckpointLoaderSimple",
       "pos": [
@@ -4794,7 +4459,7 @@
         "1": 98
       },
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "outputs": [
         {
@@ -4833,104 +4498,6 @@
       ]
     },
     {
-      "id": 142,
-      "type": "ControlNetApplyAdvanced",
-      "pos": [
-        3986,
-        -3
-      ],
-      "size": {
-        "0": 315,
-        "1": 166
-      },
-      "flags": {},
-      "order": 111,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 253
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 254
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 316,
-          "slot_index": 2
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 318
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            255
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            256
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ControlNetApplyAdvanced"
-      },
-      "widgets_values": [
-        0.7,
-        0,
-        1
-      ]
-    },
-    {
-      "id": 184,
-      "type": "Float Input [Dream]",
-      "pos": [
-        -830,
-        814
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            324
-          ],
-          "shape": 3
-        }
-      ],
-      "title": "✍ High Denoise",
-      "properties": {
-        "Node name for S&R": "Float Input [Dream]"
-      },
-      "widgets_values": [
-        0.75
-      ]
-    },
-    {
       "id": 6,
       "type": "KSampler",
       "pos": [
@@ -4942,7 +4509,7 @@
         "1": 262
       },
       "flags": {},
-      "order": 127,
+      "order": 128,
       "mode": 0,
       "inputs": [
         {
@@ -4999,7 +4566,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        733887232633230,
+        1051311018316524,
         "randomize",
         30,
         7.5,
@@ -5020,7 +4587,7 @@
         "1": 436.3568115234375
       },
       "flags": {},
-      "order": 129,
+      "order": 130,
       "mode": 0,
       "inputs": [
         {
@@ -5045,7 +4612,7 @@
         26
       ],
       "flags": {},
-      "order": 90,
+      "order": 91,
       "mode": 0,
       "inputs": [
         {
@@ -5081,7 +4648,7 @@
         "1": 154
       },
       "flags": {},
-      "order": 28,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -5151,7 +4718,7 @@
         "1": 154
       },
       "flags": {},
-      "order": 14,
+      "order": 12,
       "mode": 0,
       "outputs": [
         {
@@ -5187,7 +4754,7 @@
         "1": 174
       },
       "flags": {},
-      "order": 132,
+      "order": 133,
       "mode": 0,
       "inputs": [
         {
@@ -5257,7 +4824,7 @@
         "1": 58
       },
       "flags": {},
-      "order": 134,
+      "order": 135,
       "mode": 0,
       "inputs": [
         {
@@ -5296,7 +4863,7 @@
         "1": 106
       },
       "flags": {},
-      "order": 135,
+      "order": 136,
       "mode": 0,
       "inputs": [
         {
@@ -5334,7 +4901,7 @@
         26
       ],
       "flags": {},
-      "order": 92,
+      "order": 93,
       "mode": 0,
       "inputs": [
         {
@@ -5348,8 +4915,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            94,
-            328
+            94
           ],
           "slot_index": 0
         }
@@ -5373,7 +4939,7 @@
         26
       ],
       "flags": {},
-      "order": 93,
+      "order": 95,
       "mode": 0,
       "inputs": [
         {
@@ -5387,8 +4953,7 @@
           "name": "STRING",
           "type": "STRING",
           "links": [
-            95,
-            329
+            95
           ],
           "slot_index": 0
         }
@@ -5399,176 +4964,6 @@
       },
       "color": "#322",
       "bgcolor": "#533"
-    },
-    {
-      "id": 188,
-      "type": "Log File [Dream]",
-      "pos": [
-        2456,
-        19
-      ],
-      "size": {
-        "0": 315,
-        "1": 314
-      },
-      "flags": {},
-      "order": 104,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "frame_counter",
-          "type": "FRAME_COUNTER",
-          "link": 334
-        },
-        {
-          "name": "entry_0",
-          "type": "LOG_ENTRY",
-          "link": 330
-        },
-        {
-          "name": "entry_1",
-          "type": "LOG_ENTRY",
-          "link": 331
-        },
-        {
-          "name": "entry_2",
-          "type": "LOG_ENTRY",
-          "link": null
-        },
-        {
-          "name": "entry_3",
-          "type": "LOG_ENTRY",
-          "link": null
-        },
-        {
-          "name": "entry_4",
-          "type": "LOG_ENTRY",
-          "link": null
-        },
-        {
-          "name": "entry_5",
-          "type": "LOG_ENTRY",
-          "link": null
-        },
-        {
-          "name": "entry_6",
-          "type": "LOG_ENTRY",
-          "link": null
-        },
-        {
-          "name": "entry_7",
-          "type": "LOG_ENTRY",
-          "link": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Log File [Dream]"
-      },
-      "widgets_values": [
-        "I:\\AI\\ComfyUI\\ComfyUI\\output",
-        "dreamlog.txt",
-        true,
-        true,
-        true
-      ]
-    },
-    {
-      "id": 189,
-      "type": "String to Log Entry [Dream]",
-      "pos": [
-        2065,
-        -124
-      ],
-      "size": [
-        315,
-        82
-      ],
-      "flags": {},
-      "order": 97,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 328,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "default": ""
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "log_entry",
-          "type": "LOG_ENTRY",
-          "links": [
-            330
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "String to Log Entry [Dream]"
-      },
-      "widgets_values": [
-        "",
-        "Positive prompt"
-      ]
-    },
-    {
-      "id": 190,
-      "type": "String to Log Entry [Dream]",
-      "pos": [
-        2066,
-        -10
-      ],
-      "size": [
-        315,
-        82
-      ],
-      "flags": {},
-      "order": 99,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 329,
-          "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "default": ""
-              }
-            ]
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "log_entry",
-          "type": "LOG_ENTRY",
-          "links": [
-            331
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "String to Log Entry [Dream]"
-      },
-      "widgets_values": [
-        "",
-        "Negative prompt"
-      ]
     },
     {
       "id": 74,
@@ -5582,7 +4977,7 @@
         26
       ],
       "flags": {},
-      "order": 72,
+      "order": 73,
       "mode": 0,
       "inputs": [
         {
@@ -5619,7 +5014,7 @@
         26
       ],
       "flags": {},
-      "order": 65,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -5633,8 +5028,7 @@
           "name": "FRAME_COUNTER",
           "type": "FRAME_COUNTER",
           "links": [
-            333,
-            334
+            333
           ],
           "slot_index": 0
         }
@@ -5656,7 +5050,7 @@
         "1": 54
       },
       "flags": {},
-      "order": 96,
+      "order": 99,
       "mode": 0,
       "inputs": [
         {
@@ -5712,7 +5106,7 @@
         "1": 54
       },
       "flags": {},
-      "order": 98,
+      "order": 100,
       "mode": 0,
       "inputs": [
         {
@@ -5756,6 +5150,663 @@
       ],
       "color": "#322",
       "bgcolor": "#533"
+    },
+    {
+      "id": 97,
+      "type": "Reroute",
+      "pos": [
+        2710,
+        460
+      ],
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 337
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            218,
+            257
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 153,
+      "type": "Reroute",
+      "pos": [
+        3463,
+        179
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 92,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 270
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            271
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 181,
+      "type": "Reroute",
+      "pos": [
+        1193,
+        576
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 322,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            321
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 183,
+      "type": "Reroute",
+      "pos": [
+        1089,
+        613
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 324,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            323
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 180,
+      "type": "Reroute",
+      "pos": [
+        5491,
+        588
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 323,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            320
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 179,
+      "type": "Reroute",
+      "pos": [
+        5384,
+        560
+      ],
+      "size": [
+        82,
+        26
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 321,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            319
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 182,
+      "type": "Float Input [Dream]",
+      "pos": [
+        -828,
+        712
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            322
+          ],
+          "shape": 3
+        }
+      ],
+      "title": "✍ Low Denoise",
+      "properties": {
+        "Node name for S&R": "Float Input [Dream]"
+      },
+      "widgets_values": [
+        0.55
+      ]
+    },
+    {
+      "id": 142,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        3986,
+        -3
+      ],
+      "size": {
+        "0": 315,
+        "1": 166
+      },
+      "flags": {},
+      "order": 112,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 253
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 254
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 316,
+          "slot_index": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 318
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            255
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            256
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        0.75,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 184,
+      "type": "Float Input [Dream]",
+      "pos": [
+        -830,
+        814
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            324
+          ],
+          "shape": 3
+        }
+      ],
+      "title": "✍ High Denoise",
+      "properties": {
+        "Node name for S&R": "Float Input [Dream]"
+      },
+      "widgets_values": [
+        0.75
+      ]
+    },
+    {
+      "id": 38,
+      "type": "Finalize Prompt [Dream]",
+      "pos": [
+        1658,
+        -311
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 89,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "partial_prompt",
+          "type": "PARTIAL_PROMPT",
+          "link": 87
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "STRING",
+          "links": [
+            88,
+            338
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": [
+            89,
+            339
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Finalize Prompt [Dream]"
+      },
+      "widgets_values": [
+        "by_abs_max",
+        1.5,
+        1.25
+      ]
+    },
+    {
+      "id": 189,
+      "type": "String to Log Entry [Dream]",
+      "pos": [
+        1318,
+        -132
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 94,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 338,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": [
+            330
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String to Log Entry [Dream]"
+      },
+      "widgets_values": [
+        "",
+        "Positive prompt"
+      ]
+    },
+    {
+      "id": 190,
+      "type": "String to Log Entry [Dream]",
+      "pos": [
+        1240,
+        7
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 96,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 339,
+          "widget": {
+            "name": "text",
+            "config": [
+              "STRING",
+              {
+                "default": ""
+              }
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": [
+            331
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "String to Log Entry [Dream]"
+      },
+      "widgets_values": [
+        "",
+        "Negative prompt"
+      ]
+    },
+    {
+      "id": 188,
+      "type": "Log File [Dream]",
+      "pos": [
+        1676,
+        -142
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 101,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frame_counter",
+          "type": "FRAME_COUNTER",
+          "link": 340
+        },
+        {
+          "name": "entry_0",
+          "type": "LOG_ENTRY",
+          "link": 330
+        },
+        {
+          "name": "entry_1",
+          "type": "LOG_ENTRY",
+          "link": 331
+        },
+        {
+          "name": "entry_2",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_3",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_4",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_5",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_6",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "entry_7",
+          "type": "LOG_ENTRY",
+          "link": null
+        },
+        {
+          "name": "log_directory",
+          "type": "STRING",
+          "link": 336,
+          "widget": {
+            "name": "log_directory",
+            "config": [
+              "STRING",
+              {
+                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Log File [Dream]"
+      },
+      "widgets_values": [
+        "I:\\AI\\ComfyUI\\ComfyUI\\output",
+        "dreamlog.txt",
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 48,
+      "type": "Reroute",
+      "pos": [
+        1361,
+        -612
+      ],
+      "size": [
+        149.2,
+        26
+      ],
+      "flags": {},
+      "order": 58,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FRAME_COUNTER",
+          "type": "FRAME_COUNTER",
+          "links": [
+            332,
+            340
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 192,
+      "type": "Reroute",
+      "pos": [
+        1512,
+        462
+      ],
+      "size": [
+        90.4,
+        26
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 335
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            336,
+            337
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": true,
+        "horizontal": false
+      }
     }
   ],
   "links": [
@@ -6220,14 +6271,6 @@
       78,
       0,
       96,
-      0,
-      "*"
-    ],
-    [
-      157,
-      96,
-      0,
-      97,
       0,
       "*"
     ],
@@ -7000,22 +7043,6 @@
       "ANIMATION_SEQUENCE"
     ],
     [
-      328,
-      59,
-      0,
-      189,
-      0,
-      "STRING"
-    ],
-    [
-      329,
-      60,
-      0,
-      190,
-      0,
-      "STRING"
-    ],
-    [
       330,
       189,
       0,
@@ -7048,8 +7075,48 @@
       "*"
     ],
     [
-      334,
-      191,
+      335,
+      96,
+      0,
+      192,
+      0,
+      "*"
+    ],
+    [
+      336,
+      192,
+      0,
+      188,
+      9,
+      "STRING"
+    ],
+    [
+      337,
+      192,
+      0,
+      97,
+      0,
+      "*"
+    ],
+    [
+      338,
+      38,
+      0,
+      189,
+      0,
+      "STRING"
+    ],
+    [
+      339,
+      38,
+      1,
+      190,
+      0,
+      "STRING"
+    ],
+    [
+      340,
+      48,
       0,
       188,
       0,
@@ -7062,8 +7129,8 @@
       "bounding": [
         -310,
         -456,
-        2344,
-        591
+        2356,
+        646
       ],
       "color": "#b58b2a"
     },
