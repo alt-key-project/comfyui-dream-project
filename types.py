@@ -2,7 +2,7 @@
 import random
 import time
 
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 from .shared import DreamImage
 
@@ -131,6 +131,35 @@ class PartialPrompt:
             if w <= -0.0001:
                 neg.append("({}:{:.3f})".format(text, min(clamp, -w)))
         return ", ".join(pos), ", ".join(neg)
+
+
+class LogEntry:
+    ID = "LOG_ENTRY"
+
+    @classmethod
+    def new(cls, text):
+        return LogEntry([(time.time(), text)])
+
+    def __init__(self, data: List[Tuple[float, str]] = None):
+        if data is None:
+            self._data = list()
+        else:
+            self._data = list(data)
+
+    def add(self, text: str):
+        new_data = list(self._data)
+        new_data.append((time.time(), text))
+        return LogEntry(new_data)
+
+    def merge(self, log_entry):
+        new_data = list(self._data)
+        new_data.extend(log_entry._data)
+        return LogEntry(new_data)
+
+    def get_filtered_entries(self, t: float):
+        for d in sorted(self._data):
+            if d[0] > t:
+                yield d
 
 
 class FrameCounter:

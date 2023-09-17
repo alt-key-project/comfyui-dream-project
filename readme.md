@@ -169,6 +169,9 @@ Post processing for animation sequences using the python module mpegCoder with f
 ### File Count [Dream]
 Finds the number of files in a directory matching specified patterns.
 
+### Float/Int/string to Log Entry [Dream]
+Logging for float/int/string values.
+
 ### Frame Count Calculator [Dream]
 Simple utility to calculate number of frames based on time and framerate.
 
@@ -208,6 +211,15 @@ Saves a frame to a directory.
 
 ### Image Sequence Tweening [Dream]
 Post processing for animation sequences generating blended in-between frames.
+
+### Laboratory [Dream]
+Super-charged number generator for experimenting with ComfyUI.
+
+### Log Entry Joiner [Dream]
+Merges multiple log entries (reduces noodling).
+
+### Log File [Dream]
+The text logging facility for the Dream Project Animation nodes.
 
 ### Linear Curve [Dream]
 Linear interpolation between two values over the full animation.

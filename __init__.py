@@ -14,6 +14,7 @@ from .seq_processing import *
 from .switches import *
 from .utility import *
 from .calculate import *
+from .laboratory import *
 
 _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBeatCurve, DreamFrameDimensions,
                              DreamImageMotion, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift,
@@ -27,12 +28,13 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamBigIntSwitch, DreamBigPaletteSwitch, DreamWeightedPromptBuilder, DreamPromptFinalizer,
                              DreamFrameCounterInfo, DreamBoolToFloat, DreamBoolToInt, DreamSawWave, DreamTriangleWave,
                              DreamTriangleEvent, DreamSmoothEvent, DreamCalculation, DreamImageColorShift,
-                             DreamComparePalette, DreamImageContrast, DreamImageBrightness]
+                             DreamComparePalette, DreamImageContrast, DreamImageBrightness, DreamLogFile,
+                             DreamLaboratory, DreamStringToLog, DreamIntToLog, DreamFloatToLog, DreamJoinLog]
 _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (3, 2, 1),
+    "version": (4, 0, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",

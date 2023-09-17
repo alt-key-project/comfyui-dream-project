@@ -4,7 +4,9 @@ import shutil
 import subprocess
 import tempfile
 from functools import lru_cache
+
 from PIL import Image as PilImage
+
 from .categories import NodeCategories
 from .err import on_error
 from .shared import DreamConfig, MpegEncoderUtility
@@ -134,8 +136,8 @@ class DreamVideoEncoderMpegCoder:
     NODE_NAME = "Video Encoder (mpegCoder)"
     ICON = "🎬"
     CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
+    RETURN_TYPES = (LogEntry.ID,)
+    RETURN_NAMES = ("log_entry",)
     OUTPUT_NODE = True
     FUNCTION = "encode"
 
@@ -162,9 +164,10 @@ class DreamVideoEncoderMpegCoder:
 
     def encode(self, sequence, name, framerate_factor, remove_images):
         if not sequence.is_defined:
-            return ()
+            return (LogEntry([]),)
         config = DreamConfig()
         filename = _make_video_filename(name, config.get("mpeg_coder.file_extension", "mp4"))
+        log_entry = LogEntry([])
         for batch_num in sequence.batches:
             try:
                 images = list(sequence.get_image_files_of_batch(batch_num))
@@ -180,13 +183,14 @@ class DreamVideoEncoderMpegCoder:
                                          fps=sequence.fps * framerate_factor,
                                          codec_name=config.get("mpeg_coder.codec_name", "libx265"))
                 enc.encode()
+                log_entry = log_entry.add("Generated video '{}'".format(filename))
                 if remove_images:
                     for imagepath in images:
                         if os.path.isfile(imagepath):
                             os.unlink(imagepath)
             except Exception as e:
                 on_error(self.__class__, str(e))
-        return ()
+        return (log_entry,)
 
 
 class DreamVideoEncoder:
@@ -205,8 +209,8 @@ class DreamVideoEncoder:
         }
 
     CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
-    RETURN_TYPES = ()
-    RETURN_NAMES = ()
+    RETURN_TYPES = (LogEntry.ID,)
+    RETURN_NAMES = ("log_entry",)
     OUTPUT_NODE = True
     FUNCTION = "encode"
 
@@ -228,24 +232,28 @@ class DreamVideoEncoder:
     def generate_video(self, files, fps, filename, config):
         filename = self._find_free_filename(filename, os.path.dirname(files[0]))
         _ffmpeg(config, files, fps, filename)
+        return filename
 
     def encode(self, sequence: AnimationSequence, name: str, remove_images, framerate_factor):
         if not sequence.is_defined:
-            return ()
+            return (LogEntry([]),)
 
         config = DreamConfig()
         filename = _make_video_filename(name, config.get("ffmpeg.file_extension", "mp4"))
+        log_entry = LogEntry([])
         for batch_num in sequence.batches:
             try:
                 images = list(sequence.get_image_files_of_batch(batch_num))
-                self.generate_video(images, sequence.fps * framerate_factor, filename, config)
+                actual_filename = self.generate_video(images, sequence.fps * framerate_factor, filename, config)
+
+                log_entry = log_entry.add("Generated video '{}'".format(actual_filename))
                 if remove_images:
                     for imagepath in images:
                         if os.path.isfile(imagepath):
                             os.unlink(imagepath)
             except Exception as e:
                 on_error(self.__class__, str(e))
-        return ()
+        return (log_entry,)
 
 
 class DreamSequenceTweening:

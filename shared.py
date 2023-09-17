@@ -332,9 +332,9 @@ class DreamStateStore:
 
 
 class DreamStateFile:
-    def __init__(self, state_file_path=os.path.join(TEMP_PATH, "state.json")):
-        self._dirname = os.path.dirname(state_file_path)
-        self._filepath = state_file_path
+    def __init__(self, state_collection_name="state"):
+        self._filepath = os.path.join(TEMP_PATH, state_collection_name+".json")
+        self._dirname = os.path.dirname(self._filepath)
         if not os.path.isdir(self._dirname):
             os.makedirs(self._dirname)
         if not os.path.isfile(self._filepath):
@@ -358,7 +358,6 @@ class DreamStateFile:
             self._data[key] = value
         with open(self._filepath, "w", encoding="utf-8") as f:
             json.dump(self._data, f)
-        print("* {} -> {}".format(key, value))
         return previous
 
 
