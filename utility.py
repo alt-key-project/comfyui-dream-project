@@ -133,7 +133,7 @@ class DreamStringTokenizer:
         if separator is None or separator == "":
             separator = " "
         parts = text.split(sep=separator)
-        return (parts[max(0, selected) % len(parts)].strip(),)
+        return (parts[abs(selected) % len(parts)].strip(),)
 
 
 class DreamLogFile:
