@@ -255,6 +255,9 @@ Simple sine wave curve.
 ### Smooth Event Curve [Dream]
 Single event/peak curve with a slight bell-shape. 
 
+### String Tokenizer [Dream]
+Splits a text into tokens by a separator and returns one of the tokens based on a given index.
+
 ### Triangle Curve [Dream]
 Triangle wave curve. 
 

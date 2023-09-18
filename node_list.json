@@ -49,6 +49,7 @@
   "Sine Curve [Dream]": "Simple sine wave curve",
   "Smooth Event Curve [Dream]": "Single event/peak curve with a slight bell-shape",
   "String Input [Dream]": "String input (until primitive routing issues are solved)",
+  "String Tokenizer [Dream]": "Extract individual words or phrases from a text as tokens",
   "String to Log Entry [Dream]": "Use any string as a log entry",
   "Text Input [Dream]": "Multiline string input (until primitive routing issues are solved)",
   "Triangle Curve [Dream]": "Triangle wave curve",

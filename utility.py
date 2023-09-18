@@ -110,6 +110,32 @@ class DreamStringToLog:
             return (LogEntry.new(text),)
 
 
+class DreamStringTokenizer:
+    NODE_NAME = "String Tokenizer"
+    ICON = "🪙"
+    OUTPUT_NODE = True
+    CATEGORY = NodeCategories.UTILS
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("token",)
+    FUNCTION = "exec"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "text": ("STRING", {"default": "", "multiline": True}),
+                "separator": ("STRING", {"default": ","}),
+                "selected": ("INT", {"default": 0, "min": 0})
+            },
+        }
+
+    def exec(self, text: str, separator: str, selected: int):
+        if separator is None or separator == "":
+            separator = " "
+        parts = text.split(sep=separator)
+        return (parts[max(0, selected) % len(parts)].strip(),)
+
+
 class DreamLogFile:
     NODE_NAME = "Log File"
     ICON = "🗎"
