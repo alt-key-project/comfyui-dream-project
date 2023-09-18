@@ -316,7 +316,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        1383,
+        624,
         "randomize"
       ]
     },
@@ -508,7 +508,7 @@
       "widgets_values": [
         "watercolor, anime, ink sketch, photo, oil painting, graffiti, glass mosaic, charcoal art, comic book art, impressionist, old photo, pixel art, ",
         ",",
-        306
+        1360
       ]
     },
     {
@@ -546,7 +546,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        129,
+        1787,
         "randomize"
       ]
     },
@@ -597,9 +597,9 @@
         "Node name for S&R": "String Tokenizer [Dream]"
       },
       "widgets_values": [
-        "christmas, summer, winter, easter, halloween, superbowl, world cup, county fair, circus, market, celebration, birthday party, rave",
+        "christmas, summer, winter, easter, halloween, superbowl, world cup, county fair, circus, market, celebration, birthday party, rave, horror movie, slapstick",
         ",",
-        1531
+        207
       ]
     },
     {
@@ -655,45 +655,6 @@
       ]
     },
     {
-      "id": 65,
-      "type": "PrimitiveNode",
-      "pos": [
-        1133,
-        269
-      ],
-      "size": {
-        "0": 210,
-        "1": 82
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            85
-          ],
-          "widget": {
-            "name": "selected",
-            "config": [
-              "INT",
-              {
-                "default": 0,
-                "min": 0
-              }
-            ]
-          }
-        }
-      ],
-      "properties": {},
-      "widgets_values": [
-        0,
-        "fixed"
-      ]
-    },
-    {
       "id": 58,
       "type": "String Tokenizer [Dream]",
       "pos": [
@@ -742,7 +703,7 @@
       "widgets_values": [
         "horse, cat, dog, chicken, monkey, bird, elephant, pig, kitten, puppy, whale, goat, fish, tiger, teddybear, panda, rabbit",
         ",",
-        497
+        1886
       ]
     },
     {
@@ -780,7 +741,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        227,
+        1576,
         "randomize"
       ]
     },
@@ -833,7 +794,7 @@
       "widgets_values": [
         "in a house, on a field, in a tree, in a shopping mall, in a car, on a river boat, in the forest, in the ocean, on a mountain",
         ",",
-        1855
+        581
       ]
     },
     {
@@ -871,7 +832,7 @@
       ],
       "properties": {},
       "widgets_values": [
-        1793,
+        584,
         "randomize"
       ]
     },
@@ -1299,7 +1260,7 @@
       },
       "widgets_values": [
         "Random value 455046",
-        536305925424012,
+        925180296886693,
         "randomize",
         "every frame",
         -0.8,
@@ -1357,7 +1318,7 @@
       },
       "widgets_values": [
         "Random value 455046",
-        811110765533779,
+        290988309040769,
         "randomize",
         "every frame",
         -0.8,
@@ -1415,7 +1376,7 @@
       },
       "widgets_values": [
         "Random value 455046",
-        272600230213202,
+        268911751368403,
         "randomize",
         "every frame",
         -0.8,
@@ -1473,7 +1434,7 @@
       },
       "widgets_values": [
         "Random value 455046",
-        531361004402068,
+        350640887146024,
         "randomize",
         "every frame",
         -0.8,
@@ -2060,7 +2021,7 @@
       },
       "widgets_values": [
         "Random value 455046",
-        257401483519379,
+        1036088194386378,
         "randomize",
         "every frame",
         -0.8,
@@ -2219,7 +2180,7 @@
       },
       "widgets_values": [
         "KSampler Steps",
-        1087374413746938,
+        633069612491609,
         "randomize",
         "every frame",
         15,
@@ -2311,7 +2272,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        10786785084423,
+        496064975436282,
         "randomize",
         20,
         8,
@@ -2371,7 +2332,7 @@
       },
       "widgets_values": [
         "KSampler Cfg",
-        760442260376967,
+        357990178944917,
         "randomize",
         "every frame",
         6,
@@ -2950,7 +2911,46 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        "public\\main\\512-SD1.5\\neverendingDream.safetensors"
+        "public\\main\\512-SD1.5\\anything-v3-fp16-pruned.safetensors"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "PrimitiveNode",
+      "pos": [
+        1133,
+        269
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            85
+          ],
+          "widget": {
+            "name": "selected",
+            "config": [
+              "INT",
+              {
+                "default": 0,
+                "min": 0
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        0,
+        "randomize"
       ]
     }
   ],
