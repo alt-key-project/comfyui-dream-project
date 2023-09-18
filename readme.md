@@ -295,6 +295,12 @@ This flow demonstrates prompt building with weights based on curves and brightne
 
 [prompt-morphing](examples/prompt-morphing.json)
 
+### Laboratory
+
+This flow demonstrates use of the Laboratory and Logging nodes.
+
+[laboratory](examples/laboratory.json)
+
 ## Known issues
 
 ### FFMPEG
