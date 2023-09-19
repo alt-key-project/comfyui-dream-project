@@ -141,7 +141,6 @@ class WavData:
 
         for i in range(self._num_buckets):
             self._buckets[i] = float(self._buckets[i]) / self._max_bucket_value
-            print("Bucket {} = {}".format(i, self._buckets[i]))
 
     def value_at_time(self, second: float) -> float:
         if second < 0.0 or second > self._length_in_seconds:
