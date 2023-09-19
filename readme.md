@@ -186,7 +186,10 @@ counter.
 Extracts information from the frame counter.
 
 ### Frame Counter Offset [Dream]
-Adds an offset to a frame counter.
+Adds an offset (in frames) to a frame counter.
+
+### Frame Counter Time Offset [Dream]
+Adds an offset in seconds to a frame counter.
 
 ### Image Brightness Adjustment [Dream]
 Adjusts the brightness of an image by a factor.
@@ -263,6 +266,9 @@ Triangle wave curve.
 
 ### Triangle Event Curve [Dream]
 Single event/peak curve with triangular shape.
+
+### WAV Curve [Dream]
+Use an uncompressed WAV audio file as a curve.
 
 ### Other custom nodes
 

@@ -95,6 +95,32 @@ class DreamFrameCounterOffset:
     def result(self, frame_counter: FrameCounter, offset):
         return (frame_counter.incremented(offset),)
 
+class DreamFrameCounterTimeOffset:
+    NODE_NAME = "Frame Counter Time Offset"
+
+    ICON = "±"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "offset_seconds": ("FLOAT", {"default": 0.0}),
+            },
+        }
+
+    CATEGORY = NodeCategories.ANIMATION
+    RETURN_TYPES = (FrameCounter.ID,)
+    RETURN_NAMES = ("frame_counter",)
+    FUNCTION = "result"
+
+    @classmethod
+    def IS_CHANGED(cls, frame_counter, offset):
+        return hashed_as_strings(frame_counter, offset)
+
+    def result(self, frame_counter: FrameCounter, offset_seconds):
+        offset = offset_seconds * frame_counter.frames_per_second
+        return (frame_counter.incremented(offset),)
+
 
 class DreamSimpleFrameCounter:
     NODE_NAME = "Frame Counter (Simple)"

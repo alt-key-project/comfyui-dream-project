@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import csv
+import functools
 import math
+import os
+
+from scipy.io.wavfile import read as wav_read
 
 from .categories import NodeCategories
 from .shared import hashed_as_strings
@@ -117,6 +121,71 @@ class DreamTriangleWave:
             x = (x - 0.5) * 2
             y = max_value - x * (max_value - min_value)
         return _curve_result(y)
+
+
+class WavData:
+    def __init__(self, sampling_rate: float, single_channel_samples, fps: float):
+        self._length_in_seconds = len(single_channel_samples) / sampling_rate
+        self._num_buckets = round(self._length_in_seconds * fps * 3)
+        self._bucket_size = len(single_channel_samples) / float(self._num_buckets)
+        self._buckets = list()
+        self._rate = sampling_rate
+        self._max_bucket_value = 0
+        for i in range(self._num_buckets):
+            start_index = round(i * self._bucket_size)
+            end_index = round((i + 1) * self._bucket_size) - 1
+            samples = list(map(lambda n: abs(n), single_channel_samples[start_index:end_index]))
+            bucket_total = sum(samples)
+            self._buckets.append(bucket_total)
+            self._max_bucket_value=max(bucket_total, self._max_bucket_value)
+
+        for i in range(self._num_buckets):
+            self._buckets[i] = float(self._buckets[i]) / self._max_bucket_value
+            print("Bucket {} = {}".format(i, self._buckets[i]))
+
+    def value_at_time(self, second: float) -> float:
+        if second < 0.0 or second > self._length_in_seconds:
+            return 0.0
+        nsample = second * self._rate
+        nbucket = min(max(0, round(nsample / self._bucket_size)), self._num_buckets - 1)
+        return self._buckets[nbucket]
+
+
+@functools.lru_cache(4)
+def _wav_loader(filepath, fps):
+    sampling_rate, samples = wav_read(filepath)
+    single_channel = samples[:, 0]
+    return WavData(sampling_rate, single_channel, fps)
+
+
+class DreamWavCurve:
+    NODE_NAME = "WAV Curve"
+    CATEGORY = NodeCategories.ANIMATION_CURVES
+    RETURN_TYPES = ("FLOAT", "INT")
+    RETURN_NAMES = ("FLOAT", "INT")
+    FUNCTION = "result"
+    ICON = "∿"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": SharedTypes.frame_counter | {
+                "wav_path": ("STRING", {"default": "audio.wav"}),
+                "scale": ("FLOAT", {"default": 1.0, "multiline": False})
+            },
+        }
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, frame_counter: FrameCounter, wav_path, scale):
+        if not os.path.isfile(wav_path):
+            return (0.0, 0)
+        data = _wav_loader(wav_path, frame_counter.frames_per_second)
+        frame_counter.current_time_in_seconds
+        v = data.value_at_time(frame_counter.current_time_in_seconds)
+        return (v * scale, round(v * scale))
 
 
 class DreamTriangleEvent:
