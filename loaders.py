@@ -2,6 +2,7 @@
 from .categories import NodeCategories
 from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, DreamImage
 from .types import SharedTypes, FrameCounter
+import os
 
 
 class DreamImageSequenceInputWithDefaultFallback:
@@ -22,8 +23,8 @@ class DreamImageSequenceInputWithDefaultFallback:
         }
 
     CATEGORY = NodeCategories.IMAGE_ANIMATION
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("image",)
+    RETURN_TYPES = ("IMAGE","STRING")
+    RETURN_NAMES = ("image","frame_name")
     FUNCTION = "result"
 
     @classmethod
@@ -37,5 +38,6 @@ class DreamImageSequenceInputWithDefaultFallback:
         if not entry:
             return (default_image, "")
         else:
+            image_names = [os.path.basename(file_path) for file_path in entry]
             images = map(lambda f: DreamImage(file_path=f), entry)
-            return (DreamImage.join_to_tensor_data(images),)
+            return (DreamImage.join_to_tensor_data(images), image_names[0]) 
