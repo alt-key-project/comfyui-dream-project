@@ -10,7 +10,7 @@ from PIL import Image as PilImage
 from .categories import NodeCategories
 from .err import on_error
 from .shared import DreamConfig, MpegEncoderUtility
-from .types import *
+from .dreamtypes import *
 
 CONFIG = DreamConfig()
 

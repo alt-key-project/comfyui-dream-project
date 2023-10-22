@@ -2,7 +2,7 @@
 
 from .categories import NodeCategories
 from .shared import *
-from .types import *
+from .dreamtypes import *
 
 
 class DreamImageAreaSampler:

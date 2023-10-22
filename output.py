@@ -8,7 +8,7 @@ from PIL.PngImagePlugin import PngInfo
 from .categories import NodeCategories
 from .shared import hashed_as_strings, DreamImageProcessor, DreamImage, \
     list_images_in_directory, DreamConfig
-from .types import SharedTypes, FrameCounter, AnimationSequence, LogEntry
+from .dreamtypes import SharedTypes, FrameCounter, AnimationSequence, LogEntry
 
 CONFIG = DreamConfig()
 

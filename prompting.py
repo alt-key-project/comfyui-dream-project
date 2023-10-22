@@ -1,6 +1,6 @@
 from .categories import NodeCategories
 from .shared import hashed_as_strings
-from .types import PartialPrompt
+from .dreamtypes import PartialPrompt
 
 
 class DreamWeightedPromptBuilder:

@@ -8,7 +8,7 @@ from scipy.io.wavfile import read as wav_read
 
 from .categories import NodeCategories
 from .shared import hashed_as_strings
-from .types import SharedTypes, FrameCounter
+from .dreamtypes import SharedTypes, FrameCounter
 
 
 def _linear_value_calc(x, x_start, x_end, y_start, y_end):

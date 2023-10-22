@@ -7,7 +7,7 @@ import folder_paths as comfy_paths
 
 from .categories import NodeCategories
 from .shared import hashed_as_strings, DreamStateFile
-from .types import LogEntry, SharedTypes, FrameCounter
+from .dreamtypes import LogEntry, SharedTypes, FrameCounter
 
 _logfile_state = DreamStateFile("logging")
 

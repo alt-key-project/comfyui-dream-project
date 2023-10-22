@@ -9,7 +9,7 @@ from PIL.Image import Resampling
 from .categories import *
 from .shared import ALWAYS_CHANGED_FLAG, convertTensorImageToPIL, DreamImageProcessor, \
     DreamImage, DreamMask
-from .types import SharedTypes, FrameCounter
+from .dreamtypes import SharedTypes, FrameCounter
 
 
 class DreamImageMotion:

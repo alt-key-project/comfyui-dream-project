@@ -1,7 +1,7 @@
 from .categories import NodeCategories
 from .err import *
 from .shared import ALWAYS_CHANGED_FLAG, hashed_as_strings
-from .types import RGBPalette
+from .dreamtypes import RGBPalette
 
 
 def _generate_switch_input(type: str):

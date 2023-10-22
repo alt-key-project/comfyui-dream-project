@@ -3,7 +3,7 @@ import math
 
 from .categories import NodeCategories
 from .shared import *
-from .types import *
+from .dreamtypes import *
 
 
 def _generate_noise(image: DreamImage, color_function, rng: random.Random, block_size, blur_amount,

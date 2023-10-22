@@ -6,7 +6,7 @@ import json
 
 from .categories import *
 from .shared import ALWAYS_CHANGED_FLAG, DreamStateFile
-from .types import *
+from .dreamtypes import *
 
 _laboratory_state = DreamStateFile("laboratory")
 
