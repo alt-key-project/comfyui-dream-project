@@ -163,9 +163,6 @@ Utility for calculating good width/height based on common video dimensions.
 ### Video Encoder (FFMPEG) [Dream]
 Post processing for animation sequences calling FFMPEG to generate video files.
 
-### Video Encoder (mpegCoder) [Dream]
-Post processing for animation sequences using the python module mpegCoder with ffmpeg library to generate video files.
-
 ### File Count [Dream]
 Finds the number of files in a directory matching specified patterns.
 

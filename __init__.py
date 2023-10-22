@@ -22,7 +22,7 @@ _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBea
                              DreamSimpleFrameCounter, DreamImageSequenceInputWithDefaultFallback,
                              DreamImageSequenceOutput, DreamCSVGenerator, DreamImageAreaSampler,
                              DreamVideoEncoder, DreamSequenceTweening, DreamSequenceBlend, DreamColorAlign,
-                             DreamImageSampler, DreamNoiseFromAreaPalettes, DreamVideoEncoderMpegCoder,
+                             DreamImageSampler, DreamNoiseFromAreaPalettes,
                              DreamInputString, DreamInputFloat, DreamInputInt, DreamInputText, DreamBigLatentSwitch,
                              DreamFrameCountCalculator, DreamBigImageSwitch, DreamBigTextSwitch, DreamBigFloatSwitch,
                              DreamBigIntSwitch, DreamBigPaletteSwitch, DreamWeightedPromptBuilder, DreamPromptFinalizer,
@@ -35,7 +35,7 @@ _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (4, 3, 1),
+    "version": (5, 0, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",

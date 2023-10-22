@@ -9,7 +9,8 @@ from PIL import Image as PilImage
 
 from .categories import NodeCategories
 from .err import on_error
-from .shared import DreamConfig, MpegEncoderUtility
+from .shared import DreamConfig
+#from .shared import MpegEncoderUtility
 from .dreamtypes import *
 
 CONFIG = DreamConfig()
@@ -131,67 +132,67 @@ def _make_video_filename(name, file_ext):
     (b, _) = os.path.splitext(name)
     return b + "." + file_ext.strip(".")
 
-
-class DreamVideoEncoderMpegCoder:
-    NODE_NAME = "Video Encoder (mpegCoder)"
-    ICON = "🎬"
-    CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
-    RETURN_TYPES = (LogEntry.ID,)
-    RETURN_NAMES = ("log_entry",)
-    OUTPUT_NODE = True
-    FUNCTION = "encode"
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": SharedTypes.sequence | {
-                "name": ("STRING", {"default": 'video', "multiline": False}),
-                "framerate_factor": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 100.0}),
-                "remove_images": ("BOOLEAN", {"default": True})
-            },
-        }
-
-    def _find_free_filename(self, filename, defaultdir):
-        if os.path.basename(filename) == filename:
-            filename = os.path.join(defaultdir, filename)
-        n = 1
-        tested = filename
-        while os.path.exists(tested):
-            n += 1
-            (b, ext) = os.path.splitext(filename)
-            tested = b + "_" + str(n) + ext
-        return tested
-
-    def encode(self, sequence, name, framerate_factor, remove_images):
-        if not sequence.is_defined:
-            return (LogEntry([]),)
-        config = DreamConfig()
-        filename = _make_video_filename(name, config.get("mpeg_coder.file_extension", "mp4"))
-        log_entry = LogEntry([])
-        for batch_num in sequence.batches:
-            try:
-                images = list(sequence.get_image_files_of_batch(batch_num))
-                filename = self._find_free_filename(filename, os.path.dirname(images[0]))
-                first_image = DreamImage.from_file(images[0])
-                enc = MpegEncoderUtility(video_path=filename,
-                                         bit_rate_factor=float(config.get("mpeg_coder.bitrate_factor", 1.0)),
-                                         encoding_threads=int(config.get("mpeg_coder.encoding_threads", 4)),
-                                         max_b_frame=int(config.get("mpeg_coder.max_b_frame", 2)),
-                                         width=first_image.width,
-                                         height=first_image.height,
-                                         files=images,
-                                         fps=sequence.fps * framerate_factor,
-                                         codec_name=config.get("mpeg_coder.codec_name", "libx265"))
-                enc.encode()
-                log_entry = log_entry.add("Generated video '{}'".format(filename))
-                if remove_images:
-                    for imagepath in images:
-                        if os.path.isfile(imagepath):
-                            os.unlink(imagepath)
-            except Exception as e:
-                on_error(self.__class__, str(e))
-        return (log_entry,)
-
+#
+# class DreamVideoEncoderMpegCoder:
+#     NODE_NAME = "Video Encoder (mpegCoder)"
+#     ICON = "🎬"
+#     CATEGORY = NodeCategories.ANIMATION_POSTPROCESSING
+#     RETURN_TYPES = (LogEntry.ID,)
+#     RETURN_NAMES = ("log_entry",)
+#     OUTPUT_NODE = True
+#     FUNCTION = "encode"
+#
+#     @classmethod
+#     def INPUT_TYPES(cls):
+#         return {
+#             "required": SharedTypes.sequence | {
+#                 "name": ("STRING", {"default": 'video', "multiline": False}),
+#                 "framerate_factor": ("FLOAT", {"default": 1.0, "min": 0.01, "max": 100.0}),
+#                 "remove_images": ("BOOLEAN", {"default": True})
+#             },
+#         }
+#
+#     def _find_free_filename(self, filename, defaultdir):
+#         if os.path.basename(filename) == filename:
+#             filename = os.path.join(defaultdir, filename)
+#         n = 1
+#         tested = filename
+#         while os.path.exists(tested):
+#             n += 1
+#             (b, ext) = os.path.splitext(filename)
+#             tested = b + "_" + str(n) + ext
+#         return tested
+#
+#     def encode(self, sequence, name, framerate_factor, remove_images):
+#         if not sequence.is_defined:
+#             return (LogEntry([]),)
+#         config = DreamConfig()
+#         filename = _make_video_filename(name, config.get("mpeg_coder.file_extension", "mp4"))
+#         log_entry = LogEntry([])
+#         for batch_num in sequence.batches:
+#             try:
+#                 images = list(sequence.get_image_files_of_batch(batch_num))
+#                 filename = self._find_free_filename(filename, os.path.dirname(images[0]))
+#                 first_image = DreamImage.from_file(images[0])
+#                 enc = MpegEncoderUtility(video_path=filename,
+#                                          bit_rate_factor=float(config.get("mpeg_coder.bitrate_factor", 1.0)),
+#                                          encoding_threads=int(config.get("mpeg_coder.encoding_threads", 4)),
+#                                          max_b_frame=int(config.get("mpeg_coder.max_b_frame", 2)),
+#                                          width=first_image.width,
+#                                          height=first_image.height,
+#                                          files=images,
+#                                          fps=sequence.fps * framerate_factor,
+#                                          codec_name=config.get("mpeg_coder.codec_name", "libx265"))
+#                 enc.encode()
+#                 log_entry = log_entry.add("Generated video '{}'".format(filename))
+#                 if remove_images:
+#                     for imagepath in images:
+#                         if os.path.isfile(imagepath):
+#                             os.unlink(imagepath)
+#             except Exception as e:
+#                 on_error(self.__class__, str(e))
+#         return (log_entry,)
+#
 
 class DreamVideoEncoder:
     NODE_NAME = "FFMPEG Video Encoder"

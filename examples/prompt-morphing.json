@@ -1,6 +1,6 @@
 {
-  "last_node_id": 192,
-  "last_link_id": 340,
+  "last_node_id": 193,
+  "last_link_id": 341,
   "nodes": [
     {
       "id": 62,
@@ -63,13 +63,7 @@
           "type": "FLOAT",
           "link": 289,
           "widget": {
-            "name": "weight",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1
-              }
-            ]
+            "name": "weight"
           },
           "slot_index": 1
         }
@@ -118,13 +112,7 @@
           "type": "FLOAT",
           "link": 286,
           "widget": {
-            "name": "weight",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1
-              }
-            ]
+            "name": "weight"
           },
           "slot_index": 1
         }
@@ -173,13 +161,7 @@
           "type": "FLOAT",
           "link": 283,
           "widget": {
-            "name": "weight",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1
-              }
-            ]
+            "name": "weight"
           },
           "slot_index": 1
         }
@@ -701,14 +683,7 @@
           "type": "FLOAT",
           "link": 224,
           "widget": {
-            "name": "r_float",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "multiline": false
-              }
-            ]
+            "name": "r_float"
           }
         },
         {
@@ -716,14 +691,7 @@
           "type": "FLOAT",
           "link": 223,
           "widget": {
-            "name": "s_float",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "multiline": false
-              }
-            ]
+            "name": "s_float"
           }
         }
       ],
@@ -851,14 +819,7 @@
           "type": "FLOAT",
           "link": 227,
           "widget": {
-            "name": "r_float",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "multiline": false
-              }
-            ]
+            "name": "r_float"
           }
         },
         {
@@ -866,14 +827,7 @@
           "type": "FLOAT",
           "link": 226,
           "widget": {
-            "name": "s_float",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "multiline": false
-              }
-            ]
+            "name": "s_float"
           }
         }
       ],
@@ -968,14 +922,7 @@
           "type": "FLOAT",
           "link": 230,
           "widget": {
-            "name": "factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "min": 0
-              }
-            ]
+            "name": "factor"
           }
         }
       ],
@@ -1022,14 +969,7 @@
           "type": "FLOAT",
           "link": 228,
           "widget": {
-            "name": "factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "min": 0
-              }
-            ]
+            "name": "factor"
           }
         }
       ],
@@ -1096,7 +1036,7 @@
       ],
       "size": {
         "0": 315,
-        "1": 82
+        "1": 106
       },
       "flags": {},
       "order": 63,
@@ -1124,7 +1064,8 @@
       },
       "widgets_values": [
         5.237730900441297,
-        0.16363647460937536
+        0.16363647460937536,
+        512
       ]
     },
     {
@@ -2616,13 +2557,7 @@
           "type": "FLOAT",
           "link": 279,
           "widget": {
-            "name": "weight",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1
-              }
-            ]
+            "name": "weight"
           },
           "slot_index": 1
         }
@@ -3561,16 +3496,7 @@
           "type": "INT",
           "link": 314,
           "widget": {
-            "name": "width",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "width"
           }
         },
         {
@@ -3578,16 +3504,7 @@
           "type": "INT",
           "link": 315,
           "widget": {
-            "name": "height",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "height"
           }
         }
       ],
@@ -3642,14 +3559,7 @@
           "type": "STRING",
           "link": 257,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -3663,6 +3573,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "frame_name",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -3720,7 +3636,7 @@
       ],
       "size": {
         "0": 315,
-        "1": 58
+        "1": 82
       },
       "flags": {},
       "order": 103,
@@ -3747,7 +3663,8 @@
         "Node name for S&R": "LineArtPreprocessor"
       },
       "widgets_values": [
-        "disable"
+        "disable",
+        512
       ]
     },
     {
@@ -3808,16 +3725,7 @@
           "type": "INT",
           "link": 136,
           "widget": {
-            "name": "width",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "width"
           },
           "slot_index": 1
         },
@@ -3826,16 +3734,7 @@
           "type": "INT",
           "link": 137,
           "widget": {
-            "name": "height",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "height"
           }
         }
       ],
@@ -3950,15 +3849,7 @@
           "type": "FLOAT",
           "link": 280,
           "widget": {
-            "name": "width_seconds",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "multiline": false,
-                "min": 0.1
-              }
-            ]
+            "name": "width_seconds"
           }
         }
       ],
@@ -4014,15 +3905,7 @@
           "type": "FLOAT",
           "link": 281,
           "widget": {
-            "name": "width_seconds",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "multiline": false,
-                "min": 0.1
-              }
-            ]
+            "name": "width_seconds"
           }
         }
       ],
@@ -4078,15 +3961,7 @@
           "type": "FLOAT",
           "link": 284,
           "widget": {
-            "name": "width_seconds",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "multiline": false,
-                "min": 0.1
-              }
-            ]
+            "name": "width_seconds"
           }
         }
       ],
@@ -4142,15 +4017,7 @@
           "type": "FLOAT",
           "link": 287,
           "widget": {
-            "name": "width_seconds",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "multiline": false,
-                "min": 0.1
-              }
-            ]
+            "name": "width_seconds"
           }
         }
       ],
@@ -4348,13 +4215,7 @@
           "type": "FLOAT",
           "link": 319,
           "widget": {
-            "name": "low_value",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0
-              }
-            ]
+            "name": "low_value"
           },
           "slot_index": 1
         },
@@ -4363,13 +4224,7 @@
           "type": "FLOAT",
           "link": 320,
           "widget": {
-            "name": "high_value",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1
-              }
-            ]
+            "name": "high_value"
           },
           "slot_index": 2
         }
@@ -4538,16 +4393,7 @@
           "type": "FLOAT",
           "link": 153,
           "widget": {
-            "name": "denoise",
-            "config": [
-              "FLOAT",
-              {
-                "default": 1,
-                "min": 0,
-                "max": 1,
-                "step": 0.01
-              }
-            ]
+            "name": "denoise"
           }
         }
       ],
@@ -4656,14 +4502,7 @@
           "type": "STRING",
           "link": 119,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 0
         },
@@ -4672,15 +4511,7 @@
           "type": "INT",
           "link": 154,
           "widget": {
-            "name": "total_frames",
-            "config": [
-              "INT",
-              {
-                "default": 100,
-                "min": 2,
-                "max": 5184000
-              }
-            ]
+            "name": "total_frames"
           }
         }
       ],
@@ -4772,14 +4603,7 @@
           "type": "STRING",
           "link": 159,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -4810,83 +4634,6 @@
         5,
         "stop output",
         "jpg"
-      ]
-    },
-    {
-      "id": 37,
-      "type": "Image Sequence Tweening [Dream]",
-      "pos": [
-        8156.282361863093,
-        -319.08540210493265
-      ],
-      "size": {
-        "0": 315,
-        "1": 58
-      },
-      "flags": {},
-      "order": 135,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "link": 267
-        }
-      ],
-      "outputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "links": [
-            327
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Image Sequence Tweening [Dream]"
-      },
-      "widgets_values": [
-        4
-      ]
-    },
-    {
-      "id": 187,
-      "type": "Video Encoder (mpegCoder) [Dream]",
-      "pos": [
-        8513,
-        -320
-      ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
-      "flags": {},
-      "order": 136,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "sequence",
-          "type": "ANIMATION_SEQUENCE",
-          "link": 327
-        }
-      ],
-      "outputs": [
-        {
-          "name": "log_entry",
-          "type": "LOG_ENTRY",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "Video Encoder (mpegCoder) [Dream]"
-      },
-      "widgets_values": [
-        "video",
-        1,
-        true
       ]
     },
     {
@@ -5064,13 +4811,7 @@
           "type": "STRING",
           "link": 94,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -5120,13 +4861,7 @@
           "type": "STRING",
           "link": 95,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           },
           "slot_index": 1
         }
@@ -5557,10 +5292,10 @@
         1318,
         -132
       ],
-      "size": [
-        315,
-        82
-      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
       "flags": {},
       "order": 94,
       "mode": 0,
@@ -5570,13 +5305,7 @@
           "type": "STRING",
           "link": 338,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "default": ""
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -5606,10 +5335,10 @@
         1240,
         7
       ],
-      "size": [
-        315,
-        82
-      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
       "flags": {},
       "order": 96,
       "mode": 0,
@@ -5619,13 +5348,7 @@
           "type": "STRING",
           "link": 339,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "default": ""
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -5655,10 +5378,10 @@
         1676,
         -142
       ],
-      "size": [
-        315,
-        314
-      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
       "flags": {},
       "order": 101,
       "mode": 0,
@@ -5713,13 +5436,7 @@
           "type": "STRING",
           "link": 336,
           "widget": {
-            "name": "log_directory",
-            "config": [
-              "STRING",
-              {
-                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output"
-              }
-            ]
+            "name": "log_directory"
           }
         }
       ],
@@ -5807,6 +5524,83 @@
         "showOutputText": true,
         "horizontal": false
       }
+    },
+    {
+      "id": 37,
+      "type": "Image Sequence Tweening [Dream]",
+      "pos": [
+        8156.282361863093,
+        -319.08540210493265
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 135,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "link": 267
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "links": [
+            341
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Sequence Tweening [Dream]"
+      },
+      "widgets_values": [
+        4
+      ]
+    },
+    {
+      "id": 193,
+      "type": "FFMPEG Video Encoder [Dream]",
+      "pos": [
+        8506,
+        -319
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 136,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sequence",
+          "type": "ANIMATION_SEQUENCE",
+          "link": 341
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FFMPEG Video Encoder [Dream]"
+      },
+      "widgets_values": [
+        "video",
+        1,
+        true
+      ]
     }
   ],
   "links": [
@@ -7035,14 +6829,6 @@
       "*"
     ],
     [
-      327,
-      37,
-      0,
-      187,
-      0,
-      "ANIMATION_SEQUENCE"
-    ],
-    [
       330,
       189,
       0,
@@ -7121,6 +6907,14 @@
       188,
       0,
       "FRAME_COUNTER"
+    ],
+    [
+      341,
+      37,
+      0,
+      193,
+      0,
+      "ANIMATION_SEQUENCE"
     ]
   ],
   "groups": [
@@ -7132,7 +6926,8 @@
         2356,
         646
       ],
-      "color": "#b58b2a"
+      "color": "#b58b2a",
+      "font_size": 24
     },
     {
       "title": "ControlNet",
@@ -7142,7 +6937,8 @@
         764,
         765
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Previous Frame",
@@ -7152,7 +6948,8 @@
         748,
         385
       ],
-      "color": "#a1309b"
+      "color": "#a1309b",
+      "font_size": 24
     },
     {
       "title": "Save",
@@ -7162,7 +6959,8 @@
         1434,
         353
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Diffusion",
@@ -7172,7 +6970,8 @@
         805,
         853
       ],
-      "color": "#88A"
+      "color": "#88A",
+      "font_size": 24
     },
     {
       "title": "Denoise curve",
@@ -7182,7 +6981,8 @@
         396,
         501
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Align brightness/contrast",
@@ -7192,7 +6992,8 @@
         860,
         767
       ],
-      "color": "#8AA"
+      "color": "#8AA",
+      "font_size": 24
     },
     {
       "title": "Upscale",
@@ -7202,7 +7003,8 @@
         496,
         459
       ],
-      "color": "#8A8"
+      "color": "#8A8",
+      "font_size": 24
     },
     {
       "title": "Basic Settings",
@@ -7212,7 +7014,8 @@
         788,
         1706
       ],
-      "color": "#88A"
+      "color": "#88A",
+      "font_size": 24
     }
   ],
   "config": {},

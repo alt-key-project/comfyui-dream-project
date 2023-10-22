@@ -55,6 +55,5 @@
   "Text Input [Dream]": "Multiline string input (until primitive routing issues are solved)",
   "Triangle Curve [Dream]": "Triangle wave curve",
   "Triangle Event Curve [Dream]": "Single event/peak curve with triangular shape",
-  "Video Encoder (mpegCoder) [Dream]": "Post processing for animation sequences using mpegCoder module to generate video file",
   "WAV Curve [Dream]": "WAV audio file as a curve"
 }

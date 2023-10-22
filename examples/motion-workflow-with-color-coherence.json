@@ -1,6 +1,6 @@
 {
-  "last_node_id": 421,
-  "last_link_id": 5462,
+  "last_node_id": 422,
+  "last_link_id": 5463,
   "nodes": [
     {
       "id": 77,
@@ -24,13 +24,7 @@
             2312
           ],
           "widget": {
-            "name": "text_2",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -65,13 +59,7 @@
           ],
           "slot_index": 0,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -327,7 +315,7 @@
         26
       ],
       "flags": {},
-      "order": 24,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -365,7 +353,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 49,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -390,7 +378,7 @@
       },
       "widgets_values": [
         256,
-        183250672320803,
+        984424700736240,
         "randomize",
         "center-right"
       ],
@@ -409,7 +397,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 50,
+      "order": 55,
       "mode": 0,
       "inputs": [
         {
@@ -434,7 +422,7 @@
       },
       "widgets_values": [
         256,
-        57339603779837,
+        393866830673316,
         "randomize",
         "bottom-center"
       ],
@@ -709,7 +697,7 @@
       },
       "widgets_values": [
         256,
-        902082438494247,
+        912873459964733,
         "randomize",
         "bottom-center"
       ],
@@ -753,7 +741,7 @@
       },
       "widgets_values": [
         256,
-        638849047502927,
+        257321647530942,
         "randomize",
         "center-right"
       ],
@@ -790,16 +778,7 @@
           "type": "FLOAT",
           "link": 5334,
           "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
+            "name": "alignment_factor"
           }
         }
       ],
@@ -818,7 +797,7 @@
         "Node name for S&R": "Palette Color Align [Dream]"
       },
       "widgets_values": [
-        1.2
+        1.2000000000000002
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -853,16 +832,7 @@
           "type": "FLOAT",
           "link": 5325,
           "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
+            "name": "alignment_factor"
           },
           "slot_index": 2
         }
@@ -882,7 +852,7 @@
         "Node name for S&R": "Palette Color Align [Dream]"
       },
       "widgets_values": [
-        1.2
+        1.2000000000000002
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -917,16 +887,7 @@
           "type": "FLOAT",
           "link": 5333,
           "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
+            "name": "alignment_factor"
           }
         }
       ],
@@ -945,7 +906,7 @@
         "Node name for S&R": "Palette Color Align [Dream]"
       },
       "widgets_values": [
-        1.2
+        1.2000000000000002
       ],
       "color": "#223",
       "bgcolor": "#335"
@@ -980,16 +941,7 @@
           "type": "FLOAT",
           "link": 5328,
           "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
+            "name": "alignment_factor"
           }
         }
       ],
@@ -1008,7 +960,7 @@
         "Node name for S&R": "Palette Color Align [Dream]"
       },
       "widgets_values": [
-        1.2
+        1.2000000000000002
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -1209,7 +1161,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        586618692559734,
+        838611060522510,
         "randomize",
         25,
         9,
@@ -1530,15 +1482,7 @@
           "type": "INT",
           "link": 5351,
           "widget": {
-            "name": "total_frames",
-            "config": [
-              "INT",
-              {
-                "default": 100,
-                "min": 2,
-                "max": 5184000
-              }
-            ]
+            "name": "total_frames"
           },
           "slot_index": 0
         },
@@ -1547,14 +1491,7 @@
           "type": "STRING",
           "link": 5347,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           }
         },
         {
@@ -1562,14 +1499,7 @@
           "type": "INT",
           "link": 5350,
           "widget": {
-            "name": "frames_per_second",
-            "config": [
-              "INT",
-              {
-                "min": 1,
-                "default": 25
-              }
-            ]
+            "name": "frames_per_second"
           }
         }
       ],
@@ -1639,47 +1569,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 236,
-      "type": "LoadImage",
-      "pos": [
-        -2106,
-        679
-      ],
-      "size": {
-        "0": 430,
-        "1": 340
-      },
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            5313
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "after (3).jpg",
-        "image"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 373,
       "type": "Reroute",
       "pos": [
@@ -1691,7 +1580,7 @@
         26
       ],
       "flags": {},
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -1878,7 +1767,7 @@
         "1": 82
       },
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "outputs": [
         {
@@ -1892,16 +1781,7 @@
           ],
           "slot_index": 0,
           "widget": {
-            "name": "alignment_factor",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0.5,
-                "min": 0,
-                "max": 10,
-                "step": 0.1
-              }
-            ]
+            "name": "alignment_factor"
           }
         }
       ],
@@ -1965,7 +1845,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 48,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -1990,7 +1870,7 @@
       },
       "widgets_values": [
         256,
-        1019724837772866,
+        919440470904266,
         "randomize",
         "center-left"
       ],
@@ -2034,7 +1914,7 @@
       },
       "widgets_values": [
         256,
-        1014748475294523,
+        528123820881935,
         "randomize",
         "center-left"
       ],
@@ -2055,7 +1935,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 34,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -2068,13 +1948,7 @@
           "type": "STRING",
           "link": 2312,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           },
           "slot_index": 1
         }
@@ -2112,7 +1986,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 33,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -2125,13 +1999,7 @@
           "type": "STRING",
           "link": 2309,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -2166,7 +2034,7 @@
         26
       ],
       "flags": {},
-      "order": 41,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -2316,7 +2184,7 @@
         26
       ],
       "flags": {},
-      "order": 42,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -2353,7 +2221,7 @@
         26
       ],
       "flags": {},
-      "order": 23,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -2389,7 +2257,7 @@
         26
       ],
       "flags": {},
-      "order": 26,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -2464,7 +2332,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        55143763493153,
+        700759510514483,
         "randomize",
         5,
         5,
@@ -2523,7 +2391,7 @@
         "1": 60
       },
       "flags": {},
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "title": "Note on full frame sampler",
       "properties": {
@@ -2547,7 +2415,7 @@
         26
       ],
       "flags": {},
-      "order": 39,
+      "order": 44,
       "mode": 0,
       "inputs": [
         {
@@ -2667,7 +2535,7 @@
         26
       ],
       "flags": {},
-      "order": 30,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -2707,7 +2575,7 @@
         "1": 270
       },
       "flags": {},
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "title": "Note on noise",
       "properties": {
@@ -2780,16 +2648,7 @@
           "type": "INT",
           "link": 5074,
           "widget": {
-            "name": "width",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "width"
           }
         },
         {
@@ -2797,16 +2656,7 @@
           "type": "INT",
           "link": 5075,
           "widget": {
-            "name": "height",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "height"
           }
         }
       ],
@@ -2844,7 +2694,7 @@
         "1": 130
       },
       "flags": {},
-      "order": 47,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -2869,7 +2719,7 @@
       },
       "widgets_values": [
         256,
-        309821851176166,
+        502577689536295,
         "randomize",
         "top-center"
       ],
@@ -2913,7 +2763,7 @@
       },
       "widgets_values": [
         256,
-        973129878717336,
+        1125637252645999,
         "randomize",
         "top-center"
       ],
@@ -2934,7 +2784,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "outputs": [
         {
@@ -3007,7 +2857,7 @@
         26
       ],
       "flags": {},
-      "order": 55,
+      "order": 51,
       "mode": 0,
       "inputs": [
         {
@@ -3083,7 +2933,7 @@
         26
       ],
       "flags": {},
-      "order": 44,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -3119,7 +2969,7 @@
         26
       ],
       "flags": {},
-      "order": 35,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -3156,7 +3006,7 @@
         26
       ],
       "flags": {},
-      "order": 53,
+      "order": 49,
       "mode": 0,
       "inputs": [
         {
@@ -3196,7 +3046,7 @@
         26
       ],
       "flags": {},
-      "order": 52,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -3335,16 +3185,7 @@
           "type": "FLOAT",
           "link": 5222,
           "widget": {
-            "name": "x_translation",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "x_translation"
           }
         },
         {
@@ -3352,16 +3193,7 @@
           "type": "FLOAT",
           "link": 5223,
           "widget": {
-            "name": "y_translation",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "y_translation"
           }
         },
         {
@@ -3369,16 +3201,7 @@
           "type": "FLOAT",
           "link": 5225,
           "widget": {
-            "name": "zoom",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "zoom"
           }
         }
       ],
@@ -3580,14 +3403,7 @@
           "type": "STRING",
           "link": 5442,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -3601,6 +3417,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -3664,7 +3486,7 @@
         26
       ],
       "flags": {},
-      "order": 51,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -3700,7 +3522,7 @@
         26
       ],
       "flags": {},
-      "order": 40,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -3737,7 +3559,7 @@
         26
       ],
       "flags": {},
-      "order": 32,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -3773,7 +3595,7 @@
         26
       ],
       "flags": {},
-      "order": 43,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -3809,7 +3631,7 @@
         26
       ],
       "flags": {},
-      "order": 54,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -4079,14 +3901,7 @@
           "type": "STRING",
           "link": 5348,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -4100,6 +3915,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "frame_name",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -4123,7 +3944,7 @@
         26
       ],
       "flags": {},
-      "order": 31,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -4306,7 +4127,7 @@
         256,
         0.11818237304687501,
         0.5,
-        340337213218643,
+        855083604429355,
         "randomize"
       ],
       "color": "#2a363b",
@@ -4443,7 +4264,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 17,
+      "order": 16,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -4493,7 +4314,7 @@
         26
       ],
       "flags": {},
-      "order": 27,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -4529,7 +4350,7 @@
         26
       ],
       "flags": {},
-      "order": 22,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -4607,7 +4428,7 @@
         "1": 90
       },
       "flags": {},
-      "order": 18,
+      "order": 17,
       "mode": 0,
       "title": "Note on motion",
       "properties": {
@@ -4705,7 +4526,7 @@
         26
       ],
       "flags": {},
-      "order": 36,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -5031,7 +4852,7 @@
           "name": "sequence",
           "type": "ANIMATION_SEQUENCE",
           "links": [
-            5462
+            5463
           ],
           "shape": 3,
           "slot_index": 0
@@ -5047,11 +4868,11 @@
       "bgcolor": "#593930"
     },
     {
-      "id": 421,
-      "type": "Video Encoder (mpegCoder) [Dream]",
+      "id": 422,
+      "type": "FFMPEG Video Encoder [Dream]",
       "pos": [
-        4778,
-        559
+        4781,
+        562
       ],
       "size": {
         "0": 315,
@@ -5064,17 +4885,66 @@
         {
           "name": "sequence",
           "type": "ANIMATION_SEQUENCE",
-          "link": 5462
+          "link": 5463
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
-        "Node name for S&R": "Video Encoder (mpegCoder) [Dream]"
+        "Node name for S&R": "FFMPEG Video Encoder [Dream]"
       },
       "widgets_values": [
         "video",
         1,
         true
       ]
+    },
+    {
+      "id": 236,
+      "type": "LoadImage",
+      "pos": [
+        -2106,
+        679
+      ],
+      "size": {
+        "0": 430,
+        "1": 340
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5313
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "7159726-HSC00002-7 (1).jpg",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     }
   ],
   "links": [
@@ -6223,10 +6093,10 @@
       "IMAGE"
     ],
     [
-      5462,
+      5463,
       281,
       0,
-      421,
+      422,
       0,
       "ANIMATION_SEQUENCE"
     ]
@@ -6240,7 +6110,8 @@
         474,
         885
       ],
-      "color": "#a1309b"
+      "color": "#a1309b",
+      "font_size": 24
     },
     {
       "title": "Settings",
@@ -6250,7 +6121,8 @@
         482,
         742
       ],
-      "color": "#b58b2a"
+      "color": "#b58b2a",
+      "font_size": 24
     },
     {
       "title": "Inpainting/Outpainting",
@@ -6260,7 +6132,8 @@
         1711,
         528
       ],
-      "color": "#929054"
+      "color": "#929054",
+      "font_size": 24
     },
     {
       "title": "Prev Frame Move",
@@ -6270,7 +6143,8 @@
         1450,
         456
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Full frame sampler",
@@ -6280,7 +6154,8 @@
         691,
         700
       ],
-      "color": "#88A"
+      "color": "#88A",
+      "font_size": 24
     },
     {
       "title": "Output",
@@ -6290,7 +6165,8 @@
         1458,
         381
       ],
-      "color": "#b06634"
+      "color": "#b06634",
+      "font_size": 24
     },
     {
       "title": "Animation Driver",
@@ -6300,7 +6176,8 @@
         336,
         373
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Motion Control",
@@ -6310,7 +6187,8 @@
         1451,
         392
       ],
-      "color": "#ef75ff"
+      "color": "#ef75ff",
+      "font_size": 24
     },
     {
       "title": "Model selection",
@@ -6320,7 +6198,8 @@
         476,
         204
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Noise",
@@ -6330,7 +6209,8 @@
         1840,
         765
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Previews",
@@ -6340,7 +6220,8 @@
         6473,
         329
       ],
-      "color": "#444"
+      "color": "#444",
+      "font_size": 24
     }
   ],
   "config": {},

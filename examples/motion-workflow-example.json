@@ -1,6 +1,6 @@
 {
-  "last_node_id": 422,
-  "last_link_id": 5466,
+  "last_node_id": 423,
+  "last_link_id": 5467,
   "nodes": [
     {
       "id": 77,
@@ -24,13 +24,7 @@
             2312
           ],
           "widget": {
-            "name": "text_2",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -65,13 +59,7 @@
           ],
           "slot_index": 0,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -1101,15 +1089,7 @@
           "type": "INT",
           "link": 5351,
           "widget": {
-            "name": "total_frames",
-            "config": [
-              "INT",
-              {
-                "default": 100,
-                "min": 2,
-                "max": 5184000
-              }
-            ]
+            "name": "total_frames"
           },
           "slot_index": 0
         },
@@ -1118,14 +1098,7 @@
           "type": "STRING",
           "link": 5347,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           }
         },
         {
@@ -1133,14 +1106,7 @@
           "type": "INT",
           "link": 5350,
           "widget": {
-            "name": "frames_per_second",
-            "config": [
-              "INT",
-              {
-                "min": 1,
-                "default": 25
-              }
-            ]
+            "name": "frames_per_second"
           }
         }
       ],
@@ -1503,13 +1469,7 @@
           "type": "STRING",
           "link": 2312,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           },
           "slot_index": 1
         }
@@ -1560,13 +1520,7 @@
           "type": "STRING",
           "link": 2309,
           "widget": {
-            "name": "text",
-            "config": [
-              "STRING",
-              {
-                "multiline": true
-              }
-            ]
+            "name": "text"
           }
         }
       ],
@@ -1995,16 +1949,7 @@
           "type": "INT",
           "link": 5074,
           "widget": {
-            "name": "width",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "width"
           }
         },
         {
@@ -2012,16 +1957,7 @@
           "type": "INT",
           "link": 5075,
           "widget": {
-            "name": "height",
-            "config": [
-              "INT",
-              {
-                "default": 512,
-                "min": 1,
-                "max": 8192,
-                "step": 1
-              }
-            ]
+            "name": "height"
           }
         }
       ],
@@ -2462,16 +2398,7 @@
           "type": "FLOAT",
           "link": 5222,
           "widget": {
-            "name": "x_translation",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "x_translation"
           }
         },
         {
@@ -2479,16 +2406,7 @@
           "type": "FLOAT",
           "link": 5223,
           "widget": {
-            "name": "y_translation",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "y_translation"
           }
         },
         {
@@ -2496,16 +2414,7 @@
           "type": "FLOAT",
           "link": 5225,
           "widget": {
-            "name": "zoom",
-            "config": [
-              "FLOAT",
-              {
-                "default": 0,
-                "min": -10,
-                "max": 10,
-                "step": 0.01
-              }
-            ]
+            "name": "zoom"
           }
         }
       ],
@@ -2707,14 +2616,7 @@
           "type": "STRING",
           "link": 5442,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "I:\\AI\\ComfyUI\\ComfyUI\\output",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -2728,6 +2630,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -3206,14 +3114,7 @@
           "type": "STRING",
           "link": 5348,
           "widget": {
-            "name": "directory_path",
-            "config": [
-              "STRING",
-              {
-                "default": "",
-                "multiline": false
-              }
-            ]
+            "name": "directory_path"
           },
           "slot_index": 2
         }
@@ -3227,6 +3128,12 @@
           ],
           "shape": 3,
           "slot_index": 0
+        },
+        {
+          "name": "frame_name",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
@@ -4006,7 +3913,7 @@
           "name": "sequence",
           "type": "ANIMATION_SEQUENCE",
           "links": [
-            5466
+            5467
           ],
           "shape": 3,
           "slot_index": 0
@@ -4022,11 +3929,11 @@
       "bgcolor": "#593930"
     },
     {
-      "id": 422,
-      "type": "Video Encoder (mpegCoder) [Dream]",
+      "id": 423,
+      "type": "FFMPEG Video Encoder [Dream]",
       "pos": [
         4785,
-        561
+        557
       ],
       "size": {
         "0": 315,
@@ -4039,11 +3946,19 @@
         {
           "name": "sequence",
           "type": "ANIMATION_SEQUENCE",
-          "link": 5466
+          "link": 5467
+        }
+      ],
+      "outputs": [
+        {
+          "name": "log_entry",
+          "type": "LOG_ENTRY",
+          "links": null,
+          "shape": 3
         }
       ],
       "properties": {
-        "Node name for S&R": "Video Encoder (mpegCoder) [Dream]"
+        "Node name for S&R": "FFMPEG Video Encoder [Dream]"
       },
       "widgets_values": [
         "video",
@@ -4942,10 +4857,10 @@
       "*"
     ],
     [
-      5466,
+      5467,
       281,
       0,
-      422,
+      423,
       0,
       "ANIMATION_SEQUENCE"
     ]
@@ -4959,7 +4874,8 @@
         474,
         885
       ],
-      "color": "#a1309b"
+      "color": "#a1309b",
+      "font_size": 24
     },
     {
       "title": "Settings",
@@ -4969,7 +4885,8 @@
         482,
         742
       ],
-      "color": "#b58b2a"
+      "color": "#b58b2a",
+      "font_size": 24
     },
     {
       "title": "Inpainting/Outpainting",
@@ -4979,7 +4896,8 @@
         1711,
         528
       ],
-      "color": "#929054"
+      "color": "#929054",
+      "font_size": 24
     },
     {
       "title": "Prev Frame Move",
@@ -4989,7 +4907,8 @@
         1450,
         456
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Full frame sampler",
@@ -4999,7 +4918,8 @@
         691,
         700
       ],
-      "color": "#88A"
+      "color": "#88A",
+      "font_size": 24
     },
     {
       "title": "Output",
@@ -5009,7 +4929,8 @@
         1458,
         381
       ],
-      "color": "#b06634"
+      "color": "#b06634",
+      "font_size": 24
     },
     {
       "title": "Animation Driver",
@@ -5019,7 +4940,8 @@
         336,
         373
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Motion Control",
@@ -5029,7 +4951,8 @@
         1451,
         392
       ],
-      "color": "#ef75ff"
+      "color": "#ef75ff",
+      "font_size": 24
     },
     {
       "title": "Model selection",
@@ -5039,7 +4962,8 @@
         476,
         204
       ],
-      "color": "#3f789e"
+      "color": "#3f789e",
+      "font_size": 24
     },
     {
       "title": "Previews",
@@ -5049,7 +4973,8 @@
         6473,
         329
       ],
-      "color": "#444"
+      "color": "#444",
+      "font_size": 24
     }
   ],
   "config": {},
