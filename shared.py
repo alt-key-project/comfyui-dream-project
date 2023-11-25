@@ -274,7 +274,7 @@ def list_images_in_directory(directory_path: str, pattern: str, alphabetic_index
 
     def _num_from_filename(fn):
         (text, _) = os.path.splitext(fn)
-        token: str = text.split("_")[-1]
+        token = text.split("_")[-1]
         if token.isdigit():
             return int(token)
         else:
@@ -338,7 +338,7 @@ class DreamStateFile:
         if not os.path.isdir(self._dirname):
             os.makedirs(self._dirname)
         if not os.path.isfile(self._filepath):
-            self._data: dict = {}
+            self._data = {}
         else:
             with open(self._filepath, encoding="utf-8") as f:
                 self._data = json.load(f)
