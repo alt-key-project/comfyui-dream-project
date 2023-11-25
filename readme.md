@@ -15,7 +15,7 @@ creating a separate custom node pack here:
 
 [github](https://github.com/alt-key-project/comfyui-dream-video-batches)
 
-This new node pack will be getting my attention from now (at least as stable diffusion video generation is done mostly 
+This new node pack will be getting my attention from now on (at least as stable diffusion video generation is done mostly 
 in batches. )
 
 ## Installation
