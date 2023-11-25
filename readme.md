@@ -7,6 +7,17 @@ and useful to many ComfyUI users.
 
 I have demonstrated the use of these custom nodes in this [youtube video](https://youtu.be/pZ6Li3qF-Kk).
 
+# Notice!
+
+This custom node pack is currently not being updated. Stable Diffusion video generation is moving towards a different 
+workflow with AnimateDiff and Stable Video Diffusion. I decided to not try to update this node pack, but I am instead 
+creating a separate custom node pack here:
+
+[github](https://github.com/alt-key-project/comfyui-dream-video-batches)
+
+This new node pack will be getting my attention from now (at least as stable diffusion video generation is done mostly 
+in batches. )
+
 ## Installation
 
 ### Simple option
