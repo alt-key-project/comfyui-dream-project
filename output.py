@@ -105,7 +105,7 @@ class DreamImageSequenceOutput:
         args["logger"] = logger
         proc = DreamImageProcessor(image, **args)
         proc.process(self._save_single_image)
-        frame_counter: FrameCounter = args["frame_counter"]
+        frame_counter = args["frame_counter"]
         log_entry = LogEntry([])
         for text in log_texts:
             log_entry = log_entry.add(text)

@@ -1,29 +1,36 @@
 from .categories import NodeCategories
+from .dreamtypes import RGBPalette
 from .err import *
 from .shared import ALWAYS_CHANGED_FLAG, hashed_as_strings
-from .dreamtypes import RGBPalette
 
+_NOT_A_VALUE_I = 9223372036854775807
+_NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
+_NOT_A_VALUE_S = "⭆"
 
-def _generate_switch_input(type: str):
+def _generate_switch_input(type_nm: str, default_value=None):
     d = dict()
     for i in range(10):
-        d["input_" + str(i)] = (type,)
+        if default_value is None:
+            d["input_" + str(i)] = (type_nm,)
+        else:
+            d["input_" + str(i)] = (type_nm, {"default": default_value, "forceInput": True})
+
     return {
         "required": {
-            "select": ("INT", {"defualt": 0, "min": 0, "max": 9}),
+            "select": ("INT", {"default": 0, "min": 0, "max": 9}),
             "on_missing": (["previous", "next"],)
         },
         "optional": d
     }
 
 
-def _do_pick(cls, select, on_missing, **args):
+def _do_pick(cls, select, test_val, on_missing, **args):
     direction = 1
     if on_missing == "previous":
         direction = -1
     if len(args) == 0:
         on_error(cls, "No inputs provided!")
-    while args.get("input_" + str(select), None) is None:
+    while not test_val(args.get("input_" + str(select), None)):
         select = (select + direction) % 10
     return args["input_" + str(select)],
 
@@ -46,7 +53,7 @@ class DreamBigImageSwitch:
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
 
 
 class DreamBigLatentSwitch:
@@ -67,7 +74,7 @@ class DreamBigLatentSwitch:
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
 
 
 class DreamBigTextSwitch:
@@ -81,14 +88,14 @@ class DreamBigTextSwitch:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return _generate_switch_input(cls._switch_type)
+        return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_S)
 
     @classmethod
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_S), on_missing, **args)
 
 
 class DreamBigPaletteSwitch:
@@ -109,7 +116,7 @@ class DreamBigPaletteSwitch:
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: (n is not None), on_missing, **args)
 
 
 class DreamBigFloatSwitch:
@@ -123,14 +130,14 @@ class DreamBigFloatSwitch:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return _generate_switch_input(cls._switch_type)
+        return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_F)
 
     @classmethod
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_F), on_missing, **args)
 
 
 class DreamBigIntSwitch:
@@ -144,14 +151,14 @@ class DreamBigIntSwitch:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return _generate_switch_input(cls._switch_type)
+        return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_I)
 
     @classmethod
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
-        return _do_pick(self.__class__, select, on_missing, **args)
+        return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_I), on_missing, **args)
 
 
 class DreamBoolToFloat:
