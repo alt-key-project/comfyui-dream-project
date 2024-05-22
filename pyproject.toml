@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-dream-project"
+description = "This extension offers various nodes that are useful for Deforum-like animations in ComfyUI."
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["imageio", "pilgram", "scipy", "numpy<1.24>=1.18", "torchvision", "evalidate"]
+
+[project.urls]
+Repository = "https://github.com/alt-key-project/comfyui-dream-project"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "comfyui-dream-project"
+Icon = ""
