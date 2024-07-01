@@ -10,6 +10,6 @@ Repository = "https://github.com/alt-key-project/comfyui-dream-project"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "altkeyproject"
 DisplayName = "comfyui-dream-project"
 Icon = ""
