@@ -30,8 +30,12 @@ def _do_pick(cls, select, test_val, on_missing, **args):
         direction = -1
     if len(args) == 0:
         on_error(cls, "No inputs provided!")
+    n = len(args)
     while not test_val(args.get("input_" + str(select), None)):
+        if n<0:
+            on_error(cls, "No valid input value!")
         select = (select + direction) % 10
+        n = n - 1
     return args["input_" + str(select)],
 
 
