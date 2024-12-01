@@ -33,7 +33,7 @@ def _do_pick(cls, select, test_val, on_missing, **args):
     n = len(args)
     while not test_val(args.get("input_" + str(select), None)):
         if n<0:
-            return None
+            return (None,)
         select = (select + direction) % 10
         n = n - 1
     return args["input_" + str(select)],
