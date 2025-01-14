@@ -15,6 +15,7 @@ class DreamRandomPromptWords:
             },
             "required": {
                 "words": ("STRING", {"default": "", "multiline": True}),
+                "separator": ("STRING", {"default": ",", "multiline": False}),
                 "samples": ("INT", {"default": 1, "min": 1, "max": 100}),
                 "min_weight": ("FLOAT", {"default": 1.0}),
                 "max_weight": ("FLOAT", {"default": 1.0}),
@@ -32,11 +33,11 @@ class DreamRandomPromptWords:
     def IS_CHANGED(cls, *values):
         return hashed_as_strings(*values)
 
-    def result(self, words: str, samples, min_weight, max_weight, seed, **args):
+    def result(self, words: str, separator, samples, min_weight, max_weight, seed, **args):
         p = args.get("partial_prompt", PartialPrompt())
         rnd = random.Random()
         rnd.seed(seed)
-        words = list(set(filter(lambda s: s.strip() != "", words.split())))
+        words = list(set(filter(lambda s: s.strip() != "", words.split(separator))))
         samples = min(samples, len(words))
         for i in range(samples):
             picked_word = words[rnd.randint(0, len(words)-1)]
