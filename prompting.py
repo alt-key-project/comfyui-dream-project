@@ -3,6 +3,48 @@ from .shared import hashed_as_strings
 from .dreamtypes import PartialPrompt
 
 
+class DreamRandomPromptWords:
+    NODE_NAME = "Random Prompt Words"
+    ICON = "⚅"
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "optional": {
+                "partial_prompt": (PartialPrompt.ID,)
+            },
+            "required": {
+                "words": ("STRING", {"default": "", "multiline": True}),
+                "samples": ("INT", {"default": 1, "min": 1, "max": 100}),
+                "min_weight": ("FLOAT", {"default": 1.0}),
+                "max_weight": ("FLOAT", {"default": 1.0}),
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+            },
+        }
+
+    CATEGORY = NodeCategories.CONDITIONING
+    RETURN_TYPES = (PartialPrompt.ID,)
+    RETURN_NAMES = ("partial_prompt",)
+    FUNCTION = "result"
+
+
+    @classmethod
+    def IS_CHANGED(cls, *values):
+        return hashed_as_strings(*values)
+
+    def result(self, words: str, samples, min_weight, max_weight, seed, **args):
+        p = args.get("partial_prompt", PartialPrompt())
+        rnd = random.Random()
+        rnd.seed(seed)
+        words = list(set(filter(lambda s: s.strip() != "", words.split())))
+        samples = min(samples, len(words))
+        for i in range(samples):
+            picked_word = words[rnd.randint(0, len(words)-1)]
+            words = list(filter(lambda s: s!=picked_word, words))
+            weight = rnd.uniform(min_weight, max_weight)
+            p = p.add(picked_word, weight)
+        return (p,)
+
 class DreamWeightedPromptBuilder:
     NODE_NAME = "Build Prompt"
     ICON = "⚖"
