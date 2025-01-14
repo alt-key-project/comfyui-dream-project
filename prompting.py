@@ -1,6 +1,7 @@
 from .categories import NodeCategories
 from .shared import hashed_as_strings
 from .dreamtypes import PartialPrompt
+import random
 
 
 class DreamRandomPromptWords:
