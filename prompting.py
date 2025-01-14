@@ -37,7 +37,7 @@ class DreamRandomPromptWords:
         p = args.get("partial_prompt", PartialPrompt())
         rnd = random.Random()
         rnd.seed(seed)
-        words = list(set(filter(lambda s: s.strip() != "", words.split(separator))))
+        words = list(set(map(lambda s: s.strip(), filter(lambda s: s.strip() != "", words.split(separator)))))
         samples = min(samples, len(words))
         for i in range(samples):
             picked_word = words[rnd.randint(0, len(words)-1)]
