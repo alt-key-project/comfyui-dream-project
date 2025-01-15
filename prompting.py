@@ -31,8 +31,8 @@ class DreamRandomPromptWords:
 
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return ALWAYS_CHANGED_FLAG
 
     def result(self, words: str, separator, samples, min_weight, max_weight, seed, **args):
         p = args.get("partial_prompt", PartialPrompt())
