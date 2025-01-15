@@ -226,6 +226,10 @@ Post processing for animation sequences generating blended in-between frames.
 ### Laboratory [Dream]
 Super-charged number generator for experimenting with ComfyUI.
 
+### Lazy *** Switch [Dream]
+Switch nodes for different type for up to ten inputs. The lazy version only evaluates the 
+selected input, but first/next of the big switch is unsupported.
+
 ### Log Entry Joiner [Dream]
 Merges multiple log entries (reduces noodling).
 
@@ -268,6 +272,9 @@ Single event/peak curve with a slight bell-shape.
 
 ### String Tokenizer [Dream]
 Splits a text into tokens by a separator and returns one of the tokens based on a given index.
+
+### Random Prompt Words [Dream]
+Randomly picks words/tokens/phrases from an input text.
 
 ### Triangle Curve [Dream]
 Triangle wave curve. 
