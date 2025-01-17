@@ -18,8 +18,8 @@ class DreamRandomPromptWords:
                 "words": ("STRING", {"default": "", "multiline": True}),
                 "separator": ("STRING", {"default": ",", "multiline": False}),
                 "samples": ("INT", {"default": 1, "min": 1, "max": 100}),
-                "min_weight": ("FLOAT", {"default": 1.0}),
-                "max_weight": ("FLOAT", {"default": 1.0}),
+                "min_weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
+                "max_weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
             },
         }
@@ -59,7 +59,7 @@ class DreamWeightedPromptBuilder:
             },
             "required": {
                 "added_prompt": ("STRING", {"default": "", "multiline": True}),
-                "weight": ("FLOAT", {"default": 1.0}),
+                "weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
             },
         }
 
