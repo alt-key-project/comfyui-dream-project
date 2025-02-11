@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Type
+import sys,os
+
+sys.path.append(str(os.path.dirname(os.path.abspath(__file__))))
 
 from .base import *
 from .colors import *
@@ -35,7 +38,7 @@ _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (5, 0, 10),
+    "version": (5, 0, 11),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",
