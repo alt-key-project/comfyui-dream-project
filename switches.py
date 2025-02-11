@@ -53,7 +53,7 @@ class DreamBigImageSwitch:
         return _generate_switch_input(cls._switch_type)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
@@ -74,7 +74,7 @@ class DreamBigLatentSwitch:
         return _generate_switch_input(cls._switch_type)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
@@ -95,7 +95,7 @@ class DreamBigTextSwitch:
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_S)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
@@ -116,7 +116,7 @@ class DreamBigPaletteSwitch:
         return _generate_switch_input(cls._switch_type)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def pick(self, select, on_missing, **args):
@@ -137,7 +137,7 @@ class DreamBigFloatSwitch:
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_F)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
@@ -158,7 +158,7 @@ class DreamBigIntSwitch:
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_I)
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
@@ -184,7 +184,7 @@ class DreamBoolToFloat:
         }
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return hashed_as_strings(values)
 
     def pick(self, boolean, on_true, on_false):
@@ -213,7 +213,7 @@ class DreamBoolToInt:
         }
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return hashed_as_strings(values)
 
     def pick(self, boolean, on_true, on_false):

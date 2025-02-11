@@ -58,8 +58,8 @@ class DreamImageSequenceOutput:
     FUNCTION = "save"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def _get_new_filename(self, current_frame, prefix, digits, filetype):
         return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]

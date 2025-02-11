@@ -142,7 +142,7 @@ class DreamSimpleFrameCounter:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, frame_index, total_frames, frames_per_second):
@@ -172,7 +172,7 @@ class DreamDirectoryBackedFrameCounter:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, directory_path, pattern, indexing, total_frames, frames_per_second):

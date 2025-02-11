@@ -37,7 +37,7 @@ class DreamLaboratory:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def _generate(self, seed, last_value, min_value, max_value, mode, step_size):

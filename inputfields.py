@@ -19,8 +19,8 @@ class DreamInputText:
     FUNCTION = "noop"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def noop(self, value):
         return (value,)
@@ -43,8 +43,8 @@ class DreamInputString:
     FUNCTION = "noop"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def noop(self, value):
         return (value,)
@@ -68,8 +68,8 @@ class DreamInputFloat:
     FUNCTION = "noop"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def noop(self, value):
         return (value,)
@@ -93,8 +93,8 @@ class DreamInputInt:
     FUNCTION = "noop"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def noop(self, value):
         return (value,)

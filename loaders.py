@@ -28,7 +28,7 @@ class DreamImageSequenceInputWithDefaultFallback:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, frame_counter: FrameCounter, directory_path, pattern, indexing, **other):

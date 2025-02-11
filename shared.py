@@ -361,12 +361,16 @@ class DreamStateFile:
         return previous
 
 
-def hashed_as_strings(*items):
+
+def hashed_as_strings(*items, **kwargs):
     tokens = "|".join(list(map(str, items)))
     m = hashlib.sha256()
     m.update(tokens.encode(encoding="utf-8"))
+    kw_tokens = ("#".join(sorted(map(lambda e: str(e[0])+"="+str(e[1]), kwargs.items()))))
+    m.update(kw_tokens.encode(encoding="utf-8"))
     return m.digest().hex()
-#
+
+
 #
 # class MpegEncoderUtility:
 #     def __init__(self, video_path: str, bit_rate_factor: float, width: int, height: int, files: List[str],

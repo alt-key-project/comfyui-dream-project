@@ -43,7 +43,7 @@ class DreamImageMotion:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def _mk_PIL_image(self, size, color=None, mode="RGB") -> Image:

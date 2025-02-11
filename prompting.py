@@ -1,51 +1,7 @@
 from .categories import NodeCategories
 from .shared import hashed_as_strings
 from .dreamtypes import PartialPrompt
-import random
 
-
-class DreamRandomPromptWords:
-    NODE_NAME = "Random Prompt Words"
-    ICON = "⚅"
-
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "optional": {
-                "partial_prompt": (PartialPrompt.ID,)
-            },
-            "required": {
-                "words": ("STRING", {"default": "", "multiline": True}),
-                "separator": ("STRING", {"default": ",", "multiline": False}),
-                "samples": ("INT", {"default": 1, "min": 1, "max": 100}),
-                "min_weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
-                "max_weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
-                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
-            },
-        }
-
-    CATEGORY = NodeCategories.CONDITIONING
-    RETURN_TYPES = (PartialPrompt.ID,)
-    RETURN_NAMES = ("partial_prompt",)
-    FUNCTION = "result"
-
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
-
-    def result(self, words: str, separator, samples, min_weight, max_weight, seed, **args):
-        p = args.get("partial_prompt", PartialPrompt())
-        rnd = random.Random()
-        rnd.seed(seed)
-        words = list(set(map(lambda s: s.strip(), filter(lambda s: s.strip() != "", words.split(separator)))))
-        samples = min(samples, len(words))
-        for i in range(samples):
-            picked_word = words[rnd.randint(0, len(words)-1)]
-            words = list(filter(lambda s: s!=picked_word, words))
-            weight = rnd.uniform(min_weight, max_weight)
-            p = p.add(picked_word, weight)
-        return (p,)
 
 class DreamWeightedPromptBuilder:
     NODE_NAME = "Build Prompt"
@@ -59,7 +15,7 @@ class DreamWeightedPromptBuilder:
             },
             "required": {
                 "added_prompt": ("STRING", {"default": "", "multiline": True}),
-                "weight": ("FLOAT", {"default": 1.0, "min": -10, "max": 10}),
+                "weight": ("FLOAT", {"default": 1.0}),
             },
         }
 
@@ -69,8 +25,8 @@ class DreamWeightedPromptBuilder:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def result(self, added_prompt, weight, **args):
         input = args.get("partial_prompt", PartialPrompt())
@@ -99,8 +55,8 @@ class DreamPromptFinalizer:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(*values)
+    def IS_CHANGED(cls, *values, **kwargs):
+        return hashed_as_strings(*values, **kwargs)
 
     def result(self, partial_prompt: PartialPrompt, adjustment, adjustment_reference, clamp):
         if adjustment == "raw" or partial_prompt.is_empty():

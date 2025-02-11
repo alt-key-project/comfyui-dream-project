@@ -27,7 +27,7 @@ class DreamImageAreaSampler:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def _get_pixel_area(self, img: DreamImage, area):
@@ -103,7 +103,7 @@ class DreamImageSampler:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, image, samples, seed):
@@ -140,7 +140,7 @@ class DreamColorAlign:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, palette: Tuple[RGBPalette], target_align: Tuple[RGBPalette], alignment_factor: float):
@@ -188,7 +188,7 @@ class DreamColorShift:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, palette, red_multiplier, green_multiplier, blue_multiplier, fixed_brightness):
@@ -235,7 +235,7 @@ class DreamImageColorShift:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, image, red_multiplier, green_multiplier, blue_multiplier):
@@ -266,7 +266,7 @@ class DreamImageBrightness:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, image, factor):
@@ -297,7 +297,7 @@ class DreamImageContrast:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, image, factor):
@@ -329,7 +329,7 @@ class DreamComparePalette:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, a, b):
@@ -373,7 +373,7 @@ class DreamAnalyzePalette:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values):
+    def IS_CHANGED(cls, *values, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, palette):
