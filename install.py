@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import sys, os
 
-sys.path.append(str(os.path.dirname(os.path.abspath(__file__))))
+#sys.path.append(str(os.path.dirname(os.path.abspath(__file__))))
 
-from . import shared
+#from . import shared
 
 
 def setup_default_config():
-    shared.DreamConfig()
-
+    #shared.DreamConfig()
+    pass
 
 def run_install():
     setup_default_config()
