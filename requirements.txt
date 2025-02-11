@@ -1,6 +1,6 @@
 imageio
 pilgram
 scipy
-numpy<1.24,>=1.18
+numpy<2.0.0,>=1.18
 torchvision
 evalidate
