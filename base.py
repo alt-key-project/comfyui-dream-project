@@ -205,7 +205,7 @@ class DreamFrameCountCalculator:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *v):
+    def IS_CHANGED(cls, *v, **kwargs):
         return ALWAYS_CHANGED_FLAG
 
     def result(self, hours, minutes, seconds, milliseconds, frames_per_second):
