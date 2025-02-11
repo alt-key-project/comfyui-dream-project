@@ -281,9 +281,9 @@ class DreamBeatCurve:
                 "accent_1": ("INT", {"default": 1, "min": 1, "max": 24}),
             },
             "optional": {
-                "accent_2": ("INT", {"default": 3, "min": 1, "max": 24}),
-                "accent_3": ("INT", {"default": 0}),
-                "accent_4": ("INT", {"default": 0}),
+                "accent_2": ("INT", {"default": 0, "min": 0, "max": 24}),
+                "accent_3": ("INT", {"default": 0, "min": 0, "max": 24}),
+                "accent_4": ("INT", {"default": 0, "min": 0, "max": 24}),
             }
         }
 
@@ -294,7 +294,10 @@ class DreamBeatCurve:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
+        print("CALC IS_CHANGED")
+        hashed = hashed_as_strings(*values, **kwargs)
+        print("IS_CHANGED = "+hashed)
+        return hashed
 
     def _get_value_for_accent(self, accent, measure_length, bpm, frame_counter: FrameCounter, frame_offset):
         current_frame = frame_counter.current_frame + frame_offset

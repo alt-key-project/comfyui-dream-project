@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-dream-project"
 description = "This extension offers various nodes that are useful for Deforum-like animations in ComfyUI."
-version = "5.0.14"
+version = "5.0.15"
 license = { text = "MIT License" }
 dependencies = ["imageio", "pilgram", "scipy", "numpy<2.0,>=1.18", "torchvision", "evalidate"]
 
