@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .shared import DreamConfig
+from shared import DreamConfig
 
 
 def setup_default_config():
