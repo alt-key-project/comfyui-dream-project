@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from shared import DreamConfig
+from . import shared
 
 
 def setup_default_config():
-    DreamConfig()
+    shared.DreamConfig()
 
 
 def run_install():
