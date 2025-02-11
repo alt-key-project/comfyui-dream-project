@@ -4,9 +4,7 @@ import hashlib
 import json
 import os
 import random
-import time
-
-import folder_paths as comfy_paths
+import tempfile
 import glob
 import numpy
 import torch
@@ -18,9 +16,11 @@ from typing import Dict, Tuple, List
 from .dreamlogger import DreamLog
 from .embedded_config import EMBEDDED_CONFIGURATION
 
+tmpDir = tempfile.TemporaryDirectory("Dream_Anim")
+
 NODE_FILE = os.path.abspath(__file__)
 DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
-TEMP_PATH = os.path.join(os.path.abspath(comfy_paths.temp_directory), "Dream_Anim")
+TEMP_PATH = os.path.join(os.path.abspath(tempfile.gettempdir()), "Dream_Anim")
 ALWAYS_CHANGED_FLAG = float("NaN")
 
 
@@ -370,53 +370,3 @@ def hashed_as_strings(*items, **kwargs):
     m.update(kw_tokens.encode(encoding="utf-8"))
     return m.digest().hex()
 
-
-#
-# class MpegEncoderUtility:
-#     def __init__(self, video_path: str, bit_rate_factor: float, width: int, height: int, files: List[str],
-#                  fps: float, encoding_threads: int, codec_name, max_b_frame):
-#         import mpegCoder
-#         self._files = files
-#         self._logger = get_logger()
-#         self._enc = mpegCoder.MpegEncoder()
-#         bit_rate = self._calculate_bit_rate(width, height, fps, bit_rate_factor)
-#         self._logger.info("Bitrate " + str(bit_rate))
-#         self._enc.setParameter(
-#             videoPath=video_path, codecName=codec_name,
-#             nthread=encoding_threads, bitRate=bit_rate, width=width, height=height, widthSrc=width,
-#             heightSrc=height,
-#             GOPSize=len(files), maxBframe=max_b_frame, frameRate=self._fps_to_tuple(fps))
-#
-#     def _calculate_bit_rate(self, width: int, height: int, fps: float, bit_rate_factor: float):
-#         bits_per_pixel_base = 0.5
-#         return round(max(10, float(width * height * fps * bits_per_pixel_base * bit_rate_factor * 0.001)))
-#
-#     def encode(self):
-#         if not self._enc.FFmpegSetup():
-#             raise Exception("Failed to setup MPEG Encoder - check parameters!")
-#         try:
-#             t = time.time()
-#
-#             for filepath in self._files:
-#                 self._logger.debug("Encoding frame {}", filepath)
-#                 image = DreamImage.from_file(filepath).convert("RGB")
-#                 self._enc.EncodeFrame(image.numpy_array())
-#             self._enc.FFmpegClose()
-#             self._logger.info("Completed video encoding of {n} frames in {t} seconds", n=len(self._files),
-#                               t=round(time.time() - t))
-#         finally:
-#             self._enc.clear()
-#
-#     def _fps_to_tuple(self, fps: float):
-#         def _is_almost_int(f: float):
-#             return abs(f - int(f)) < 0.001
-#
-#         a = fps
-#         b = 1
-#         while not _is_almost_int(a) and b < 100:
-#             a /= 10
-#             b *= 10
-#         a = round(a)
-#         b = round(b)
-#         self._logger.info("Video specified as {fps} fps - encoder framerate {a}/{b}", fps=fps, a=a, b=b)
-#         return (a, b)
