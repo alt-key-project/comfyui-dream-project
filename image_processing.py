@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw
 from PIL.Image import Resampling
 
 from .categories import *
-from .shared import ALWAYS_CHANGED_FLAG, convertTensorImageToPIL, DreamImageProcessor, \
+from .shared import float("NaN"), convertTensorImageToPIL, DreamImageProcessor, \
     DreamImage, DreamMask
 from .dreamtypes import SharedTypes, FrameCounter
 
@@ -44,7 +44,7 @@ class DreamImageMotion:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def _mk_PIL_image(self, size, color=None, mode="RGB") -> Image:
         im = Image.new(mode=mode, size=size)

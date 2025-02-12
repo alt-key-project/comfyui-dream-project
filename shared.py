@@ -21,7 +21,6 @@ tmpDir = tempfile.TemporaryDirectory("Dream_Anim")
 NODE_FILE = os.path.abspath(__file__)
 DREAM_NODES_SOURCE_ROOT = os.path.dirname(NODE_FILE)
 TEMP_PATH = os.path.join(os.path.abspath(tempfile.gettempdir()), "Dream_Anim")
-ALWAYS_CHANGED_FLAG = float("NaN")
 
 
 def convertTensorImageToPIL(tensor_image) -> Image:

@@ -24,7 +24,7 @@ class DreamFrameCounterInfo:
 
     @classmethod
     def IS_CHANGED(cls, *v):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, frame_counter: FrameCounter):
         return (frame_counter.current_frame,
@@ -57,7 +57,7 @@ class DreamDirectoryFileCount:
 
     @classmethod
     def IS_CHANGED(cls, *v):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, directory_path, patterns):
         if not os.path.isdir(directory_path):
@@ -143,7 +143,7 @@ class DreamSimpleFrameCounter:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, frame_index, total_frames, frames_per_second):
         n = frame_index
@@ -173,7 +173,7 @@ class DreamDirectoryBackedFrameCounter:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, directory_path, pattern, indexing, total_frames, frames_per_second):
         results = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
@@ -206,7 +206,7 @@ class DreamFrameCountCalculator:
 
     @classmethod
     def IS_CHANGED(cls, *v, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, hours, minutes, seconds, milliseconds, frames_per_second):
         total_s = seconds + 0.001 * milliseconds + minutes * 60 + hours * 3600

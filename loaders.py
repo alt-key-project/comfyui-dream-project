@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .categories import NodeCategories
-from .shared import ALWAYS_CHANGED_FLAG, list_images_in_directory, DreamImage
+from .shared import float("NaN"), list_images_in_directory, DreamImage
 from .dreamtypes import SharedTypes, FrameCounter
 import os
 
@@ -29,7 +29,7 @@ class DreamImageSequenceInputWithDefaultFallback:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, frame_counter: FrameCounter, directory_path, pattern, indexing, **other):
         default_image = other.get("default_image", None)

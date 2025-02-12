@@ -28,7 +28,7 @@ class DreamImageAreaSampler:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def _get_pixel_area(self, img: DreamImage, area):
         w = img.width
@@ -104,7 +104,7 @@ class DreamImageSampler:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, image, samples, seed):
         result = list()
@@ -141,7 +141,7 @@ class DreamColorAlign:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, palette: Tuple[RGBPalette], target_align: Tuple[RGBPalette], alignment_factor: float):
         results = list()
@@ -189,7 +189,7 @@ class DreamColorShift:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, palette, red_multiplier, green_multiplier, blue_multiplier, fixed_brightness):
         results = list()
@@ -236,7 +236,7 @@ class DreamImageColorShift:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, image, red_multiplier, green_multiplier, blue_multiplier):
         proc = DreamImageProcessor(inputs=image)
@@ -267,7 +267,7 @@ class DreamImageBrightness:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, image, factor):
         proc = DreamImageProcessor(inputs=image)
@@ -298,7 +298,7 @@ class DreamImageContrast:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, image, factor):
         proc = DreamImageProcessor(inputs=image)
@@ -330,7 +330,7 @@ class DreamComparePalette:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, a, b):
         MIN_VALUE = 1 / 255.0
@@ -374,7 +374,7 @@ class DreamAnalyzePalette:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, palette):
         f = 1.0 / len(palette)

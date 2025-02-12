@@ -1,7 +1,7 @@
 from .categories import NodeCategories
 from .dreamtypes import RGBPalette
 from .err import *
-from .shared import ALWAYS_CHANGED_FLAG, hashed_as_strings
+from .shared import float("NaN"), hashed_as_strings
 
 _NOT_A_VALUE_I = 9223372036854775807
 _NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
@@ -38,7 +38,7 @@ class DreamLazyImageSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def check_lazy_status(self, select, **kwargs):
         return ["input_"+str(select)]
@@ -62,7 +62,7 @@ class DreamLazyLatentSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def check_lazy_status(self, select, **kwargs):
         return ["input_" + str(select)]
@@ -110,7 +110,7 @@ class DreamLazyPaletteSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def check_lazy_status(self, select, **kwargs):
         return ["input_" + str(select)]

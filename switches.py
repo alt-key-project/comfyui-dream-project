@@ -1,7 +1,7 @@
 from .categories import NodeCategories
 from .dreamtypes import RGBPalette
 from .err import *
-from .shared import ALWAYS_CHANGED_FLAG, hashed_as_strings
+from .shared import float("NaN"), hashed_as_strings
 
 _NOT_A_VALUE_I = 9223372036854775807
 _NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
@@ -54,7 +54,7 @@ class DreamBigImageSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
@@ -75,7 +75,7 @@ class DreamBigLatentSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
@@ -117,7 +117,7 @@ class DreamBigPaletteSwitch:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: (n is not None), on_missing, **args)

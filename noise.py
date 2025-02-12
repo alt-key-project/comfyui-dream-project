@@ -46,7 +46,7 @@ class DreamNoiseFromPalette:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def result(self, palette: Tuple[RGBPalette], width, height, seed, blur_amount, density):
         outputs = list()
@@ -97,7 +97,7 @@ class DreamNoiseFromAreaPalettes:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def _area_coordinates(self, width, height):
         dx = width / 6

@@ -5,7 +5,7 @@
 import json
 
 from .categories import *
-from .shared import ALWAYS_CHANGED_FLAG, DreamStateFile
+from .shared import float("NaN"), DreamStateFile
 from .dreamtypes import *
 
 _laboratory_state = DreamStateFile("laboratory")
@@ -38,7 +38,7 @@ class DreamLaboratory:
 
     @classmethod
     def IS_CHANGED(cls, *values, **kwargs):
-        return ALWAYS_CHANGED_FLAG
+        return float("NaN")
 
     def _generate(self, seed, last_value, min_value, max_value, mode, step_size):
         rnd = random.Random()
