@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw
 from PIL.Image import Resampling
 
 from .categories import *
-from .shared import float("NaN"), convertTensorImageToPIL, DreamImageProcessor, \
+from .shared import convertTensorImageToPIL, DreamImageProcessor, \
     DreamImage, DreamMask
 from .dreamtypes import SharedTypes, FrameCounter
 

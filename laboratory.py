@@ -5,7 +5,7 @@
 import json
 
 from .categories import *
-from .shared import float("NaN"), DreamStateFile
+from .shared import DreamStateFile
 from .dreamtypes import *
 
 _laboratory_state = DreamStateFile("laboratory")

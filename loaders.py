@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .categories import NodeCategories
-from .shared import float("NaN"), list_images_in_directory, DreamImage
+from .shared import list_images_in_directory, DreamImage
 from .dreamtypes import SharedTypes, FrameCounter
 import os
 

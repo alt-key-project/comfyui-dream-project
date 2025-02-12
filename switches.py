@@ -1,7 +1,7 @@
 from .categories import NodeCategories
 from .dreamtypes import RGBPalette
 from .err import *
-from .shared import float("NaN"), hashed_as_strings
+from .shared import hashed_as_strings
 
 _NOT_A_VALUE_I = 9223372036854775807
 _NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
