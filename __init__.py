@@ -39,7 +39,7 @@ _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (5, 1, 0),
+    "version": (5, 1, 1),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",

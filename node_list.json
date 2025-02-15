@@ -44,6 +44,7 @@
   "Noise from Palette [Dream]": "Generates noise based on the colors in a palette",
   "Palette Color Align [Dream]": "Shifts the colors of one palette towards another target palette",
   "Palette Color Shift [Dream]": "Multiplies the color values in a palette",
+  "Random Prompt Words [Dream]": "Picks random words from input",
   "Sample Image Area as Palette [Dream]": "Samples a palette from an image based on pre-defined areas",
   "Sample Image as Palette [Dream]": "Randomly samples pixel values to build a palette from an image",
   "Saw Curve [Dream]": "Saw wave curve",
