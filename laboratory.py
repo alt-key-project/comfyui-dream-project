@@ -36,10 +36,6 @@ class DreamLaboratory:
     RETURN_NAMES = ("FLOAT", "INT", "log_entry")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def _generate(self, seed, last_value, min_value, max_value, mode, step_size):
         rnd = random.Random()
         rnd.seed(seed)

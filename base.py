@@ -22,10 +22,6 @@ class DreamFrameCounterInfo:
                     "elapsed_seconds", "remaining_seconds", "total_seconds", "completion")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *v):
-        return float("NaN")
-
     def result(self, frame_counter: FrameCounter):
         return (frame_counter.current_frame,
                 frame_counter.total_frames,
@@ -56,8 +52,14 @@ class DreamDirectoryFileCount:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *v):
-        return float("NaN")
+    def IS_CHANGED(cls, directory_path, patterns):
+        if not os.path.isdir(directory_path):
+            return ""
+        total = 0
+        for pattern in patterns.split("|"):
+            files = list(glob.glob(pattern, root_dir=directory_path))
+            total += len(files)
+        return total
 
     def result(self, directory_path, patterns):
         if not os.path.isdir(directory_path):
@@ -66,7 +68,6 @@ class DreamDirectoryFileCount:
         for pattern in patterns.split("|"):
             files = list(glob.glob(pattern, root_dir=directory_path))
             total += len(files)
-        print("total " + str(total))
         return (total,)
 
 
@@ -88,10 +89,6 @@ class DreamFrameCounterOffset:
     RETURN_NAMES = ("frame_counter",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, frame_counter, offset):
-        return hashed_as_strings(frame_counter, offset)
-
     def result(self, frame_counter: FrameCounter, offset):
         return (frame_counter.incremented(offset),)
 
@@ -112,10 +109,6 @@ class DreamFrameCounterTimeOffset:
     RETURN_TYPES = (FrameCounter.ID,)
     RETURN_NAMES = ("frame_counter",)
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, frame_counter, offset):
-        return hashed_as_strings(frame_counter, offset)
 
     def result(self, frame_counter: FrameCounter, offset_seconds):
         offset = offset_seconds * frame_counter.frames_per_second
@@ -140,10 +133,6 @@ class DreamSimpleFrameCounter:
     RETURN_TYPES = (FrameCounter.ID,)
     RETURN_NAMES = ("frame_counter",)
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def result(self, frame_index, total_frames, frames_per_second):
         n = frame_index
@@ -172,8 +161,14 @@ class DreamDirectoryBackedFrameCounter:
     FUNCTION = "result"
 
     @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
+    def IS_CHANGED(cls, directory_path, patterns, indexing, total_frames, frames_per_second):
+        if not os.path.isdir(directory_path):
+            return ""
+        total = 0
+        for pattern in patterns.split("|"):
+            files = list(glob.glob(pattern, root_dir=directory_path))
+            total += len(files)
+        return (total, indexing, total_frames, frames_per_second)
 
     def result(self, directory_path, pattern, indexing, total_frames, frames_per_second):
         results = list_images_in_directory(directory_path, pattern, indexing == "alphabetic order")
@@ -203,10 +198,6 @@ class DreamFrameCountCalculator:
     RETURN_TYPES = ("INT",)
     RETURN_NAMES = ("TOTAL",)
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *v, **kwargs):
-        return float("NaN")
 
     def result(self, hours, minutes, seconds, milliseconds, frames_per_second):
         total_s = seconds + 0.001 * milliseconds + minutes * 60 + hours * 3600

@@ -6,6 +6,8 @@ import os
 import random
 import tempfile
 import glob
+from io import BytesIO
+
 import numpy
 import torch
 from PIL import Image, ImageFilter, ImageEnhance
@@ -360,6 +362,24 @@ class DreamStateFile:
         return previous
 
 
+def hash_tensor_data(image, hasher = None):
+    m = hashlib.sha256() if hasher is None else hasher
+    if isinstance(image, torch.Tensor):
+        buff = BytesIO()
+        torch.save(image, buff)
+        print("HASHING TENSOR")
+        m.update(buff.getvalue())
+    elif isinstance(image, bytes) or isinstance(image, bytearray):
+        print("HASHING BYTES")
+        m.update(image)
+    elif isinstance(image, list) or isinstance(image, tuple):
+        print("HASHING ITERABLE")
+        for item in image:
+            hash_tensor_data(item, m)
+    else:
+        print("HASING_AS_TEXT - "+str(type(image)))
+        m.update(str(image).encode(encoding="utf-8"))
+    return m.digest().hex()
 
 def hashed_as_strings(*items, **kwargs):
     tokens = "|".join(list(map(str, items)))

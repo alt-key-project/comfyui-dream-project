@@ -42,10 +42,6 @@ class DreamImageMotion:
     RETURN_NAMES = ("image", "mask1", "mask2", "mask3")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def _mk_PIL_image(self, size, color=None, mode="RGB") -> Image:
         im = Image.new(mode=mode, size=size)
         if color:

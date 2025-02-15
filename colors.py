@@ -26,10 +26,6 @@ class DreamImageAreaSampler:
     RETURN_NAMES = ("palette",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def _get_pixel_area(self, img: DreamImage, area):
         w = img.width
         h = img.height
@@ -102,10 +98,6 @@ class DreamImageSampler:
     RETURN_NAMES = ("palette",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def result(self, image, samples, seed):
         result = list()
         r = random.Random()
@@ -138,10 +130,6 @@ class DreamColorAlign:
     RETURN_TYPES = (RGBPalette.ID,)
     RETURN_NAMES = ("palette",)
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def result(self, palette: Tuple[RGBPalette], target_align: Tuple[RGBPalette], alignment_factor: float):
         results = list()
@@ -187,10 +175,6 @@ class DreamColorShift:
     RETURN_NAMES = ("palette",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def result(self, palette, red_multiplier, green_multiplier, blue_multiplier, fixed_brightness):
         results = list()
 
@@ -234,10 +218,6 @@ class DreamImageColorShift:
     RETURN_NAMES = ("image",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def result(self, image, red_multiplier, green_multiplier, blue_multiplier):
         proc = DreamImageProcessor(inputs=image)
 
@@ -264,10 +244,6 @@ class DreamImageBrightness:
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def result(self, image, factor):
         proc = DreamImageProcessor(inputs=image)
@@ -296,10 +272,6 @@ class DreamImageContrast:
     RETURN_NAMES = ("image",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def result(self, image, factor):
         proc = DreamImageProcessor(inputs=image)
 
@@ -327,10 +299,6 @@ class DreamComparePalette:
     RETURN_NAMES = (
         "brightness_multiplier", "contrast_multiplier", "red_multiplier", "green_multiplier", "blue_multiplier")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def result(self, a, b):
         MIN_VALUE = 1 / 255.0
@@ -371,10 +339,6 @@ class DreamAnalyzePalette:
     RETURN_TYPES = ("FLOAT", "FLOAT", "FLOAT", "FLOAT", "FLOAT")
     RETURN_NAMES = ("brightness", "contrast", "redness", "greenness", "blueness")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def result(self, palette):
         f = 1.0 / len(palette)

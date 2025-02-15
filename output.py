@@ -6,7 +6,7 @@ import folder_paths as comfy_paths
 from PIL.PngImagePlugin import PngInfo
 
 from .categories import NodeCategories
-from .shared import hashed_as_strings, DreamImageProcessor, DreamImage, \
+from .shared import DreamImageProcessor, DreamImage, \
     list_images_in_directory, DreamConfig
 from .dreamtypes import SharedTypes, FrameCounter, AnimationSequence, LogEntry
 
@@ -56,10 +56,6 @@ class DreamImageSequenceOutput:
     OUTPUT_NODE = True
     RETURN_NAMES = ("sequence", "log_entry")
     FUNCTION = "save"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def _get_new_filename(self, current_frame, prefix, digits, filetype):
         return prefix + "_" + str(current_frame).zfill(digits) + "." + filetype.split(" ")[0]

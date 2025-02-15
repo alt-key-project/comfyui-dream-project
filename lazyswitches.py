@@ -1,7 +1,5 @@
 from .categories import NodeCategories
 from .dreamtypes import RGBPalette
-from .err import *
-from .shared import hashed_as_strings
 
 _NOT_A_VALUE_I = 9223372036854775807
 _NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
@@ -23,6 +21,16 @@ def _generate_switch_input(type_nm: str, default_value=None):
     }
 
 
+def _check_big_switch_lazy_status(*args, **kwargs):
+    n = int(kwargs['select'])
+    input_name = f"input_{n}"
+    print(f"SELECTED: {input_name}")
+    if input_name in kwargs:
+        return [input_name]
+    else:
+        return []
+
+
 class DreamLazyImageSwitch:
     _switch_type = "IMAGE"
     NODE_NAME = "Lazy Image Switch"
@@ -36,12 +44,8 @@ class DreamLazyImageSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return float("NaN")
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_"+str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_"+str(select), None),)
@@ -60,12 +64,8 @@ class DreamLazyLatentSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return float("NaN")
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_" + str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_" + str(select), None),)
@@ -84,12 +84,8 @@ class DreamLazyTextSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_S)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(values)
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_" + str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_" + str(select), None),)
@@ -108,12 +104,8 @@ class DreamLazyPaletteSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return float("NaN")
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_" + str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_" + str(select), None),)
@@ -132,12 +124,8 @@ class DreamLazyFloatSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_F)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(values)
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_" + str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_" + str(select), None),)
@@ -156,12 +144,8 @@ class DreamLazyIntSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_I)
 
-    @classmethod
-    def IS_CHANGED(cls, *values):
-        return hashed_as_strings(values)
-
-    def check_lazy_status(self, select, **kwargs):
-        return ["input_" + str(select)]
+    def check_lazy_status(self, *args, **kwargs):
+        return _check_big_switch_lazy_status(*args, **kwargs)
 
     def pick(self, select, **args):
         return (args.get("input_" + str(select), None),)

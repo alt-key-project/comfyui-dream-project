@@ -18,6 +18,7 @@ from .switches import *
 from .utility import *
 from .calculate import *
 from .laboratory import *
+#from .lazyswitches import *
 
 _NODE_CLASSES: List[Type] = [DreamSineWave, DreamLinear, DreamCSVCurve, DreamBeatCurve, DreamFrameDimensions,
                              DreamImageMotion, DreamNoiseFromPalette, DreamAnalyzePalette, DreamColorShift,
@@ -38,7 +39,7 @@ _SIGNATURE_SUFFIX = " [Dream]"
 
 MANIFEST = {
     "name": "Dream Project Animation",
-    "version": (5, 0, 17),
+    "version": (5, 1, 0),
     "author": "Dream Project",
     "project": "https://github.com/alt-key-project/comfyui-dream-project",
     "description": "Various utility nodes for creating animations with ComfyUI",

@@ -250,10 +250,6 @@ class DreamFrameDimensions:
     RETURN_NAMES = ("width", "height", "final_width", "final_height")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, size, aspect_ratio, orientation, divisor, alignment, alignment_type):
         ratio = tuple(map(int, aspect_ratio.split(":")))
         final_width = int(size)

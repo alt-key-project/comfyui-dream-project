@@ -33,10 +33,6 @@ class DreamCalculation:
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def _make_model(self):
         funcs = self._make_functions()
         m = base_eval_model.clone()

@@ -1,7 +1,7 @@
 from .categories import NodeCategories
 from .dreamtypes import RGBPalette
 from .err import *
-from .shared import hashed_as_strings
+from .shared import hashed_as_strings, hash_tensor_data
 
 _NOT_A_VALUE_I = 9223372036854775807
 _NOT_A_VALUE_F = float(_NOT_A_VALUE_I)
@@ -22,7 +22,6 @@ def _generate_switch_input(type_nm: str, default_value=None):
         },
         "optional": d
     }
-
 
 def _do_pick(cls, select, test_val, on_missing, **args):
     direction = 1
@@ -52,10 +51,6 @@ class DreamBigImageSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
-
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
 
@@ -72,10 +67,6 @@ class DreamBigLatentSwitch:
     @classmethod
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: n is not None, on_missing, **args)
@@ -94,10 +85,6 @@ class DreamBigTextSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_S)
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(values)
-
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_S), on_missing, **args)
 
@@ -114,10 +101,6 @@ class DreamBigPaletteSwitch:
     @classmethod
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type)
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return float("NaN")
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: (n is not None), on_missing, **args)
@@ -136,10 +119,6 @@ class DreamBigFloatSwitch:
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_F)
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(values)
-
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_F), on_missing, **args)
 
@@ -156,10 +135,6 @@ class DreamBigIntSwitch:
     @classmethod
     def INPUT_TYPES(cls):
         return _generate_switch_input(cls._switch_type, _NOT_A_VALUE_I)
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(values)
 
     def pick(self, select, on_missing, **args):
         return _do_pick(self.__class__, select, lambda n: (n is not None) and (n != _NOT_A_VALUE_I), on_missing, **args)
@@ -182,10 +157,6 @@ class DreamBoolToFloat:
                 "on_false": ("FLOAT", {"default": 0.0})
             }
         }
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(values)
 
     def pick(self, boolean, on_true, on_false):
         if boolean:
@@ -211,10 +182,6 @@ class DreamBoolToInt:
                 "on_false": ("INT", {"default": 0})
             }
         }
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(values)
 
     def pick(self, boolean, on_true, on_false):
         if boolean:

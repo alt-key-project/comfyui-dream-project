@@ -44,10 +44,6 @@ class DreamSineWave:
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, frame_counter: FrameCounter, max_value, min_value, periodicity_seconds, phase):
         x = frame_counter.current_time_in_seconds
         a = (max_value - min_value) * 0.5
@@ -77,10 +73,6 @@ class DreamSawWave:
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, frame_counter: FrameCounter, max_value, min_value, periodicity_seconds, phase):
         x = frame_counter.current_time_in_seconds
         x = ((x + periodicity_seconds * phase) % periodicity_seconds) / periodicity_seconds
@@ -106,10 +98,6 @@ class DreamTriangleWave:
     RETURN_TYPES = ("FLOAT", "INT")
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def result(self, frame_counter: FrameCounter, max_value, min_value, periodicity_seconds, phase):
         x = frame_counter.current_time_in_seconds
@@ -174,10 +162,6 @@ class DreamWavCurve:
             },
         }
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, frame_counter: FrameCounter, wav_path, scale):
         if not os.path.isfile(wav_path):
             return (0.0, 0)
@@ -205,10 +189,6 @@ class DreamTriangleEvent:
     RETURN_TYPES = ("FLOAT", "INT")
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def result(self, frame_counter: FrameCounter, max_value, min_value, width_seconds, center_seconds):
         x = frame_counter.current_time_in_seconds
@@ -241,10 +221,6 @@ class DreamSmoothEvent:
     RETURN_TYPES = ("FLOAT", "INT")
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def result(self, frame_counter: FrameCounter, max_value, min_value, width_seconds, center_seconds):
         x = frame_counter.current_time_in_seconds
@@ -292,13 +268,6 @@ class DreamBeatCurve:
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        print("CALC IS_CHANGED")
-        hashed = hashed_as_strings(*values, **kwargs)
-        print("IS_CHANGED = "+hashed)
-        return hashed
-
     def _get_value_for_accent(self, accent, measure_length, bpm, frame_counter: FrameCounter, frame_offset):
         current_frame = frame_counter.current_frame + frame_offset
         frames_per_minute = frame_counter.frames_per_second * 60.0
@@ -343,10 +312,6 @@ class DreamLinear:
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, initial_value, final_value, frame_counter: FrameCounter):
         d = final_value - initial_value
         v = initial_value + frame_counter.progress * d
@@ -381,10 +346,6 @@ class DreamCSVGenerator:
     FUNCTION = "write"
     OUTPUT_NODE = True
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def write(self, csvfile, frame_counter: FrameCounter, value, csv_dialect):
         if frame_counter.is_first_frame and csvfile:
             with open(csvfile, 'w', newline='') as csvfile:
@@ -416,10 +377,6 @@ class DreamCSVCurve:
     RETURN_TYPES = ("FLOAT", "INT")
     RETURN_NAMES = ("FLOAT", "INT")
     FUNCTION = "result"
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def _row_yield(self, file, csv_dialect):
         prev_row = None

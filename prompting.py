@@ -1,5 +1,4 @@
 from .categories import NodeCategories
-from .shared import hashed_as_strings
 from .dreamtypes import PartialPrompt
 import random
 
@@ -27,11 +26,6 @@ class DreamRandomPromptWords:
     RETURN_TYPES = (PartialPrompt.ID,)
     RETURN_NAMES = ("partial_prompt",)
     FUNCTION = "result"
-
-
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def result(self, words: str, separator, samples, min_weight, max_weight, seed, **args):
         p = args.get("partial_prompt", PartialPrompt())
@@ -68,10 +62,6 @@ class DreamWeightedPromptBuilder:
     RETURN_NAMES = ("partial_prompt",)
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
-
     def result(self, added_prompt, weight, **args):
         input = args.get("partial_prompt", PartialPrompt())
         p = input.add(added_prompt, weight)
@@ -98,9 +88,6 @@ class DreamPromptFinalizer:
     RETURN_NAMES = ("positive", "negative")
     FUNCTION = "result"
 
-    @classmethod
-    def IS_CHANGED(cls, *values, **kwargs):
-        return hashed_as_strings(*values, **kwargs)
 
     def result(self, partial_prompt: PartialPrompt, adjustment, adjustment_reference, clamp):
         if adjustment == "raw" or partial_prompt.is_empty():
