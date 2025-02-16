@@ -4,13 +4,11 @@ import math
 import numpy
 import torch
 from PIL import Image, ImageDraw
-from PIL.Image import Resampling
 
 from .categories import *
 from .shared import convertTensorImageToPIL, DreamImageProcessor, \
     DreamImage, DreamMask
 from .dreamtypes import SharedTypes, FrameCounter
-
 
 class DreamImageMotion:
     NODE_NAME = "Image Motion"
@@ -73,7 +71,7 @@ class DreamImageMotion:
             return min(max(i, 1), 32767)
 
         if output_resize_height and output_resize_width:
-            return lambda img: img.resize((bound(output_resize_width), bound(output_resize_height)), Resampling.NEAREST)
+            return lambda img: img.resize((bound(output_resize_width), bound(output_resize_height)))
         else:
             return lambda img: img
 
@@ -94,12 +92,12 @@ class DreamImageMotion:
             noise = other.get("noise", None)
             multiplier = math.pow(2, zoom)
             resized_image = pil_image.resize((round(pil_image.width * multiplier),
-                                              round(pil_image.height * multiplier)), Resampling.BILINEAR)
+                                              round(pil_image.height * multiplier)))
 
             if noise is None:
                 base_image = self._mk_PIL_image(pil_image.size, "black")
             else:
-                base_image = convertTensorImageToPIL(noise).resize(pil_image.size, Resampling.BILINEAR)
+                base_image = convertTensorImageToPIL(noise).resize(pil_image.size)
 
             selection_offset = (round(x_translation * pil_image.width), round(y_translation * pil_image.height))
             selection = ((pil_image.width - resized_image.width) // 2 + selection_offset[0],
